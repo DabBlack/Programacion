@@ -2,7 +2,7 @@ package Bloque01;
 
 import javax.swing.JOptionPane;
 
-public class Elercicio03 {
+public class Ejercicio03 {
 	
 	public static void main(String[] args) {
 		String str = JOptionPane.showInputDialog("Introduzca un numero: ");
