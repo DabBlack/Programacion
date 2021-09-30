@@ -47,7 +47,6 @@ public class Ejercicio05 {
 		
 		//MENOR QUE 
 		
-		
 		if (var1 < var2 && var1 < var3 && var1 < var4 && var1 < var5) {
 			System.out.println("Numero menor: " + var1);
 		}
