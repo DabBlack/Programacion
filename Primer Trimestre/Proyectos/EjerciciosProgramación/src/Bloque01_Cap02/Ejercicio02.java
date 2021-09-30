@@ -18,8 +18,8 @@ public class Ejercicio02 {
 		if (var1 < var2) {
 			System.out.println("Numero menor: " + var1);
 		}
-		
-		
+	
+	
 		else {
 			if (var2 < var1) {
 				System.out.println("Numero menor: " + var2);
