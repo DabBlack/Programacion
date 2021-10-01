@@ -1,0 +1,27 @@
+package bloque01_cap02;
+
+import javax.swing.JOptionPane;
+
+public class Ejercicio07 {
+
+	public static void main(String[] args) {
+	
+		String str = JOptionPane.showInputDialog("Introduzca un valor: "); //Se declara la variable str de tipo
+		//String y se pide al usuario que introduzca un valor
+		int x = Integer.parseInt(str); // Se declara la variable x de tipo int
+		System.out.println("Valor: " + x); //Se muestra en pantalla el valor introducido por el usuario
+
+		int y = 1;
+		
+		System.out.println(x != y);
+		
+		if (x % 2 == 0) {
+			System.out.println("El numero es par");
+		}
+		else if (x % 2 == 0) {
+			System.out.println("El numero es par");
+		}
+		
+	}
+
+}
