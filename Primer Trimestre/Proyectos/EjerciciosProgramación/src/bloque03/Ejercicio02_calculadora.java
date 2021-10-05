@@ -10,7 +10,7 @@ public class Ejercicio02_calculadora {
 		int opcion;
 		float num1, num2;
 		
-		str = JOptionPane.showInputDialog("Introduzca una opción" + "\n1.- Raices" + "\n2.- Potencias" + "\n3.- División" + "\n0.- Salir de la aplicación");
+		str = JOptionPane.showInputDialog("Introduzca una opcion" + "\n1.- Raices" + "\n2.- Potencias" + "\n3.- Division" + "\n0.- Salir de la aplicacion");
 		opcion = Integer.parseInt(str);
 		
 		switch(opcion) {
@@ -29,9 +29,9 @@ public class Ejercicio02_calculadora {
 			System.out.println("El resultado de la potencia es: " + (Math.pow(num1, num2)));
 			break;
 		case 3:
-			str = JOptionPane.showInputDialog("Introduzca el dividendo número: ");
+			str = JOptionPane.showInputDialog("Introduzca el dividendo numero: ");
 			num1 = Integer.parseInt(str);
-			str = JOptionPane.showInputDialog("Introduzca el divisor número: ");
+			str = JOptionPane.showInputDialog("Introduzca el divisor numero: ");
 			num2 = Integer.parseInt(str);
 			System.out.println("El resultado de la division es: " + (num1 / num2));
 			break;

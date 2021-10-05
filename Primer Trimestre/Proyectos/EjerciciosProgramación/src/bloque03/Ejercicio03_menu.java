@@ -7,41 +7,40 @@ public class Ejercicio03_menu {
 	public static void main(String[] args) {
 		
 		String str;
-		int opcion, cateto1, cateto2;
+		int opcion;
+		float cateto1, cateto2, hipotenusa;
 		
-		System.out.println("Menú");
-		System.out.println("1.- Cálculo de la hipotenusa de un triángulo.");
-		System.out.println("2.- Cálculo de la superficie de una circunferencia.");
-		System.out.println("3.- Cálculo del perímetro de una circunferencia.");
-		System.out.println("4.- Cálculo del área de un rectángulo.");
-		System.out.println("5.- Cálculo del área de un triángulo.");
-		System.out.println("0.- Salir de la aplicación");
-		
-		str = JOptionPane.showInputDialog("Introduzca la opción");
+		str = JOptionPane.showInputDialog("Introduzca una opcion" + "\n1.- Calculo de la hipotenusa de un triangulo." + "\n2.- Calculo de la superficie de una circunferencia." + "\n3.- C�lculo del perimetro de una circunferencia." +
+				"\n4.- Calculo del area de un rectangulo" + "\n5.- Calculo del area de un triangulo." + "\n0.- Salir de la aplicacion");
 		opcion = Integer.parseInt(str);
 		
-//		switch(opcion) {
-//		case 1:
-//			str = JOptionPane.showInputDialog("Introduzca el valor del primer cateto");
-//			cateto1 = Integer.parseInt(str)
-//			str = JOptionPane.showInputDialog("Introduzca el valor del primer cateto");
-//			cateto1 = Integer.parseInt(str)
-//			System.out.println("La hipotenusa de este triángulo vale: " + (Math.pow(cateto1, 2) + Math.pow(cateto2, 2));
-//			break;
+		switch(opcion) {
+		case 1:
+			str = JOptionPane.showInputDialog("Introduzca el radicando: ");
+			cateto1 = Integer.parseInt(str);
+			str = JOptionPane.showInputDialog("Introduzca el indice: ");
+			cateto2 = Integer.parseInt(str);
+			str = JOptionPane.showInputDialog("Introduzca el indice: ");
+			hipotenusa = Integer.parseInt(str);
+			System.out.println("La longitud de la hipotenusa es: " + ();
+			break;
 //		case 2:
-//			System.out.println("La superficie de esta circunferencia vale: " + ();
+//			str = JOptionPane.showInputDialog("Introduzca la base: ");
+//			num1 = Integer.parseInt(str);
+//			str = JOptionPane.showInputDialog("Introduzca el exponente: ");
+//			num2 = Integer.parseInt(str);
+//			System.out.println("El resultado de la potencia es: " + (Math.pow(num1, num2)));
 //			break;
 //		case 3:
-//			System.out.println("El perímetro de esta circunferencia vale: " + ();	
+//			str = JOptionPane.showInputDialog("Introduzca el dividendo numero: ");
+//			num1 = Integer.parseInt(str);
+//			str = JOptionPane.showInputDialog("Introduzca el divisor numero: ");
+//			num2 = Integer.parseInt(str);
+//			System.out.println("El resultado de la division es: " + (num1 / num2));
 //			break;
-//		case 4:
-//			System.out.println("El área de este rectángulo vale: " + ();
-//			break;
-//		case 5:
-//			System.out.println("El área de este triángulo vale: " + ();
-//			break;
-//		case 0:
-//			return;
+		case 0:
+			return;
+		}
 	}
 
 }

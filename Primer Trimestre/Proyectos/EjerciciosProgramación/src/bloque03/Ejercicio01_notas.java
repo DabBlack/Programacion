@@ -30,15 +30,15 @@ public class Ejercicio01_notas {
 			break; // Con esta instrucción salimos del switch
 		case 6: 
 			System.out.println("Bien"); //Se llega en el caso 6
-			break; // Con esta instrucción salimos del switch
+			break; // Con esta instruccion salimos del switch
 		case 7:
 		case 8:
 			System.out.println("Notable"); // Se llega en los cases 6 y 7
-			break; // Con esta instrucción salimos del switch
+			break; // Con esta instruccion salimos del switch
 		case 9:
 		case 10:
 			System.out.println("Sobresaliente"); // Se llega en los cases 9 y 10
-			break; // Con esta instrucción salimos del switch
+			break; // Con esta instruccion salimos del switch
 		default:
 			System.out.println("Error, el valor no pertenece a ninguna nota");
 		}
