@@ -23,9 +23,7 @@ public class Ejercicio01 {
 			if (var2 > var1) {
 				System.out.println("Numero mayor: " + var2);
 			}
-			else {
-				System.out.println("Son iguales");
-			}
+			
 		}
 		
 	}

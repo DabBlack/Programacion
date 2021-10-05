@@ -30,7 +30,7 @@ public class Ejercicio03 {
 		//MAYOR QUE 
 		
 		if (var1 > var2 && var1 > var3 && var1 > var4 && var1 > var5) {
-			System.out.println("Numero mayor: " + var1);
+			System.out.println("Numero mayor: " + var1); 
 		}
 			else if (var2 > var1 && var2 > var3 && var2 > var4 && var2 > var5) {
 				System.out.println("Numero mayor: " + var2);

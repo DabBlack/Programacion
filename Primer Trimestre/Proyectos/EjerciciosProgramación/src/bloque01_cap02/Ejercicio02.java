@@ -23,7 +23,10 @@ public class Ejercicio02 {
 			if (var2 < var1) {
 				System.out.println("Numero menor: " + var2);
 			}
-			
+			else {
+				System.out.println("Son iguales");
+			}
+		
 		}
 		
 	}
