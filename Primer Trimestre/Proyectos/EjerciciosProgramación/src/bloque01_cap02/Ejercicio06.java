@@ -14,7 +14,7 @@ public class Ejercicio06 {
 		if (var1 % 2 == 0) {
 			System.out.println("Este numero es par");
 		}
-			else if (var1 % 2 == 1) {
+			else {
 				System.out.println("Este numero es impar");
 			}
 		
