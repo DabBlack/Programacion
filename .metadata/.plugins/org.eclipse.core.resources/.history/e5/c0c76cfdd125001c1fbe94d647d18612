@@ -1,0 +1,25 @@
+package bloque03;
+
+public class Ejercicio02_calculadora {
+
+	public static void main(String[] args) {
+		
+		int valor;
+		boolean esValorPositivo;
+		
+		// Forma habitual de asignar valor a una variable en función de una condición
+		valor = 1;
+		if (valor >= 0) {
+			esValorPositivo = true;
+		}
+		else { // valor < 0
+			esValorPositivo = false;
+		}
+		
+		// Otra forma de hacerlo, a través del operador ternario
+		esValorPositivo = (valor >= 0)? true : false ;
+			
+
+	}
+
+}
