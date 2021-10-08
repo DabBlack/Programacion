@@ -1,0 +1,31 @@
+package bloque03;
+
+import javax.swing.JOptionPane;
+
+public class Ejercicio04_monedas {
+
+	public static void main(String[] args) {
+	
+		String str;
+		int precio, pago, cambio;
+		
+		str = JOptionPane.showInputDialog("Introduzca el precio total a pagar:");
+		precio = Integer.parseInt(str);
+		System.out.println("Precio a pagar: " + precio + " unidades");
+		
+		str = JOptionPane.showInputDialog("Introduzca el pago correspondiente");
+		pago = Integer.parseInt(str);
+		System.out.println("Pago realizado de: " + pago + " unidades");
+		
+		do {
+			if (pago < precio) {
+				System.out.println("Importe incorrecto, vuelva a introducir un importe");
+				str = JOptionPane.showInputDialog("Introduzca el pago correspondiente");
+				pago = Integer.parseInt(str);
+				System.out.println("Pago realizado de: " + pago + " unidades");
+			}
+		} while 
+		
+	}
+
+}
