@@ -1,12 +1,12 @@
-package bloque03_cap01;
+package bloque03_cap02;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio03 {
+public class Ejercicio01 {
 
 	public static void main(String[] args) {
 		
-		int num, reps, numPositivos = 0, numNegativos = 0;
+		int num, suma = 0, reps;
 		
 		reps = Integer.parseInt(JOptionPane.showInputDialog("Introduzca cuantos numeros quiere introducir:"));
 		
@@ -14,20 +14,12 @@ public class Ejercicio03 {
 		
 		for (int i = 0;  i < reps ; i++) {
 			num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero"));
-			
 			System.out.println("Numero introducido: " + num);
-			
-			if ( num > 0) {
-				numNegativos = numNegativos + 1;
-			}
-			else  {
-				numPositivos = numPositivos + 1;
-			}
-			
+					
+			suma += num;
 		}
 		
-		System.out.println("Los cantidad de numeros positivos introducidos son: " + numPositivos + "\nLa cantidad de numeros negativos introducidos son: "
-				+ numNegativos);
+		System.out.println("Media de los numeros introducidos: " + suma / reps);
 		
 	}
 	

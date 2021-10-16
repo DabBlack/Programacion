@@ -14,7 +14,8 @@ public class Ejercicio02 {
 		
 		for (int i = 0;  i < reps ; i++) {
 			num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero"));
-					System.out.println("Numero introducido: " + num);
+			System.out.println("Numero introducido: " + num);
+			
 			if (num > 10 ) {
 				suma += num;
 			}
