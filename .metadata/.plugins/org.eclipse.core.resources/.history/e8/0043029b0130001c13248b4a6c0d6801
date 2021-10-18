@@ -1,0 +1,34 @@
+package bloque03_cap02;
+
+import java.util.Scanner;
+
+public class Ejercicio04 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int num, limite;
+		
+		System.out.println("Introduzca un número");
+		num = sc.nextInt();
+		
+		System.out.println("Introduzca un limite de multiplos");
+		limite = sc.nextInt();
+
+		//La condición es que i * num sea menor que 100 para conseguir la lista de múltiplos del número introducido
+		for(int i = 0; (i * num) < limite; i++) {
+
+			System.out.println("Los múltiplos son los siguientes: " + (i * num));
+			
+			//Si i * num es mayor que 100 el programa termina
+			if((i * num > limite)) {
+				return;
+
+			}
+			
+		}
+		
+		System.out.println("El programa ha acabado");
+		
+	}
+}
