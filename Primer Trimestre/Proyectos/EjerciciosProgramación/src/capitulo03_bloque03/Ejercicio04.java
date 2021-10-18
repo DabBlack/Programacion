@@ -8,27 +8,27 @@ public class Ejercicio04 {
 		 
 
 		Scanner sc = new Scanner(System.in);
-		int num = 1, mayor = 0, menor = 0;
+		int num = 1, positivos = 0, negativos = 0;
 
-		for (int i = 0; num != 0; i++) {
+		for (int i = 1; num != 0; i++) {
 			System.out.println("Introduzca un numero (Pulse 0 para terminar el programa)");
 			num = sc.nextInt();
 		
 			if (i != 0) {
 				
-				if (mayor < num) {
-					mayor = num;
+				if (num > 0) {
+					positivos = positivos + 1;
 				}
 				
-				if (menor > num) {
-					menor = num;
+				else if (num < 0) {
+					negativos = negativos + 1;
 				}
 				
 			}
 		
 		}
 		
-		System.out.println("El mayor es: " + mayor + "\nEl menor es: " + menor);
+		System.out.println("Los numeros positivos son: " + positivos + "\nLos numeros negativos son: " + negativos);
 		
 	}
 
