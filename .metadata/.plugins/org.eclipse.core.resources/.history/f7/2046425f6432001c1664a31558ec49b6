@@ -1,0 +1,21 @@
+package examenes.Examen20211021;
+
+import java.util.Scanner;
+
+public class Ejercicio_B {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int max, min;
+		
+		return (int) Math.round(Math.random() * (max - min)) + min;
+		
+		for (int i = 0; i >10 ; i++) {
+			System.out.println("Introduzca un numero (Pulse 0 para terminar el programa)");
+			num = sc.nextInt();
+		}
+
+	}
+
+}

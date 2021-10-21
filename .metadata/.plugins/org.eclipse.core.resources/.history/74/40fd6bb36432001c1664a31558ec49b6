@@ -1,0 +1,24 @@
+package examenes.Examen20211021;
+
+import java.util.Scanner;
+
+public class Ejercicio_B {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int max, min, limiteSuperior, limiteInferior;
+		
+	
+		
+		for (int i = 0; i <10 ; i++) {
+			System.out.println("Introduzca un limite inferior:");
+			limiteInferior = sc.nextInt();
+			
+			System.out.println("Introduzca un limite superior:");
+			limiteSuperior= sc.nextInt();
+		}
+
+	}
+
+}
