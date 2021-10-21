@@ -110,7 +110,7 @@ public class Ejercicio02 {
 							
 					else {
 						grandes = grandes + 1;
-					}
+					}  
 				}
 
 		//Quinto numero
