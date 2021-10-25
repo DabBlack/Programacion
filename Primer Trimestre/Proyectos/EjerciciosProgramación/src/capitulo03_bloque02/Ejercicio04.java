@@ -9,7 +9,7 @@ public class Ejercicio04 {
 		Scanner sc = new Scanner(System.in);
 		int num, limite;
 		
-		System.out.println("Introduzca un número");
+		System.out.println("Introduzca un numero");
 		num = sc.nextInt();
 		
 		System.out.println("Introduzca un limite de multiplos");
@@ -17,7 +17,7 @@ public class Ejercicio04 {
 
 		for(int i = 0; (i * num) < limite; i++) {
 
-			System.out.println("Los múltiplos son los siguientes: " + (i * num));
+			System.out.println("Los multiplos son los siguientes: " + (i * num));
 			
 			if((i * num > limite)) {
 				return;

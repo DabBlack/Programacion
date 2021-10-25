@@ -9,7 +9,7 @@ public class Ejercicio01 {
 		//Declaracion del array
 		int numeros[] = new int[150]; 
 		
-		// Inicializaci√≥n de los valores del array
+		// Inicializacion de los valores del array
 		for (int i = 0; i < numeros.length; i++) {
 			numeros[i] = (int) Math.round(Math.random() * (100 - 0)) + 0;
 		}
@@ -24,25 +24,29 @@ public class Ejercicio01 {
 			//Media de todos los valores del array
 			media = suma / numeros.length;
 			
-			if (i = 0) {
-				i = mayor;
+			//Primera interacciÛn
+			if (i == 0) {
+				mayor = i;
+				menor = i;
 			}
 			
-			//Media de todos los valores del array
-			if (mayor < numeros) {
-				mayor = numeros;
+			//Resto de las interacciones
+			else { 
+				//Mayor de todos los valores del array
+				if (i > mayor) {
+				mayor = i;
+				}
+				//Menor de todos los valores del array
+				else if (i < menor){
+				menor = i;
+				}
 			}
 			
-			//Media de todos los valores del array
-			if (menor > numeros) {
-				menor = numeros;
-			}
 		}
 		
 		System.out.println("\n" + "\nLa suma de todos los valores es: " + suma + "\n" +  "\nLa media de todos los valores es: " + media + "\n" + 
-		);
+		"\nEl menor de todos los valores es: " + menor + "\n" + "\nEl mayor de todos los valores es: " + mayor);
 		
-
 	}
 
 }
