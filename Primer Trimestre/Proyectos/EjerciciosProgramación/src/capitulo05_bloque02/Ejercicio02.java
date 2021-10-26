@@ -45,7 +45,7 @@ public class Ejercicio02 {
 				array3[i] = array2[i];
 			}
 		}
-		
+		 
 		System.out.print("\n" + "\nArray 3: " + "\n" + "\n"); 
 		
 		//Recorrido del array2 para imprimir sus valores en pantalla 
