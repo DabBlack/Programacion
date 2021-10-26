@@ -16,6 +16,7 @@ public class Ejercicio05 {
 			numeros[i] = (int) Math.round(Math.random() * (100 - 0)) + 0;
 		}
 		
+		System.out.print("Forma habitual del array: " + "\n"); 
 		
 		//Recorrido del array para imprimir sus valores en pantalla, ademas de verificar si el numero ocupa una posicion par,
 		//para guardarlo en una variable, asi sumandolo posteriormente
