@@ -23,7 +23,7 @@ public class Ejercicio04 {
 		}
 		
 		
-		//Recorrido del array para imprimir sus valores en pantalla, añadiendo un if/else para buscar un valor en concreto,
+		//Recorrido del array para imprimir sus valores en pantalla, anadiendo un if/else para buscar un valor en concreto,
 		//ademas de su posicion concreta
 		for (int i = 0; i < numeros.length; i++) {
 			System.out.print(numeros[i]);
@@ -32,7 +32,7 @@ public class Ejercicio04 {
 				posicion = i;
 				System.out.println(", el valor introducido ha sido encontrado con exito.");
 			}
-			
+	
 			else {
 				System.out.println(", el valor introducido no ha sido encontrado.");
 			}

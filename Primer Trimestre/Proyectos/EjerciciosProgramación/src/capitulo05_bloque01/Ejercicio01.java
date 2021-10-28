@@ -24,12 +24,12 @@ public class Ejercicio01 {
 			//Media de todos los valores del array
 			media = suma / numeros.length;
 			
-			//Primera interacción
+			//Primera interacciï¿½n
 			if (i == 0) {
 				mayor = i;
 				menor = i;
 			}
-			
+		
 			//Resto de las interacciones
 			else { 
 				//Mayor de todos los valores del array

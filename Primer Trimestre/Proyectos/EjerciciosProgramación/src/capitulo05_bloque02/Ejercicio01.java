@@ -7,7 +7,7 @@ public class Ejercicio01 {
 		//Declaracion del array
 		int numeros[] = new int[150]; 
 	
-		// Inicializacion de los valores del array
+		//Inicializacion de los valores del array
 		for (int i = 0; i < numeros.length; i++) {
 			numeros[i] = (int) Math.round(Math.random() * (100 - -100)) + -100;
 		}
@@ -28,7 +28,7 @@ public class Ejercicio01 {
 			}
 			
 		}
-		
+	
 	}
 
 }

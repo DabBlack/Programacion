@@ -32,7 +32,7 @@ public class Ejercicio03 {
 		for (int i = 0; i < numeros.length; i++) {
 			System.out.print(numeros[i] * multiplicador + " ");
 		}
-		
+	
 	}
 
 }

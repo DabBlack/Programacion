@@ -30,7 +30,7 @@ public class Ejercicio06 {
 			}
 			
 		}
-		
+	
 		System.out.println("\n " + "\nLa suma de los valores pares equivale a: " + numPar);
 		System.out.println("\nLa suma de los valores impares equivale a: " + numImpar);
 		

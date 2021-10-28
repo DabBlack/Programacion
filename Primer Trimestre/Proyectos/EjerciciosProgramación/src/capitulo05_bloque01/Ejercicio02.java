@@ -29,7 +29,7 @@ public class Ejercicio02 {
 			System.out.print(numeros[i] + " ");
 			
 		}
-		
+	
 	}
 
 }

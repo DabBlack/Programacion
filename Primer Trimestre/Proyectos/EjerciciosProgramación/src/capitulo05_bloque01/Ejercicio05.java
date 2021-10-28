@@ -28,7 +28,7 @@ public class Ejercicio05 {
 			}
 			
 		}
-		
+	
 		//Se muestra en pantalla la suma de los valores que tengan un indice par, es decir, que ocupen una posicion par en el array
 		System.out.println("\n " + "\nLa suma de los valores que ocupan una posicion par en el array equivale a: " + numPar);
 		
