@@ -20,11 +20,10 @@ public class Ejercicio04 {
 		//Recorrido del array para imprimir sus valores en pantalla 
 		for (int i = 0; i < numeros.length; i++) {
 			System.out.print(numeros[i] + " ");
-			
 		}
 		
 		//Este bucle dicta las veces que se repite el desplazamiento a la derecha
-		for (int x = 0; x < 5; x++) {
+		for (int x = 0; x < 2; x++) {
 		
 			System.out.println("\n" + "\n" + "Array desplazado a la derecha: " + "\n");
 			
