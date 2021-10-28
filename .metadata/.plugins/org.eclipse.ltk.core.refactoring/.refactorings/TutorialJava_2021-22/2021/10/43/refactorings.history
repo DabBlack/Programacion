@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy package &apos;tutorialJava&apos; to &apos;EjerciciosProgramación/src&apos;&#x0A;- Original project: &apos;TutorialJava_2021-22&apos;&#x0A;- Destination element: &apos;EjerciciosProgramación/src&apos;&#x0A;- Original element: &apos;TutorialJava_2021-22/src/tutorialJava&apos;" description="Copy package" destination="=EjerciciosProgramación/src" element1="/src&lt;tutorialJava" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1635158930826" version="1.0"/>
-</session>

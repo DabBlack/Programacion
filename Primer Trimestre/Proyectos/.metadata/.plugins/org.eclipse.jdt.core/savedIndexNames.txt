@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+/media/diurno/David PenDrive/1º DAW/Programación/Primer Trimestre/Proyectos/.metadata/.plugins/org.eclipse.jdt.core
-327011727.index
-961175979.index
-1865797976.index

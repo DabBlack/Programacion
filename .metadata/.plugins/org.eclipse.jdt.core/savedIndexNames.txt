@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+/home/diurno/Escritorio/Programación/.metadata/.plugins/org.eclipse.jdt.core
-485514319.index
-1865797976.index
-961175979.index
-327011727.index
