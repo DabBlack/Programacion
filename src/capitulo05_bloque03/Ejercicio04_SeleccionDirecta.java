@@ -1,6 +1,6 @@
 package capitulo05_bloque03;
 
-public class Ejercicio04_Seleccion {
+public class Ejercicio04_SeleccionDirecta {
 
 	public static void main(String[] args) {
 		
