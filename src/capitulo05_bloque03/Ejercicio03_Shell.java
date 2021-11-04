@@ -6,7 +6,7 @@ public class Ejercicio03_Shell {
 		
 		//Declaracion del array
 		int auxiliar = 0;
-		int numeros[] = new int[150];
+		int numeros[] = new int[10];
 		int saltos[] = {6, 4, 3, 2, 1};
 		
 		//Inicializacion de los valores de array aleatoriamente
@@ -31,7 +31,7 @@ public class Ejercicio03_Shell {
 				if (j + saltos[i] < numeros.length) {
 					//Si el valor de j es menor que el valor del valor de la posicion de j mas el salto
 					//se hacen los intercambios
-					if (numeros[j] < numeros[j + saltos[i]]) {
+					if (numeros[j] > numeros[j + saltos[i]]) {
 						auxiliar = numeros[j];
 						numeros[j] = numeros[j + saltos[i]];
 						numeros[j + saltos[i]] = auxiliar;
