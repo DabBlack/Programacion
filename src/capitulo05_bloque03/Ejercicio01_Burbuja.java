@@ -1,6 +1,6 @@
 package capitulo05_bloque03;
 
-public class Ejercicio01 {
+public class Ejercicio01_Burbuja {
 
 	public static void main(String[] args) {
 		

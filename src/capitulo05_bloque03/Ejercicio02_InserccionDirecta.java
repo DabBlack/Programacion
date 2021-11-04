@@ -1,6 +1,6 @@
 package capitulo05_bloque03;
 
-public class Ejercicio02 {
+public class Ejercicio02_InserccionDirecta {
 
 	public static void main(String[] args) {
 		
@@ -37,8 +37,9 @@ public class Ejercicio02 {
 				}
 			}
 			
-			//Se le asigna a la variable
+			//Se le asigna a la variable auxiliar el valor de la posicion menor
 			auxiliar = numeros[posicionMenor];
+			 
 			for (int j = posicionMenor; j > i; j--) {
 				numeros[j] = numeros[j - 1];
 			}
