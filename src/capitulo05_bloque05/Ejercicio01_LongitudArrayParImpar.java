@@ -11,30 +11,38 @@ public class Ejercicio01_LongitudArrayParImpar {
 				
 		System.out.println("Array: " + "\n");
 		
-		//Se llaman a los siguientes metodos, que inicializan el array con valores al azar y lo muestra
+		//Inicializamos el array
 		inicializarArrayAlAzar(array);
+		
+		//Mostramos el array
 		mostrarArray(array);
 		
+		//Longitud del array
 		System.out.println("\n" + "\n" + "La longitud del array es: " + array.length);
+		
+		//Posicion media del array
 		System.out.println("\n" + "La posicion media del array es: " + (array.length / 2));
 		
-		//Este metodo hace que se analice el array, viendo si la longitud es par o impar
-		analizarArray(array);
+		//Comprobamos si la longitud es par o impar
+		longitudParOImpar(array);
 		
 		//Longitud impar
 		if (array.length % 2 == 1) {
 			System.out.println("\n" + "El valor de la posicion media del array es: ");
-			System.out.println(analizarArray(array));
+			System.out.println(longitudParOImpar(array));
 		}
 		
 		//Longitud par
 		else {
 			System.out.println("\n" + "Al ser par se devuelve:");
-			System.out.println(analizarArray(array));
+			System.out.println(longitudParOImpar(array));
 		}
 	}
 
-	//Metodo para inicializar el array asisgandole valores al azar entre 0 y 10
+	/**
+	 * Este metodo inicializa el array con valores al azar entre 0 y 100
+	 * @param array
+	 */
 	public static void inicializarArrayAlAzar (int array[]) {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = Utils.obtenerNumeroAzar(0, 100);
@@ -42,7 +50,10 @@ public class Ejercicio01_LongitudArrayParImpar {
 		
 	}
 	
-	//Metodo para mostrar el array
+	/**
+	 * Este metodo muestra el array
+	 * @param array
+	 */
 	public static void mostrarArray (int array[]) {
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i] + " ");
@@ -50,9 +61,12 @@ public class Ejercicio01_LongitudArrayParImpar {
 		
 	}
 	
-	//Metodo para analizar el array, comprobando es la longitud es par o impar, devolviendo un valor en cada caso
-	//Valor que se usara mas tarde
-	public static int analizarArray (int array[]) {
+	/**
+	 * Este metodo comprueba que la longitud del array es par o impar, devolviendo un valor en cada caso
+	 * @param array
+	 * @return
+	 */
+	public static int longitudParOImpar (int array[]) {
 		if (array.length % 2 == 1) {
 			return array[array.length / 2];
 		}
