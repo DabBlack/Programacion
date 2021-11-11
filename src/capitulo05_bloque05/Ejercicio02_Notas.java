@@ -13,8 +13,10 @@ public class Ejercicio02_Notas {
 	
 		//Inicializamos el array al azar entre 0 y 10
 		inicializarArrayAlAzar(array);
+		
 		//Mostramos el array
 		mostrarArray(array);
+		
 		//Calculamos el porcentaje de los suspensos y los aprobados
 		porcentajeAprobadosYSuspensos(array);
 		
