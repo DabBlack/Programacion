@@ -5,11 +5,11 @@ import tutorialJava.Utils;
 public class Ejercicio04_JugandoConUnaMatriz {
 
 	public static void main(String[] args) {
-		int matriz[][] = new int[][] {  {1,		2, 		3, 		4, 		5},
-										{0, 	2, 		3, 		4, 		5},
-										{0, 	0, 		3, 		4, 		5},
-										{0, 	0, 		0, 		4,	 	5},
-										{0, 	0,	 	0, 		0, 		5}};
+		int matriz[][] = new int[][] {  {1,		9, 		3, 		4, 		5},
+										{2, 	1, 		2, 		3, 		4},
+										{3, 	2, 		1, 		2, 		3},
+										{4, 	3, 		2, 		9,	 	2},
+										{5, 	4,	 	3, 		2, 		1}};
 	
 			//Inicializamos la matriz con valores aleatorios
 //			inicializaMatriz(matriz);
@@ -30,7 +30,18 @@ public class Ejercicio04_JugandoConUnaMatriz {
 //			System.out.println("\n" + "Matriz dispersa: " + esDispersa(matriz));
 			
 			//Array unidimensional con los valores de la matriz
-			System.out.println("\n" + "Array unidimensional con los valores de la matriz: " + matrizUnidimensional(matriz));
+			System.out.println("\n" + "Array unidimensional con los valores de la matriz: ");
+			
+			matrizUnidimensional(matriz);
+			
+			//Comprobacion de si la matriz es simetrica
+			System.out.println("\n" + "\n" + "Matriz simetrica: " + esMatrizSimetrica(matriz));
+		
+			//Matriz traspuesta
+			System.out.println("\n" + "Matriz traspuesta");
+			
+			matrizTraspuesta(matriz);
+			
 		}
 
 	
@@ -138,24 +149,73 @@ public class Ejercicio04_JugandoConUnaMatriz {
 //	}
 	
 	/**
-	 * 
+	 * Este metodo almacena en un array unidimensional el contenido de la matriz
 	 * @param matriz
 	 * @return
 	 */
-	public static int[] matrizUnidimensional (int matriz[][]) {
+	public static void matrizUnidimensional (int matriz[][]) {
 		int k = 0;
+		//Se multiplican las filas por las columnas
 		int array[] = new int[matriz.length * matriz[0].length];
 		
+		//En estos bucles se recorre la matriz y se le asigna el valor de cada posicion de la matriz
+		//a la posicion correspondiente del array, cada vez que se asigna un valor se incremente la
+		//posicion del array, es este caso la k
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
 				array[k] = matriz[i][j];
 				k++;
 			}
 		}	
-					
-		return array;
+		
+		//Se recorre y se muestra el array
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
 	}
 	
+	/**
+	 * Este metodo compara dos posiciones opuestas, si no son iguales la matriz no seria simetrica,
+	 * mientras que si se da el caso que todas las posiciones opuestas son iguales significaria que
+	 * la matriz es simetrica
+	 * @param matriz
+	 * @return
+	 */
+	public static boolean esMatrizSimetrica (int matriz[][]) {
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz.length; j++) {
+				if (matriz[i][j] != matriz[j][i]) {
+					return false;
+				}
+				
+			}
+		
+		}
+		return true;
+		
+	}
+	
+	/**
+	 * 
+	 * @param matriz
+	 */
+	public static void matrizTraspuesta (int matriz [][]) {
+		int aux = 0;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz.length; j++) {
+				aux = matriz[i][j];
+				matriz[i][j] = matriz[j][i];
+				matriz[j][i] = aux;
+			}
+				
+		}
+		
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz.length; j++) {
+				System.out.print(matriz[i][j] + " ");
+			}
+		}
+	}
 	
 
 }
