@@ -1,5 +1,6 @@
 package capitulo05_bloque05;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import tutorialJava.Utils;
@@ -268,15 +269,27 @@ public class Ejercicio04_JugandoConUnaMatriz {
 		
 	}
 	
+	/**
+	 * Este metodo deja de mostrar una fila de la matriz, la cual se le pregunta al usuario
+	 * @param matriz
+	 */
 	public static void matrizEliminarFilas (int matriz[][]) {
 		int numFila;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Introduzca un numero de fila entre 0 y 4 para eliminarla: ");
 		numFila = sc.nextInt();
-		
+			
+		//Este bucle hace que si el usuario introduce un numero mayor que 4 o menor de 0 que vuelva
+		//pedir otro numero
+		while (numFila > 4 || numFila < 0) {
+			System.out.println("Vuelva a introducir un numero de fila entre 0 y 4 para eliminarla: ");
+			numFila = sc.nextInt();	
+		} 
+								
 		for (int i = 0; i < matriz.length; i++) {
-			if(matriz[i] != numFila) {
+			//Si la fila (i) es distinta al numFila (numero pedido al usuario) se imprime
+			if(i != numFila) {
 				for (int j = 0; j < matriz[i].length; j++) {
 					System.out.print(matriz[i][j] + "\t");	
 				}
@@ -284,6 +297,7 @@ public class Ejercicio04_JugandoConUnaMatriz {
 			}	
 			
 		}
+		
 		
 	}
 	
