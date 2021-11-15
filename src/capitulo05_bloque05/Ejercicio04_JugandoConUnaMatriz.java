@@ -1,20 +1,28 @@
 package capitulo05_bloque05;
 
+import java.util.Scanner;
+
 import tutorialJava.Utils;
 
 public class Ejercicio04_JugandoConUnaMatriz {
 
 	public static void main(String[] args) {
-		int matriz[][] = new int[][] {  {1,		9, 		3, 		4, 		5},
-										{2, 	1, 		2, 		3, 		4},
-										{3, 	2, 		1, 		2, 		3},
-										{4, 	3, 		2, 		9,	 	2},
-										{5, 	4,	 	3, 		2, 		1}};
+		int matrizAlAzar[][] = new int[5][5];
+		
+		int matriz[][] = new int[][] {  {1,		2, 		3, 		4, 		5},
+										{6, 	7, 		8, 		9, 		10},
+										{11, 	12, 	13, 	14, 	15},
+										{16, 	17, 	18, 	19,	 	20},
+										{21, 	22,	 	23,		24, 	25}};
 	
 			//Inicializamos la matriz con valores aleatorios
-//			inicializaMatriz(matriz);
+			inicializaMatrizAlAzar(matrizAlAzar);
 			
+			//Mostramos en pantalla la matriz al azar
+			mostrarMatrizAlAzar(matrizAlAzar);
+							
 			//Mostramos en pantalla la matriz
+			System.out.println(" ");
 			mostrarMatriz(matriz);
 
 			//Comprobacion de si la matriz es positiva
@@ -27,7 +35,7 @@ public class Ejercicio04_JugandoConUnaMatriz {
 			System.out.println("\n" + "Matriz triangular superior: " + esTriangularSuperior(matriz));
 			
 			//Comprobacion de si la matriz es dispersa
-//			System.out.println("\n" + "Matriz dispersa: " + esDispersa(matriz));
+			System.out.println("\n" + "Matriz dispersa: " + esDispersa(matriz));
 			
 			//Array unidimensional con los valores de la matriz
 			System.out.println("\n" + "Array unidimensional con los valores de la matriz: ");
@@ -38,10 +46,18 @@ public class Ejercicio04_JugandoConUnaMatriz {
 			System.out.println("\n" + "\n" + "Matriz simetrica: " + esMatrizSimetrica(matriz));
 		
 			//Matriz traspuesta
-			System.out.println("\n" + "Matriz traspuesta");
+			System.out.println("\n" + "\tMatriz traspuesta: " + "\n");
 			
 			matrizTraspuesta(matriz);
 			
+			//Matriz opuesta
+			System.out.println("\n" + "\tMatriz opuesta: " + "\n");
+			
+			matrizOpuesta(matriz);
+			
+			//Eliminar una fila de la matriz pedida por el usuario
+			System.out.println(" ");
+			matrizEliminarFilas(matriz);
 		}
 
 	
@@ -49,26 +65,39 @@ public class Ejercicio04_JugandoConUnaMatriz {
 	 * Este metodo inicializa la matriz con valores al azar
 	 * @param matriz
 	 */
-	public static void inicializaMatriz (int matriz[][]) {
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[i].length; j++) {
-				matriz[i][j] = Utils.obtenerNumeroAzar();
+	public static void inicializaMatrizAlAzar (int matrizAlAzar[][]) {
+		for (int i = 0; i < matrizAlAzar.length; i++) {
+			for (int j = 0; j < matrizAlAzar[i].length; j++) {
+				matrizAlAzar[i][j] = Utils.obtenerNumeroAzar();
 			}
 		}
 	}
-
+	
+	/**
+	 * Este metodo muestra en pantalla la matriz al azar
+	 * @param matriz
+	 */
+	public static void mostrarMatrizAlAzar (int matrizAlAzar[][]) {
+		System.out.println("Contenido de la matriz al azar: " + "\n");
+		for (int i = 0; i < matrizAlAzar.length; i++) {
+			for (int j = 0; j < matrizAlAzar[i].length; j++) {
+				System.out.print(matrizAlAzar[i][j] + "\t");
+			}
+			System.out.println(" ");
+		}
+	}
 
 	/**
 	 * Este metodo muestra en pantalla la matriz
 	 * @param matriz
 	 */
 	public static void mostrarMatriz (int matriz[][]) {
-		System.out.println("Contenido de la matriz" + "\n");
+		System.out.println("Contenido de la matriz: " + "\n");
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
 				System.out.print(matriz[i][j] + "\t");
 			}
-			System.out.println();
+			System.out.println(" ");
 		}
 	}
 
@@ -134,19 +163,23 @@ public class Ejercicio04_JugandoConUnaMatriz {
 	}
 	
 	/**
-	 * Este metodo comprueba si la matriz es dispersa
+	 * Este metodo comprueba si en la matriz algun valor es 0, si es dispersa significa que hay un 0 en la 
+	 * matriz (true), mientras que si no hay ningun cero no sera dispersa (false)
 	 * @param matriz
 	 * @return
 	 */
-//	public static boolean esDispersa (int matriz[][]) {
-//		for (int i = 0; i < matriz.length; i++) {
-//			for (int j = 0; j < matriz.length; j++) {
-//				
-//			}
-//			
-//		}
-//		
-//	}
+	public static boolean esDispersa (int matriz[][]) {
+		boolean esDispersa = false;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz.length; j++) {
+				if (matriz[i][j] == 0) {
+					esDispersa = true;
+				}
+			}
+			
+		}
+		return esDispersa;
+	}
 	
 	/**
 	 * Este metodo almacena en un array unidimensional el contenido de la matriz
@@ -196,26 +229,65 @@ public class Ejercicio04_JugandoConUnaMatriz {
 	}
 	
 	/**
-	 * 
+	 * Este metodo cambia las columnas de la matriz por las filas, haciendo que los valores de las filas sean
+	 * los valores de las columnas, y los valores de las columnas sean los de las filas.
+	 * Utilizamos una segunda matriz que asigna a los valores de las columnas (i), las valores filas de la matriz 
+	 * original (i), una vez asignados esos valores se muestra en panalla la segunda matriz
+	 * y con un return le devolvemos al main la segunda matriz
 	 * @param matriz
 	 */
-	public static void matrizTraspuesta (int matriz [][]) {
-		int aux = 0;
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz.length; j++) {
-				aux = matriz[i][j];
-				matriz[i][j] = matriz[j][i];
-				matriz[j][i] = aux;
-			}
-				
+	public static int[][] matrizTraspuesta (int matriz[][]) {
+		int[][] matrizTraspuesta = new int[matriz[0].length][matriz.length];
+		
+		for (int i = 0; i < matrizTraspuesta.length; i++) {
+				for (int j = 0; j < matrizTraspuesta[i].length; j++) {
+					matrizTraspuesta[j][i] = matriz[i][j];
+				}
 		}
 		
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz.length; j++) {
-				System.out.print(matriz[i][j] + " ");
+		for (int i = 0; i < matrizTraspuesta.length; i++) {
+			for (int j = 0; j < matrizTraspuesta[i].length; j++) {
+				System.out.print(matrizTraspuesta[i][j] + "\t");
 			}
+			System.out.println(" ");
+		}		
+		return matrizTraspuesta;
+	}
+		
+	/**
+	 * Este metodo cambia de signo los valores de la matriz, solamente hay que multiplicar * -1 al mostrarla
+	 * @param matriz
+	 */
+	public static void matrizOpuesta (int matriz[][]) {
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				System.out.print(matriz[i][j] * -1 + "\t");
+			}
+			System.out.println(" ");
 		}
+		
 	}
 	
-
+	public static void matrizEliminarFilas (int matriz[][]) {
+		int numFila;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introduzca un numero de fila entre 0 y 4 para eliminarla: ");
+		numFila = sc.nextInt();
+		
+		for (int i = 0; i < matriz.length; i++) {
+			if(matriz[i] != numFila) {
+				for (int j = 0; j < matriz[i].length; j++) {
+					System.out.print(matriz[i][j] + "\t");	
+				}
+				System.out.println(" ");
+			}	
+			
+		}
+		
+	}
+	
+	
+	
+	
 }
