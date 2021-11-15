@@ -298,10 +298,6 @@ public class Ejercicio04_JugandoConUnaMatriz {
 			
 		}
 		
-		
 	}
-	
-	
-	
 	
 }
