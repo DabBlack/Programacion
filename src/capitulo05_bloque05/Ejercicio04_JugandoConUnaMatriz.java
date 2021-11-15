@@ -1,6 +1,5 @@
 package capitulo05_bloque05;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import tutorialJava.Utils;
