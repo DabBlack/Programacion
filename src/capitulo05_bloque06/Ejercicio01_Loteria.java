@@ -4,7 +4,7 @@ public class Ejercicio01_Loteria {
 
 	public static void main(String[] args) {
 		
-		int array[] = new int [7];
+		int array[] = new int[7];
 
 		//Se inicializa el array con valores al azar entre 1 y 49
 		inicializarArrayAlAzar(array);
@@ -46,18 +46,21 @@ public class Ejercicio01_Loteria {
 	public static void valoresDelArraySinRepeticion (int array[]) {
 		boolean esIgual = false;
 		
-		do {
-			for (int i = 0; i < array.length; i++) {
-				
-				//La j de recorre hacia atra
+		for (int i = 0; i < array.length; i++) {
+			
+			do {
+				array[i] = (int) Math.round(Math.random()* (49 - 1) + 1);
+				esIgual = false;
+				//La j de recorre hacia atras
 				for (int j = i - 1; j > -1; j--) {
 					if (array[j] == array[i]) {
 						esIgual = true;
 					}
 				}
-			}
+				
+			}while(esIgual == true);
 			
-		} while(esIgual == true);
+		} 
 		
 	}
 	
