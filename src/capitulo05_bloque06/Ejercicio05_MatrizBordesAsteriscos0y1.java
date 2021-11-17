@@ -2,7 +2,7 @@ package capitulo05_bloque06;
 
 import tutorialJava.Utils;
 
-public class Ejercicio04_MatrizBordesAsteriscos0Aleatorio {
+public class Ejercicio05_MatrizBordesAsteriscos0y1 {
 
 	public static void main(String[] args) {
 		//Se declara la matriz de 20 filas y 10 columnas
