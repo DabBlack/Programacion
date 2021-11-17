@@ -8,13 +8,19 @@ public class Ejercicio04_MatrizBordesAsteriscos0Aleatorio {
 		//Se declara la matriz de 20 filas y 10 columnas
 		char matriz[][] = new char[20][10];
 		
-		//Se dibuja la interfaz de asteriscos, formada por una matriz
+		//Se dibuja la interfaz de asteriscos en los bordes y el interior de espacios en blanco, 
+		//formada por una matriz
 		bordesConAsteriscos(matriz);
 		
+		//Se genera un 0 en una posicion aleatoria dentro de la matriz
 		ceroEnUnaPosicionAlAzar(matriz);
 		
 	}
-
+	
+	/**
+	 * Este metodo rellena de asteriscos los bordes de la matriz y de espacios en blanco el interior
+	 * @param matriz
+	 */
 	public static void bordesConAsteriscos(char matriz[][]) {
 		//Se recorre la matriz
 		for (int i = 0; i < matriz.length; i++) {
@@ -41,6 +47,10 @@ public class Ejercicio04_MatrizBordesAsteriscos0Aleatorio {
 		}
 	}
 	
+	/**
+	 * Este metodo señala a una fila y a una columna al azar y se le asigna a esa posicion de la matriz el valor 0
+	 * @param matriz
+	 */
 	public static void ceroEnUnaPosicionAlAzar (char matriz[][]) {
 		//Se declaran las variables necesarias
 		int fila = 0, columna = 0;
