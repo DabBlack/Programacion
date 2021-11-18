@@ -25,14 +25,15 @@ public class Ejercicio02_OndaDeAsteriscos {
 			for (int j = 0; j < matriz[i].length; j++) {
 				//Si el numAsteriscos es mayor de la j, se pinta un asterisco
 				if (numAsteriscos > j) {
-					System.out.print("*");
+					matriz[i][j] = '*';
 				}
 				//Si no se pinta un espacio
 				else {
-					System.out.print(" ");
+					matriz[i][j] = ' ';
 				}
+				
 			}
-			System.out.println(" ");
+			System.out.println(matriz[i]);
 		}
 	
 	}

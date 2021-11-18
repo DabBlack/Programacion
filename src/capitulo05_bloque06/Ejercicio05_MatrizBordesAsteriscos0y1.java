@@ -12,8 +12,8 @@ public class Ejercicio05_MatrizBordesAsteriscos0y1 {
 		//formada por una matriz
 		bordesConAsteriscos(matriz);
 		
-		//Se genera un 0 en una posicion aleatoria dentro de la matriz
-		ceroEnUnaPosicionAlAzar(matriz);
+		//Se genera en cada posicion de la matriz aleatoriamente un 0 y un 1 dentro de la interfaz de asteriscos
+		generar0y1AlAzar(matriz);
 		
 	}
 	
@@ -21,7 +21,7 @@ public class Ejercicio05_MatrizBordesAsteriscos0y1 {
 	 * Este metodo rellena de asteriscos los bordes de la matriz y de espacios en blanco el interior
 	 * @param matriz
 	 */
-	public static void bordesConAsteriscos(char matriz[][]) {
+	public static void bordesConAsteriscos (char matriz[][]) {
 		//Se recorre la matriz
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
@@ -48,33 +48,31 @@ public class Ejercicio05_MatrizBordesAsteriscos0y1 {
 	}
 	
 	/**
-	 * Este metodo señala a una fila y a una columna al azar y se le asigna a esa posicion de la matriz el valor 0
+	 * Este metodo genera aleatoriamente dentro de la matriz ceros y unos
 	 * @param matriz
 	 */
-	public static void ceroEnUnaPosicionAlAzar (char matriz[][]) {
-		//Se declaran las variables necesarias
-		int fila = 0, columna = 0;
+	public static void generar0y1AlAzar (char matriz[][]) {
+		int numAzarEntre0y1 = 0;
 		
-		//Se generan numeros al azar entre 1 y la longitud de la matriz -2 para no ocupar el sitio
-		//de los asteriscos y se le asignan a las variables fila y columna
-		for (int i = 0; i < 1; i++) {
-			fila = Utils.obtenerNumeroAzar(matriz.length -2, 1);
-			columna = Utils.obtenerNumeroAzar(matriz[i].length -2, 1);
-		}
-		
-		//Se recorre el array y en la posicion de la fila y la columna indicada se le asigna el valor 0
+		//Se recorre la matriz
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
-				if (i == fila && j == columna) {
-					matriz[i][j] = '0';
+				numAzarEntre0y1 = Utils.obtenerNumeroAzar(0, 1);
+				//Si el valor de la posicion es igual a espacio y el numero aleatorio es 0 se le asigna el valor 0, si nom
+				//se le asigna el valor 1
+				if (matriz[i][j] == ' ') {
+					if (numAzarEntre0y1 == 0) {
+						matriz[i][j] =  '0';
+					}
+					else {
+						matriz[i][j] =  '1';
+					}
 				}
+					
 			}
 			//Se muestran los valores de la matriz
 			System.out.println(matriz[i]);
 		}
-		//Se muestran que fila y que columna son las indicadas
-		System.out.println("\n" + "Fila: " + fila + "\nColumna: " + columna);
 	}
-	
 		
 }
