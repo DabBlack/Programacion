@@ -2,7 +2,7 @@ package capitulo05_bloque01;
 
 import java.util.Scanner;
 
-public class Ejercicio02 {
+public class Ejercicio02_ArrayConLimites {
 
 	public static void main(String[] args) {
 		

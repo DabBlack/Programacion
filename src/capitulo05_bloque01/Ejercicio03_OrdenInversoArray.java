@@ -1,6 +1,6 @@
 package capitulo05_bloque01;
 
-public class Ejercicio03 {
+public class Ejercicio03_OrdenInversoArray {
 
 	public static void main(String[] args) {
 		

@@ -2,7 +2,7 @@ package capitulo05_bloque01;
 
 import java.util.Scanner;
 
-public class Ejercicio05 {
+public class Ejercicio05_SumaNumerosParesEImpares {
 
 	public static void main(String[] args) {
 		

@@ -2,7 +2,7 @@ package capitulo05_bloque01;
 
 import java.util.Scanner;
 
-public class Ejercicio06 {
+public class Ejercicio06_SumaElementosIndicePar {
 
 	public static void main(String[] args) {
 		

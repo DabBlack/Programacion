@@ -2,7 +2,7 @@ package capitulo05_bloque02;
 
 import java.util.Scanner;
 
-public class Ejercicio03 {
+public class Ejercicio03_MultiplicarPorNumeroIndicado {
 
 	public static void main(String[] args) {
 		

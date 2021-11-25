@@ -1,6 +1,6 @@
 package capitulo05_bloque02;
 
-public class Ejercicio02 {
+public class Ejercicio02_TercerArrayCompuesto1erArrayIndiceImpar2oArrayIndicePar {
 
 	public static void main(String[] args) {
 		

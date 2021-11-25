@@ -2,7 +2,7 @@ package capitulo05_bloque02;
 
 import java.util.Scanner;
 
-public class Ejercicio06 {
+public class Ejercicio06_DesplazarValoresDerechaoOIzquierda {
 
 	public static void main(String[] args) {
 	

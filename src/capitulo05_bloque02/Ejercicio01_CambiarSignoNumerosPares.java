@@ -1,6 +1,6 @@
 package capitulo05_bloque02;
 
-public class Ejercicio01 {
+public class Ejercicio01_CambiarSignoNumerosPares {
 
 	public static void main(String[] args) {
 		

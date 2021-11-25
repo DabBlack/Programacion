@@ -2,14 +2,18 @@ package capitulo05_bloque02;
 
 import java.util.Scanner;
 
-public class Ejercicio04 {
+public class Ejercicio05_DesplazarLosValoresXVecesALaDerecha {
 
 	public static void main(String[] args) {
 	
 		//Declaracion del array y de las variables necesarias
-		int ultimo = 0;
+		int ultimo = 0, repeticiones = 0;
+		Scanner sc = new Scanner(System.in);
 		int numeros[] = new int[5]; 
 
+		System.out.println("Cuantas posiciones desea desplazar el array:");
+		repeticiones = sc.nextInt();
+		
 		//Inicializacion de los valores del array
 		for (int i = 0; i < numeros.length; i++) {
 			numeros[i] = (int) Math.round(Math.random() * (100 - 0)) + 0;
@@ -21,9 +25,9 @@ public class Ejercicio04 {
 		for (int i = 0; i < numeros.length; i++) {
 			System.out.print(numeros[i] + " ");
 		}
-		
+
 		//Este bucle dicta las veces que se repite el desplazamiento a la derecha
-		for (int x = 0; x < 2; x++) {
+		for (int x = 0; x < repeticiones; x++) {
 		
 			System.out.println("\n" + "\n" + "Array desplazado a la derecha: " + "\n");
 			
@@ -45,7 +49,6 @@ public class Ejercicio04 {
 			}
 			
 		}
-		
 		
 	}
 

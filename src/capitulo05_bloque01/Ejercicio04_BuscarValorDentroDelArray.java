@@ -2,7 +2,7 @@ package capitulo05_bloque01;
 
 import java.util.Scanner;
 
-public class Ejercicio04 {
+public class Ejercicio04_BuscarValorDentroDelArray {
 
 	public static void main(String[] args) {
 		
