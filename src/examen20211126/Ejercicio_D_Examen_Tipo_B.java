@@ -44,7 +44,7 @@ public class Ejercicio_D_Examen_Tipo_B {
 				}	
 				array[array.length - 1] = (int) Math.round(Math.random() * 100);
 			}
-		}	
+		}	 
 	}
 	
 }

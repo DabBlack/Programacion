@@ -22,7 +22,7 @@ public class Ejercicio_A_Examen_Tipo_B {
 		System.out.println("\n" + "\n" + "Array 3: ");
 		mediaDeLosValoresDelAnterioresArrays(array1, array2, array3);
 		mostrarArray3(array3);
-		
+		 
 	}
 
 	

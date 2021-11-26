@@ -21,7 +21,7 @@ public class Ejercicio_C_Examen_Tipo_B {
             array[i] = Utils.obtenerNumeroAzar(-100, 100);
         }
 	}
-	
+	 
 	public static void mostrarArray(int array[]) {
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i] + " ");

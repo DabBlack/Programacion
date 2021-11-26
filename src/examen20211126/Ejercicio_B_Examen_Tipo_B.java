@@ -23,7 +23,7 @@ public class Ejercicio_B_Examen_Tipo_B {
 		for (int i = 0; i < array.length; i++) {
             array[i] = Utils.obtenerNumeroAzar(-100, 100);
         }
-	}
+	} 
 	
 	public static void mostrarArray(int array[]) {
 		for (int i = 0; i < array.length; i++) {
