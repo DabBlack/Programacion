@@ -1,4 +1,4 @@
-package objetos_EjemploClase;
+package capitulo04_bloque00_EjemploClase;
 
 public class NumeroEntero {
 
