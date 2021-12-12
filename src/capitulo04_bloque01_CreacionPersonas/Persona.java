@@ -1,4 +1,4 @@
-package capitulo04_bloque01;
+package capitulo04_bloque01_CreacionPersonas;
 
 public class Persona {
 	private String nombre, apellido, dni, direccion, telefono;
