@@ -7,15 +7,15 @@ public class Principal {
 	public static void main(String[] args) {
 		Persona arrayPersona[] = new Persona[3];
 		
-		boolean numPersonas = false; // Este boolean comprueba el número de personas que se han creado
+		boolean numPersonas = false; // Este boolean comprueba el numero de personas que se han creado
 		boolean quiereSalirDelPrograma = false;// Este boolean comprueba si el usuario quiere salir del programa
 		
 		Scanner sc = new Scanner(System.in);
 		
 		//Necesitamos un bucle do para entrar minimamente una vez y salir si hay tres personas creadas o si el usuario a elegido salir
 		do {
-			System.out.println("¿Que necesita hacer?" + "\n" + "\n" + "Menu" + "\n" + "-0. Salir" + "\n"
-					+ "-1. Crear una persona (Máximo 3)" + "\n" + "-2. Consultar personas introducidas");
+			System.out.println("ï¿½Que necesita hacer?" + "\n" + "\n" + "Menu" + "\n" + "-0. Salir" + "\n"
+					+ "-1. Crear una persona (Maximo 3)" + "\n" + "-2. Consultar personas introducidas");
 			int opcionElegidaPorElUsuario = sc.nextInt();
 			
 			switch (opcionElegidaPorElUsuario) {
@@ -31,19 +31,19 @@ public class Principal {
 				break;
 			}
 			case 2: {
-				//Visualizo las personas creadas anteriormente llamando a un método  que muestra en pantalla la información de cada una
+				//Visualizo las personas creadas anteriormente llamando a un mï¿½todo  que muestra en pantalla la informaciï¿½n de cada una
 				visualizarPersona(arrayPersona);
 				break;
 			}
 			default:
 				//Si el usuario elije algo distinto aparecera este mensaje en pantalla
-				System.out.println("Selección inválida");
+				System.out.println("Selecciï¿½n invï¿½lida");
 			}
 		} while (!numPersonas || !quiereSalirDelPrograma);
 	}
 
 	public static boolean crearPersona(Persona[] arrayPersona) {
-		boolean personaCreada = false; // Esta variable booleana controla si se ha creado una persona en el método
+		boolean personaCreada = false; // Esta variable booleana controla si se ha creado una persona en el mï¿½todo
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Creacion de una persona");
@@ -83,7 +83,7 @@ public class Principal {
 				boolean opcionValida = false;
 				
 				while (!opcionValida) {
-					System.out.println("¿Quieres crear otra persona? Si/No");
+					System.out.println("ï¿½Quieres crear otra persona? Si/No");
 					String aux = sc.next();
 					
 					if (aux.contentEquals("Si")) {
