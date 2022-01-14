@@ -26,10 +26,6 @@ public class Personaje {
 		this.precision = precision;
 	}
 	
-
-	
-
-
 	public int getVida() {
 		return vida;
 	}
@@ -49,6 +45,4 @@ public class Personaje {
 		this.precision = precision;
 	}
 	
-	
-
 }

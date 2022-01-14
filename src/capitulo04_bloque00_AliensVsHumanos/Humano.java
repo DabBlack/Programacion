@@ -12,5 +12,4 @@ public class Humano extends Personaje {
 		return "Humano";
 	}
 	
-
 }

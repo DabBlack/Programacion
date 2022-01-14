@@ -13,7 +13,4 @@ public class Alien extends Personaje {
 		return "Alien";
 	}
 
-
-	
-
 }
