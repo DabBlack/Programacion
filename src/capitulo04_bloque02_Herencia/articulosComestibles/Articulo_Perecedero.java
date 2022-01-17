@@ -1,32 +1,36 @@
 package capitulo04_bloque02_Herencia.articulosComestibles;
 
-public class Articulos_Perecederos extends Articulos {
+public class Articulo_Perecedero extends Articulo {
 
-	String fecha_Caducidad;
+	protected String fecha_Caducidad;
 	
 	/**
 	 * 
 	 */
-	public Articulos_Perecederos() {
+	public Articulo_Perecedero() {
 		super();
 	}
-
+		
 	/**
+	 * 
+	 * @param nombre
+	 * @param codigo
+	 * @param precio
 	 * @param fecha_Caducidad
 	 */
-	public Articulos_Perecederos(String nombre, int codigo, float precio, String fecha_Caducidad) {
+	public Articulo_Perecedero(String nombre, int codigo, float precio, String fecha_Caducidad) {
 		super(nombre, codigo, precio);
 		this.fecha_Caducidad = fecha_Caducidad;
 	}
 
-	// To String
 	
+	// Getters y Setter
+
 	@Override
 	public String toString() {
-		return "Articulos_Perecederos [fecha_Caducidad=" + fecha_Caducidad + "]";
+		return "Nombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€"
+				+ "  Fecha de caducidad: " + fecha_Caducidad;
 	}
-
-	// Getters y Setter
 
 	/**
 	 * @return the fecha_Caducidad

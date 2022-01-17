@@ -52,7 +52,7 @@ public class Principal {
 			personaCreada = false;
 			
 			// Busca un hueco (null) en el array y crea una persona nueva
-			if (arrayPersona[i] == null) {
+			if (arrayPersona[i] == null) {// To String
 				System.out.println("Introduce su nombre:");
 				String nombre = sc.next();
 				

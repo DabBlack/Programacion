@@ -1,6 +1,6 @@
 package capitulo04_bloque02_Herencia.articulosComestibles;
 
-public class Articulos {
+public class Articulo {
 	
 	public String nombre;
 	public int codigo;
@@ -9,7 +9,7 @@ public class Articulos {
 	/**
 	 * 
 	 */
-	public Articulos() {
+	public Articulo() {
 		super();
 	}
 
@@ -18,7 +18,7 @@ public class Articulos {
 	 * @param codigo
 	 * @param precio
 	 */
-	public Articulos(String nombre, int codigo, float precio) {
+	public Articulo(String nombre, int codigo, float precio) {
 		super();
 		this.nombre = nombre;
 		this.codigo = codigo;
@@ -29,7 +29,7 @@ public class Articulos {
 	
 	@Override
 	public String toString() {
-		return "Articulos [nombre=" + nombre + ", codigo=" + codigo + ", precio=" + precio + "]";
+		return "Nombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€";
 	}
 
 	// Getters y Setters

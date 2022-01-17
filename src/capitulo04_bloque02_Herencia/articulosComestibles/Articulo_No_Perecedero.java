@@ -1,11 +1,11 @@
 package capitulo04_bloque02_Herencia.articulosComestibles;
 
-public class Articulos_No_Perecederos extends Articulos {
+public class Articulo_No_Perecedero extends Articulo {
 
 	/**
 	 * 
 	 */
-	public Articulos_No_Perecederos() {
+	public Articulo_No_Perecedero() {
 		super();
 	}
 
@@ -14,7 +14,7 @@ public class Articulos_No_Perecederos extends Articulos {
 	 * @param codigo
 	 * @param precio
 	 */
-	public Articulos_No_Perecederos(String nombre, int codigo, float precio) {
+	public Articulo_No_Perecedero(String nombre, int codigo, float precio) {
 		super(nombre, codigo, precio);
 	}
 

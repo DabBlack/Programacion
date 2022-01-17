@@ -8,18 +8,15 @@ public class Tienda {
 
 	public static void main(String[] args) {
 
-		List<Articulos> listaArticulos = new ArrayList<Articulos>();
-//		Articulos arrayArticulos[] = new Articulos[4];
-		float precio;
-		String nombre, fecha_Caducidad;
-		int opcion, codigo, contador = 0;
+		List<Articulo> listaArticulos = new ArrayList<Articulo> ();
+		int opcion, contadorPerecedero = 0, contadorNoPerecedero = 0;
 		Scanner sc = new Scanner(System.in);
 
 		do {
 			System.out.println("********************\n" + " Tienda David Algar\n" + "********************");
 			System.out.println("\nMENU:" + "\n0.- Salir del Programa"
-					+ "\n1.- Introducir un producto perecedero (Maximo 4 productos en total)"
-					+ "\n2.- Introducir un producto no perecedero (Maximo 4 productos en total)"
+					+ "\n1.- Introducir un articulo perecedero (Maximo 2 articulos perecederos)"
+					+ "\n2.- Introducir un articulo no perecedero (Maximo 2 articulos no perecederos)"
 					+ "\n3.- Mostrar los productos introducidos");
 
 			System.out.println("\n¿Que desea hacer?");
@@ -34,35 +31,33 @@ public class Tienda {
 			}
 
 			case 1: {
-				if (contador < 4) {
-					crearPerecedero(null);
-					contador++;
+				if (contadorPerecedero < 2) {
+					crearPerecedero(listaArticulos);
+					contadorPerecedero++;
 				}
-
 				else {
 					System.out.println("\nNo puede introducir mas datos, elija otra opcion.\n");
 				}
-
 				break;
 			}
 
 			case 2: {
-				if (contador < 4) {
-					crearNoPerecedero(null);
-					contador++;
+				if (contadorNoPerecedero < 2) {
+					crearNoPerecedero(listaArticulos);
+					contadorNoPerecedero++;
 				}
-
 				else {
 					System.out.println("\nNo puede introducir mas datos, elija otra opcion.\n");
 				}
-
 				break;
 			}
 
 			case 3: {
-				System.out.println("\nLos productos son los siguientes: ");
+				System.out.println("\nLos articulos introducidos son los siguientes: ");
+				for (int i = 0; i < listaArticulos.size(); i++) {
+					System.out.println(i + ".\t" + listaArticulos.get(i) + " ");
+				}
 
-				System.out.println("\n");
 				break;
 			}
 
@@ -74,37 +69,67 @@ public class Tienda {
 
 	}
 
-	public static void crearPerecedero(List<Articulos>lista) {
+	
+	/**
+	 * 
+	 * @param listaArticulos
+	 */
+	public static void crearPerecedero(List<Articulo> listaArticulos) {
 		float precio;
 		String nombre, fecha_Caducidad;
 		int opcion, codigo, contador = 0;
 		Scanner sc = new Scanner(System.in);
+		Articulo_Perecedero perecedero = new Articulo_Perecedero();
 
-		System.out.println("Introduzca el nombre del producto:");
+		System.out.println("Introduzca el nombre del articulo:");
 		nombre = sc.next();
-		System.out.println("Introduzca el codigo del producto:");
+		perecedero.setNombre(nombre);
+		
+		System.out.println("Introduzca el codigo del articulo:");
 		codigo = sc.nextInt();
+		perecedero.setCodigo(codigo);
+		
 		System.out.println("Introduzca el precio del producto:");
 		precio = sc.nextFloat();
-		System.out.println("Introduzca la fecha de caducidad del producto:");
+		perecedero.setPrecio(precio);
+		
+		System.out.println("Introduzca la fecha de caducidad del articulo:");
 		fecha_Caducidad = sc.next();
-		System.out.println("Nombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€"
-				+ "  Fecha de caducidad: " + fecha_Caducidad);
+		perecedero.setFecha_Caducidad(fecha_Caducidad);
+		
+		listaArticulos.add(perecedero);
+		
+		System.out.println("\nNombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€"
+				+ "  Fecha de caducidad: " + fecha_Caducidad + "\n");
 	}
 
-	public static void crearNoPerecedero(List<Articulos>lista) {
+	
+	/**
+	 * 
+	 * @param lista
+	 */
+	public static void crearNoPerecedero(List<Articulo> listaArticulos) {
 		float precio;
 		String nombre, fecha_Caducidad;
 		int opcion, codigo, contador = 0;
 		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Introduzca el nombre del producto:");
+		Articulo_No_Perecedero noPerecedero = new Articulo_No_Perecedero();
+		
+		System.out.println("Introduzca el nombre del articulo:");
 		nombre = sc.next();
-		System.out.println("Introduzca el codigo del producto:");
+		noPerecedero.setNombre(nombre);
+		
+		System.out.println("Introduzca el codigo del articulo:");
 		codigo = sc.nextInt();
-		System.out.println("Introduzca el precio del producto:");
+		noPerecedero.setCodigo(codigo);
+		
+		System.out.println("Introduzca el precio del articulo:");
 		precio = sc.nextFloat();
-		System.out.println("Nombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€");
+		noPerecedero.setPrecio(precio);
+		
+		listaArticulos.add(noPerecedero);
+		
+		System.out.println("\nNombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€\n");
 	}
 
 }
