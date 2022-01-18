@@ -36,7 +36,7 @@ public class Tienda {
 					contadorPerecedero++;
 				}
 				else {
-					System.out.println("\nNo puede introducir mas datos, elija otra opcion.\n");
+					System.out.println("\nNo puede introducir mas articulos perecederos, elija otra opcion.\n");
 				}
 				break;
 			}
@@ -47,7 +47,7 @@ public class Tienda {
 					contadorNoPerecedero++;
 				}
 				else {
-					System.out.println("\nNo puede introducir mas datos, elija otra opcion.\n");
+					System.out.println("\nNo puede introducir mas articulos no perecederos, elija otra opcion.\n");
 				}
 				break;
 			}
@@ -100,13 +100,13 @@ public class Tienda {
 		listaArticulos.add(perecedero);
 		
 		System.out.println("\nNombre: " + nombre + "  Codigo: " + codigo + "  Precio: " + precio + "€"
-				+ "  Fecha de caducidad: " + fecha_Caducidad + "\n");
+				+ "  Fecha de caducidad: " + fecha_Caducidad);
 	}
 
 	
 	/**
 	 * 
-	 * @param lista
+	 * @param listaArticulos
 	 */
 	public static void crearNoPerecedero(List<Articulo> listaArticulos) {
 		float precio;
