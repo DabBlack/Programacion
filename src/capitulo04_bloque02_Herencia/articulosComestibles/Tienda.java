@@ -77,7 +77,7 @@ public class Tienda {
 	public static void crearPerecedero(List<Articulo> listaArticulos) {
 		float precio;
 		String nombre, fecha_Caducidad;
-		int opcion, codigo, contador = 0;
+		int codigo;
 		Scanner sc = new Scanner(System.in);
 		Articulo_Perecedero perecedero = new Articulo_Perecedero();
 
@@ -110,8 +110,8 @@ public class Tienda {
 	 */
 	public static void crearNoPerecedero(List<Articulo> listaArticulos) {
 		float precio;
-		String nombre, fecha_Caducidad;
-		int opcion, codigo, contador = 0;
+		String nombre;
+		int codigo;
 		Scanner sc = new Scanner(System.in);
 		Articulo_No_Perecedero noPerecedero = new Articulo_No_Perecedero();
 		
