@@ -13,7 +13,7 @@ public class ColeccionAntiguedades {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-			System.out.println("********************\n" + " Antiguedades David Algar\n" + "********************");
+			System.out.println("**************************\n" + " Antiguedades David Algar\n" + "**************************");
 			System.out.println("\nMENU:" + "\n0.- Salir del Programa"
 					+ "\n1.- Introducir una joya (Maximo 2 joyas)"
 					+ "\n2.- Introducir un libro (Maximo 2 libros)"
@@ -133,7 +133,7 @@ public class ColeccionAntiguedades {
 		listaAntiguedades.add(joya);
 		
 		System.out.println("\nJoya:   Año de fabricacion: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
-		+ precio + "€" + "  Material: " + material + "  Tipo de Joya: " + tipo + "  Peso en Gramos: " + peso_gramos);
+		+ precio + "€" + "  Material: " + material + "  Tipo de Joya: " + tipo + "  Peso en Gramos: " + peso_gramos + " gramos");
 	}
 
 	
@@ -176,7 +176,7 @@ public class ColeccionAntiguedades {
 		
 		listaAntiguedades.add(libro);
 		
-		System.out.println("\nLibro:   Año de fabricacion: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
+		System.out.println("\nLibro:   Año en el que se escribio: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
 		+ precio + "€" + "  Autor: " + autor + "  Nombre del Libro: " + nombreLibro + "  Numero de paginas: " + numeroPaginas);
 	}
 	
@@ -235,7 +235,7 @@ public class ColeccionAntiguedades {
 		String origen, epoca, tecnica, pintor;
 		float precio;
 		Scanner sc = new Scanner(System.in);
-		AntiguedadEscultura cuadro= new AntiguedadEscultura();
+		AntiguedadCuadro cuadro= new AntiguedadCuadro();
 
 		System.out.println("Introduzca el año en el que se pinto le cuadro:");
 		añoFabricacion = sc.nextInt();
@@ -251,7 +251,7 @@ public class ColeccionAntiguedades {
 		
 		System.out.println("Introduzca la epoca del cuadro:");
 		epoca= sc.next();
-		cuadro.set(epoca);
+		cuadro.setEpoca(epoca);
 		
 		System.out.println("Introduzca el escultor de la escultura:");
 		tecnica = sc.next();
@@ -263,9 +263,8 @@ public class ColeccionAntiguedades {
 		
 		listaAntiguedades.add(cuadro);
 		
-		System.out.println("\nEscultura:   Año en el que se esculpio: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
-		+ precio + "€" + "  Nombre de la escultura: " + nombre + "  Escultor de la escultura: " + nombre 
-		+ "  Material: " + material);
+		System.out.println("\nCuadro:   Año en el que se pinto: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
+		+ precio + "€" + "  Epoca del cuadro: " + epoca+ "  Tecnica usada: " + tecnica + "  Pintor: " + pintor);
 	}
 
 }

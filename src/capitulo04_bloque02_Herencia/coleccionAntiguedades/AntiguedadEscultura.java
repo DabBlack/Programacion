@@ -26,8 +26,9 @@ public class AntiguedadEscultura extends Antiguedad {
 	
 	@Override
 	public String toString() {
-		return "Escultura [añoFabricacion=" + añoFabricacion + ", origen=" + origen + ", precio=" + precio + ", nombre="
-				+ nombre + ", escultor=" + escultor + ", material=" + material + "]";
+		return "Escultura:   Año en el que se esculpio: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
+				+ precio + "€" + "  Nombre de la escultura: " + nombre + "  Escultor de la escultura: " + nombre 
+				+ "  Material: " + material;
 	}
 
 	

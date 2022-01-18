@@ -1,9 +1,9 @@
 package capitulo04_bloque02_Herencia.coleccionAntiguedades;
 
 public class AntiguedadCuadro extends Antiguedad {
-
-	protected String epoca, tecnica, autor;
 	
+	protected String epoca, tecnica, pintor;
+	 
 	/**
 	 * 
 	 */
@@ -20,25 +20,27 @@ public class AntiguedadCuadro extends Antiguedad {
 		super(añoFabricacion, origen, precio);
 	}
 
-
+	
 	// To String
 	
+	/**
+	 * 
+	 */
 	@Override
 	public String toString() {
-		return "Cuadro [añoFabricacion=" + añoFabricacion + ", origen=" + origen + ", precio=" + precio + ", epoca="
-				+ epoca + ", tecnica=" + tecnica + ", autor=" + autor + "]";
+		return "Cuadro:   Año en el que se pinto: " + añoFabricacion + "  Origen: " + origen + "  Precio: "
+				+ precio + "€" + "  Epoca del cuadro: " + epoca + "  Tecnica usada: " + tecnica + "  Pintor: " + pintor;
 	}
 
 	
 	// Getters y Setters
-
+	
 	/**
 	 * @return the epoca
 	 */
 	public String getEpoca() {
 		return epoca;
 	}
-
 
 	/**
 	 * @param epoca the epoca to set
@@ -47,14 +49,12 @@ public class AntiguedadCuadro extends Antiguedad {
 		this.epoca = epoca;
 	}
 
-
 	/**
 	 * @return the tecnica
 	 */
 	public String getTecnica() {
 		return tecnica;
 	}
-
 
 	/**
 	 * @param tecnica the tecnica to set
@@ -63,22 +63,20 @@ public class AntiguedadCuadro extends Antiguedad {
 		this.tecnica = tecnica;
 	}
 
-
 	/**
-	 * @return the autor
+	 * @return the pintor
 	 */
-	public String getAutor() {
-		return autor;
+	public String getPintor() {
+		return pintor;
 	}
 
-
 	/**
-	 * @param autor the autor to set
+	 * @param autor the pintor to set
 	 */
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setPintor(String pintor) {
+		this.pintor = pintor;
 	}
 
 	
-	
+
 }

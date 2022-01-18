@@ -26,8 +26,8 @@ public class AntiguedadLibro extends Antiguedad {
 
 	@Override
 	public String toString() {
-		return "Libro [añoFabricacion=" + añoFabricacion + ", origen=" + origen + ", precio=" + precio + ", autor="
-				+ autor + ", nombreLibro=" + nombreLibro + ", numeroPaginas=" + numeroPaginas + "]";
+		return "Libro:   Año en el que se escribio: " + añoFabricacion+ "  Origen: " + origen + "  Precio: " 
+				+ precio + "€" + "  Autor: " + autor + "  Nombre del Libro: " + nombreLibro + "  Numero de paginas: " + numeroPaginas;
 	}
 
 	
