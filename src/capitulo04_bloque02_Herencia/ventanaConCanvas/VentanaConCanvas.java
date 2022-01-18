@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
 
-public class ventanaConCanvas {
+public class VentanaConCanvas {
 
 	public static void main(String[] args) {
 		
