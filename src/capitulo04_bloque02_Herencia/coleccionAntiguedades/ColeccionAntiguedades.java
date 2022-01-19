@@ -253,11 +253,11 @@ public class ColeccionAntiguedades {
 		epoca= sc.next();
 		cuadro.setEpoca(epoca);
 		
-		System.out.println("Introduzca el escultor de la escultura:");
+		System.out.println("Introduzca la tecnica usada por le pintor:");
 		tecnica = sc.next();
 		cuadro.setTecnica(tecnica);
 		
-		System.out.println("Introduzca el material de la escultura:");
+		System.out.println("Introduzca el nombre del pintor:");
 		pintor = sc.next();
 		cuadro.setPintor(pintor);
 		
