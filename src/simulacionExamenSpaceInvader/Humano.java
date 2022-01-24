@@ -18,4 +18,11 @@ public class Humano extends Personaje {
 		super(puntosDeVida, potenciaDeFuego, estaVivo);
 	}
 
+
+	@Override
+	public String toString() {
+		return "\nHumano ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + "  Esta Vivo: "
+				+ estaVivo + ".";
+	}
+	
 }

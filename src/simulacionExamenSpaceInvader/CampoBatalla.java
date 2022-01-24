@@ -24,21 +24,21 @@ public class CampoBatalla {
 		
 	
 	/**
-	 * Metodo que inicializa los personajes0
+	 * Metodo que inicializa los personajes
 	 */
 	public CampoBatalla() {
 		
 		for (int i = 0; i < humanos.length; i++) {
-			Humano humano = humanos[i];
+			humanos[i] = new Humano();
 		}
 		
 		for (int i = 0; i < malvados.length; i++) {
-			Malvado malvado = malvados[i];
+			malvados[i] = new Malvado();
 			
 		}
 		
 		// Duplico la cantidad de vida del ultimo elemento del array de los humanos, es decir, del ultimo humano
-		Humano ultimoHumano= humanos[humanos.length - 1];
+		Humano ultimoHumano = humanos[humanos.length - 1];
 		ultimoHumano.setPuntosDeVida(ultimoHumano.getPuntosDeVida() * 2);
 		
 		// Duplico la cantidad de vida del ultimo elemento del array de los humanos, es decir, del ultimo humano
@@ -51,8 +51,36 @@ public class CampoBatalla {
 	 * Responsable del bucle principal que lleva a cabo la acción
 	 */
 	public void comienzaBatalla() {
-		// Bucle do ... while que permite que los dos primeros personajes de cada tipo con vida se 
-		// disparen
+		
+		Humano primerHumanoVivo;
+		Malvado primerMalvadoVivo;
+		
+		// Este bucle detecta el primer humano y el primer malvado vivo y se disparan entre ellos
+		// En el caso de no haber personajes vivos se acaba la batalla y gana el bando que le quede algun persoaje vivo
+		do {
+			// Localizamos el primer humano vivo y el primer malvado vivo para que se disparen
+			primerHumanoVivo = getPrimerHumanoVivo(humanos);
+			primerMalvadoVivo = getPrimerMalvadoVivo(malvados);
+			personajeDisparaAPersonaje(primerHumanoVivo, primerMalvadoVivo);
+			
+			// Se localiza el primer malvado vivo, si esta muerto han ganado los humanos
+			primerMalvadoVivo = getPrimerMalvadoVivo(malvados);
+			if (primerMalvadoVivo == null) {
+				System.out.println("\n\t\t¡¡¡HAN GANADO LOS HUMANOS!!!");
+			}
+			// Si no el malvado vivo dispara al humano vivo
+			else {
+				personajeDisparaAPersonaje(primerMalvadoVivo, primerHumanoVivo);
+			}
+			
+			// Se localiza el primer humano vivo, si esta muerto han ganado los malvado
+			primerHumanoVivo = getPrimerHumanoVivo(humanos);
+			if (primerHumanoVivo == null) {
+				System.out.println("\n\t\t¡¡¡HAN GANADO LOS MALVADOS!!!");
+			}
+			
+		} while (primerHumanoVivo != null && primerMalvadoVivo != null);
+
 	}
 	
 	
@@ -61,9 +89,17 @@ public class CampoBatalla {
 	 * al azar e intercambie las posiciones de los dos elementos que corresponden con esos índices
 	 * @param array
 	 */
-	public void mezclarArray (Personaje array[]) {
+	public void mezclarArray (Personaje arrayPersonaje[]) {
+		int posicionAleatoria1 = (int) Math.round(Math.random() * (arrayPersonaje.length - 1));
+		int posicionAleatoria2 = (int) Math.round(Math.random() * (arrayPersonaje.length - 1));
 		
-	}
+		for (int i = 0; i < arrayPersonaje.length; i++) {
+			Personaje auxiliar = arrayPersonaje[posicionAleatoria1];
+			arrayPersonaje[posicionAleatoria1] = arrayPersonaje[posicionAleatoria2];
+			arrayPersonaje[posicionAleatoria2] = auxiliar;		
+		}
+	
+ 	}
 	
 	
 	/**
@@ -77,14 +113,63 @@ public class CampoBatalla {
 	 * @param malvados
 	 * @return
 	 */
-	private Personaje getPrimerElementoVivoEnArray (Humano humanos[], Malvado malvados[]) {
+	private Humano getPrimerHumanoVivo (Humano humanos[]){
+		Humano ultimoHumanoVivo;
 		
+		for (int i = 0; i < humanos.length; i++) {
+			 if (humanos[i].isEstaVivo() == true) {
+				ultimoHumanoVivo = humanos[i]; 
+			 	return ultimoHumanoVivo;
+			 }
+			 else {
+				 humanos[i].setEstaVivo(false);
+			 }
+		}
+		return null;
+	}
+	
+	private Malvado getPrimerMalvadoVivo (Malvado malvados[]){
+		Malvado ultimoMalvadoVivo;
+		
+		for (int i = 0; i < malvados.length; i++) {
+			 if (malvados[i].isEstaVivo() == true) {
+				ultimoMalvadoVivo = malvados[i]; 
+			 	return ultimoMalvadoVivo;
+			 }
+			 else {
+				 humanos[i].setEstaVivo(false);
+			 }
+		}
 		return null;
 	}
 	
 	
-	// Getters y Setters
+	/**
+	 * También se llamará desde "comienzaBatalla" y se utilizará alternando sus dos argumentos de entrada
+	 * En unos casos el primer argumento será un humano y el segundo un malvado y otros casos será al
+	 * contrario.
+	 * @param queDispara
+	 * @param queRecibeDisparo
+	 */
+	private void personajeDisparaAPersonaje (Personaje queDispara, Personaje queRecibeDisparo) {
+		
+		System.out.println(queDispara.toString() + queRecibeDisparo.toString());
+		
+		if(queRecibeDisparo.getPuntosDeVida() > 0) {
+			queRecibeDisparo.setPuntosDeVida(queRecibeDisparo.getPuntosDeVida() - queDispara.getPotenciaDeFuego());
+		}
+		
+		if(queRecibeDisparo.getPuntosDeVida() <= 0) {
+			queRecibeDisparo.setEstaVivo(false);
+			queRecibeDisparo.setPuntosDeVida(0);
+		}
+		
+		System.out.println(queDispara.toString() + "\nHA DISPARADO SOBRE" + queRecibeDisparo.toString() );
+	}
+
 	
+	// Getters y Setters
+
 	/**
 	 * @return the humanos
 	 */
@@ -115,5 +200,5 @@ public class CampoBatalla {
 	public void setMalvados(Malvado[] malvados) {
 		this.malvados = malvados;
 	}
-	
+		
 }

@@ -53,7 +53,7 @@ public class CampoBatalla {
 			// Disiparamos Humano sobre Alien
 			primerHumanoVivo = (Humano) localizarPrimerPersonajeVivo(arrayHumanos);
 			if (primerHumanoVivo == null) {
-				System.out.println("Han ganado los Aliens");
+				System.out.println("\n\tHan ganado los Aliens");
 			}
 			else {
 				disparaSobrePersonaje(primerHumanoVivo, primerAlienVivo);
@@ -62,7 +62,7 @@ public class CampoBatalla {
 			// Compruebo los bandos
 			primerAlienVivo = (Alien) localizarPrimerPersonajeVivo(arrayAliens);
 			if (primerAlienVivo == null) {
-				System.out.println("Han ganado los humanos");
+				System.out.println("\n\tHan ganado los humanos");
 			}
 			
 		} while (primerHumanoVivo != null && primerAlienVivo != null);
@@ -81,7 +81,7 @@ public class CampoBatalla {
 			// Si la vida se pone en negativa la ponemos a 0
 			queRecibe.setVida((queRecibe.getVida() < 0)? 0 : queRecibe.getVida());
 			
-			System.out.println(queDispara.toString() + " ha disparado sobre " + queRecibe.toString() );
+			System.out.println("\n" + queDispara.toString() + " ha disparado sobre " + queRecibe.toString() );
 		}
 	}
 	

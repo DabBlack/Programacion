@@ -3,9 +3,9 @@ package simulacionExamenSpaceInvader;
 public class Personaje {
 	
 	// Variables	
-	// vida=50 y 100, fuego= 5 y 25
-	public int puntosDeVida = (int) Math.round(Math.random() * (100 - 0)) + 0, potenciaDeFuego = (int) Math.round(Math.random() * (100 - 0)) + 0;
-	private boolean estaVivo;
+	protected int puntosDeVida = (int) Math.round(Math.random() * (100 - 50)) + 50;
+	protected int potenciaDeFuego = (int) Math.round(Math.random() * (25 - 5)) + 5;
+	protected boolean estaVivo = true;
 	
 	
 	// Constructores
