@@ -28,7 +28,9 @@ public class CampoBatalla {
 	 */
 	public CampoBatalla() {
 		
-		System.out.println("\t\t\t\t**********************************" + "\n\t\t\t\t Space Invader David Algar Burgos\n" + "\t\t\t\t**********************************");
+		System.out.println("\t\t\t\t**********************************" + 
+						  "\n\t\t\t\t Space Invader David Algar Burgos\n" + 
+						  "\t\t\t\t**********************************");
 		
 		System.out.println("\n\t\t\t\t   ¡¡QUE COMIENCE LA BATALLA!!\n");
 		
