@@ -14,15 +14,15 @@ public class Humano extends Personaje {
 	 * @param potenciaDeFuego
 	 * @param estaVivo
 	 */
-	public Humano(int puntosDeVida, int potenciaDeFuego, boolean estaVivo) {
-		super(puntosDeVida, potenciaDeFuego, estaVivo);
+	public Humano(int puntosDeVida, int potenciaDeFuego, boolean estaVivo, String nombre, int disparosRecibidos) {
+		super(puntosDeVida, potenciaDeFuego, estaVivo, nombre, disparosRecibidos);
 	}
 
 
 	@Override
 	public String toString() {
-		return "\nHumano ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + "  Esta Vivo: "
-				+ estaVivo + ".";
+		return "\n" + nombre + " ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + 
+				"  Disparos Recibidos: " + disparosRecibidos + "  Esta Vivo: " + estaVivo + ".";
 	}
 	
 }

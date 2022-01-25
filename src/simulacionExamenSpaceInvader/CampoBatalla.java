@@ -30,11 +30,12 @@ public class CampoBatalla {
 		
 		for (int i = 0; i < humanos.length; i++) {
 			humanos[i] = new Humano();
+			humanos[i].setNombre("Humano " + (i + 1));
 		}
 		
 		for (int i = 0; i < malvados.length; i++) {
 			malvados[i] = new Malvado();
-			
+			malvados[i].setNombre("Malvado " + (i + 1));
 		}
 		
 		// Duplico la cantidad de vida del ultimo elemento del array de los humanos, es decir, del ultimo humano
@@ -52,32 +53,33 @@ public class CampoBatalla {
 	 */
 	public void comienzaBatalla() {
 		
-		Humano primerHumanoVivo;
-		Malvado primerMalvadoVivo;
+		Personaje primerHumanoVivo;
+		Personaje primerMalvadoVivo;
 		
 		// Este bucle detecta el primer humano y el primer malvado vivo y se disparan entre ellos
 		// En el caso de no haber personajes vivos se acaba la batalla y gana el bando que le quede algun persoaje vivo
 		do {
 			// Localizamos el primer humano vivo y el primer malvado vivo para que se disparen
-			primerHumanoVivo = getPrimerHumanoVivo(humanos);
-			primerMalvadoVivo = getPrimerMalvadoVivo(malvados);
+			primerHumanoVivo = getPrimerPersonajeVivo(humanos);
+			primerMalvadoVivo = getPrimerPersonajeVivo(malvados);
 			personajeDisparaAPersonaje(primerHumanoVivo, primerMalvadoVivo);
 			
 			// Se localiza el primer malvado vivo, si esta muerto han ganado los humanos
-			primerMalvadoVivo = getPrimerMalvadoVivo(malvados);
+			primerMalvadoVivo = getPrimerPersonajeVivo(malvados);
 			if (primerMalvadoVivo == null) {
-				System.out.println("\n\t\t¡¡¡HAN GANADO LOS HUMANOS!!!");
+				System.out.println("\n\t\t\t\t¡¡¡HAN GANADO LOS HUMANOS!!!");
 			}
 			// Si no el malvado vivo dispara al humano vivo
 			else {
 				personajeDisparaAPersonaje(primerMalvadoVivo, primerHumanoVivo);
+
+				// Se localiza el primer humano vivo, si esta muerto han ganado los malvado
+				primerHumanoVivo = getPrimerPersonajeVivo(humanos);
+				if (primerHumanoVivo == null) {
+					System.out.println("\n\t\t\t\t¡¡¡HAN GANADO LOS MALVADOS!!!");
+				}
 			}
 			
-			// Se localiza el primer humano vivo, si esta muerto han ganado los malvado
-			primerHumanoVivo = getPrimerHumanoVivo(humanos);
-			if (primerHumanoVivo == null) {
-				System.out.println("\n\t\t¡¡¡HAN GANADO LOS MALVADOS!!!");
-			}
 			
 		} while (primerHumanoVivo != null && primerMalvadoVivo != null);
 
@@ -103,41 +105,16 @@ public class CampoBatalla {
 	
 	
 	/**
-	 * Método que se llamará desde el "comienzaBatalla" recibirá a los arrays, alternativamente, de
-	 * humanos y malvados y buscará, con un bucle, desde la izquierda a la derecha el primer elemento
-	 * que tenga vida.
-	 * Si se recorre el array completo y no se encuentra un elemento con vida devolveremos "null", siendo
-	 * esto una bandera que se reconocerá en el método "comienzaBatalla"
-	 * 
-	 * @param humanos
-	 * @param malvados
+	 * Metodo que se llamara desde "comienzaBatalla" para localizar cual es el primer humano o malvado vivo, es decir,
+	 * buscara el primer personaje del tipo que necesitemos con su variable booleana a true
+	 * @param array
 	 * @return
 	 */
-	private Humano getPrimerHumanoVivo (Humano humanos[]){
-		Humano ultimoHumanoVivo;
+	private Personaje getPrimerPersonajeVivo (Personaje array[]){
 		
-		for (int i = 0; i < humanos.length; i++) {
-			 if (humanos[i].isEstaVivo() == true) {
-				ultimoHumanoVivo = humanos[i]; 
-			 	return ultimoHumanoVivo;
-			 }
-			 else {
-				 humanos[i].setEstaVivo(false);
-			 }
-		}
-		return null;
-	}
-	
-	private Malvado getPrimerMalvadoVivo (Malvado malvados[]){
-		Malvado ultimoMalvadoVivo;
-		
-		for (int i = 0; i < malvados.length; i++) {
-			 if (malvados[i].isEstaVivo() == true) {
-				ultimoMalvadoVivo = malvados[i]; 
-			 	return ultimoMalvadoVivo;
-			 }
-			 else {
-				 humanos[i].setEstaVivo(false);
+		for (int i = 0; i < array.length; i++) {
+			 if (array[i].isEstaVivo() == true) { 
+			 	return array[i];
 			 }
 		}
 		return null;
@@ -157,6 +134,7 @@ public class CampoBatalla {
 		
 		if(queRecibeDisparo.getPuntosDeVida() > 0) {
 			queRecibeDisparo.setPuntosDeVida(queRecibeDisparo.getPuntosDeVida() - queDispara.getPotenciaDeFuego());
+			queRecibeDisparo.setDisparosRecibidos(queRecibeDisparo.getDisparosRecibidos() + 1);
 		}
 		
 		if(queRecibeDisparo.getPuntosDeVida() <= 0) {

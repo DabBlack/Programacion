@@ -6,6 +6,8 @@ public class Personaje {
 	protected int puntosDeVida = (int) Math.round(Math.random() * (100 - 50)) + 50;
 	protected int potenciaDeFuego = (int) Math.round(Math.random() * (25 - 5)) + 5;
 	protected boolean estaVivo = true;
+	protected String nombre = "";
+	protected int disparosRecibidos = 0;
 	
 	
 	// Constructores
@@ -24,11 +26,13 @@ public class Personaje {
 	 * @param potenciaDeFuego
 	 * @param estaVivo
 	 */
-	public Personaje(int puntosDeVida, int potenciaDeFuego, boolean estaVivo) {
+	public Personaje(int puntosDeVida, int potenciaDeFuego, boolean estaVivo, String nombre, int disparosRecibidos) {
 		super();
 		this.puntosDeVida = puntosDeVida;
 		this.potenciaDeFuego = potenciaDeFuego;
 		this.estaVivo = estaVivo;
+		this.nombre = nombre;
+		this.disparosRecibidos = disparosRecibidos;
 	}
 
 
@@ -39,8 +43,8 @@ public class Personaje {
 	 */
 	@Override
 	public String toString() {
-		return "Personaje [puntosDeVida=" + puntosDeVida + ", potenciaDeFuego=" + potenciaDeFuego + ", estaVivo="
-				+ estaVivo + "]";
+		return "\n" + nombre + " ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + 
+				"  Disparos Recibidos: " + disparosRecibidos + "  Esta Vivo: " + estaVivo + ".";
 	}
 
 
@@ -91,6 +95,38 @@ public class Personaje {
 	 */
 	public void setEstaVivo(boolean estaVivo) {
 		this.estaVivo = estaVivo;
+	}
+
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	/**
+	 * @return the disparosRecibidos
+	 */
+	public int getDisparosRecibidos() {
+		return disparosRecibidos;
+	}
+
+
+	/**
+	 * @param disparosRecibidos the disparosRecibidos to set
+	 */
+	public void setDisparosRecibidos(int disparosRecibidos) {
+		this.disparosRecibidos = disparosRecibidos;
 	}
 	
 	

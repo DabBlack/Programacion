@@ -14,8 +14,8 @@ public class Malvado extends Personaje {
 	 * @param potenciaDeFuego
 	 * @param estaVivo
 	 */
-	public Malvado(int puntosDeVida, int potenciaDeFuego, boolean estaVivo) {
-		super(puntosDeVida, potenciaDeFuego, estaVivo);
+	public Malvado(int puntosDeVida, int potenciaDeFuego, boolean estaVivo, String nombre, int disparosRecibidos) {
+		super(puntosDeVida, potenciaDeFuego, estaVivo, nombre, disparosRecibidos);
 	}
 
 	
@@ -24,8 +24,8 @@ public class Malvado extends Personaje {
 	 */
 	@Override
 	public String toString() {
-		return "\nMalvado ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + "  Esta Vivo: "
-				+ estaVivo + ".";
+		return "\n" + nombre + " ->  Puntos De Vida: " + puntosDeVida + "  Potencia De Fuego: " + potenciaDeFuego + 
+				"  Disparos Recibidos: " + disparosRecibidos + "  Esta Vivo: " + estaVivo + ".";
 	}
 
 }
