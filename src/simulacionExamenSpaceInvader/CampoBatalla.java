@@ -28,6 +28,10 @@ public class CampoBatalla {
 	 */
 	public CampoBatalla() {
 		
+		System.out.println("\t\t\t\t**********************************" + "\n\t\t\t\t Space Invader David Algar Burgos\n" + "\t\t\t\t**********************************");
+		
+		System.out.println("\n\t\t\t\t   ¡¡QUE COMIENCE LA BATALLA!!\n");
+		
 		for (int i = 0; i < humanos.length; i++) {
 			humanos[i] = new Humano();
 			humanos[i].setNombre("Humano " + (i + 1));
@@ -67,7 +71,7 @@ public class CampoBatalla {
 			// Se localiza el primer malvado vivo, si esta muerto han ganado los humanos
 			primerMalvadoVivo = getPrimerPersonajeVivo(malvados);
 			if (primerMalvadoVivo == null) {
-				System.out.println("\n\t\t\t\t¡¡¡HAN GANADO LOS HUMANOS!!!");
+				System.out.println("\n\n\t\t\t\t¡¡¡HAN GANADO LOS HUMANOS!!!\n");
 			}
 			// Si no el malvado vivo dispara al humano vivo
 			else {
@@ -76,12 +80,42 @@ public class CampoBatalla {
 				// Se localiza el primer humano vivo, si esta muerto han ganado los malvado
 				primerHumanoVivo = getPrimerPersonajeVivo(humanos);
 				if (primerHumanoVivo == null) {
-					System.out.println("\n\t\t\t\t¡¡¡HAN GANADO LOS MALVADOS!!!");
+					System.out.println("\n\n\t\t\t\t¡¡¡HAN GANADO LOS MALVADOS!!!\n");
 				}
+								
 			}
 			
 		} while (primerHumanoVivo != null && primerMalvadoVivo != null);
-
+		
+		
+		
+		System.out.println("\n\n- Humanos ordenados de menos a mayor segun los disparos recibidos:\n");
+		
+		ordenarPersonajesDeMayorAMenorSegunDisparos(humanos);
+		mostrarOrdenarPersonajesDeMayorAMenorSegunDisparos(humanos);
+		
+		System.out.println("\n\n- Humano más dificil de matar:");
+		
+		personajeMasDificilDeMatar(humanos);
+		
+		System.out.println("\n- Humano más fácil de matar:");
+		
+		personajeMenosDificilDeMatar(humanos);
+		
+		System.out.println("\n\n\n- Malvados ordenados de menos a mayor segun los disparos recibidos:\n");
+		
+		ordenarPersonajesDeMayorAMenorSegunDisparos(malvados);
+		mostrarOrdenarPersonajesDeMayorAMenorSegunDisparos(malvados);
+		
+		System.out.println("\n\n- Malvado más dificil de matar:");
+		
+		personajeMasDificilDeMatar(malvados);
+		
+		System.out.println("\n- Malvado más fácil de matar:");
+		
+		personajeMenosDificilDeMatar(malvados);
+		
+		
 	}
 	
 	
@@ -144,6 +178,74 @@ public class CampoBatalla {
 		System.out.println(queDispara.toString() + "\nHA DISPARADO SOBRE" + queRecibeDisparo.toString() );
 	}
 
+	
+	/**
+	 * 	
+	 * @param array
+	 */
+	private void ordenarPersonajesDeMayorAMenorSegunDisparos (Personaje array[]) {
+		Personaje auxiliar;
+		boolean hayIntercambios = true;
+		
+		do {
+			hayIntercambios = false;
+			for (int i = 0; i < array.length - 1; i++) {
+				if (array[i].getDisparosRecibidos() > array[i + 1].getDisparosRecibidos()) {
+					hayIntercambios = true;
+					auxiliar = array[i + 1];
+					array[i + 1] = array[i];
+					array[i] = auxiliar;
+				}
+			}
+		} while(hayIntercambios == true);
+				
+	}
+	
+	
+	/**
+	 * 
+	 * @param array
+	 */
+	private void mostrarOrdenarPersonajesDeMayorAMenorSegunDisparos (Personaje array[]) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + "\n");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param array
+	 * @return 
+	 */
+	private void personajeMasDificilDeMatar (Personaje array[]) {
+		int ultimaPosicionArray = array.length - 1;
+		Personaje masDificilDeMatar;
+			
+		ordenarPersonajesDeMayorAMenorSegunDisparos(array);
+		
+		masDificilDeMatar = array[ultimaPosicionArray];
+		
+		System.out.println(masDificilDeMatar);
+			
+	}
+	
+	/**
+	 * 
+	 * @param array
+	 * @return 
+	 */
+	private void personajeMenosDificilDeMatar (Personaje array[]) {
+		Personaje menosDificilDeMatar;
+			
+		ordenarPersonajesDeMayorAMenorSegunDisparos(array);
+		
+		menosDificilDeMatar = array[0];
+		
+		System.out.println(menosDificilDeMatar);
+			
+	}
+	
+	
 	
 	// Getters y Setters
 
