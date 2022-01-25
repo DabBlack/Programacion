@@ -88,9 +88,7 @@ public class CampoBatalla {
 			}
 			
 		} while (primerHumanoVivo != null && primerMalvadoVivo != null);
-		
-		
-		
+				
 		System.out.println("\n\n- Humanos ordenados de menos a más disparos que han recibido:\n");
 		
 		ordenarPersonajesDeMayorAMenorSegunDisparos(humanos);
@@ -116,8 +114,6 @@ public class CampoBatalla {
 		System.out.println("\n- Malvado más fácil de matar:");
 		
 		personajeMenosDificilDeMatar(malvados);
-		
-		
 	}
 	
 	
@@ -135,7 +131,7 @@ public class CampoBatalla {
 			arrayPersonaje[posicionAleatoria1] = arrayPersonaje[posicionAleatoria2];
 			arrayPersonaje[posicionAleatoria2] = auxiliar;		
 		}
-	
+		
  	}
 	
 	
@@ -214,6 +210,7 @@ public class CampoBatalla {
 		}
 	}
 	
+	
 	/**
 	 * 
 	 * @param array
@@ -227,9 +224,9 @@ public class CampoBatalla {
 		
 		masDificilDeMatar = array[ultimaPosicionArray];
 		
-		System.out.println(masDificilDeMatar);
-			
+		System.out.println(masDificilDeMatar);	
 	}
+	
 	
 	/**
 	 * 
