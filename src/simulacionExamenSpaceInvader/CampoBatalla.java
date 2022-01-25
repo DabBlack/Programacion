@@ -80,7 +80,6 @@ public class CampoBatalla {
 				}
 			}
 			
-			
 		} while (primerHumanoVivo != null && primerMalvadoVivo != null);
 
 	}
