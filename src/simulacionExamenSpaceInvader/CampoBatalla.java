@@ -89,7 +89,7 @@ public class CampoBatalla {
 		
 		
 		
-		System.out.println("\n\n- Humanos ordenados de menos a mayor segun los disparos recibidos:\n");
+		System.out.println("\n\n- Humanos ordenados de menos a más disparos que han recibido:\n");
 		
 		ordenarPersonajesDeMayorAMenorSegunDisparos(humanos);
 		mostrarOrdenarPersonajesDeMayorAMenorSegunDisparos(humanos);
@@ -102,7 +102,7 @@ public class CampoBatalla {
 		
 		personajeMenosDificilDeMatar(humanos);
 		
-		System.out.println("\n\n\n- Malvados ordenados de menos a mayor segun los disparos recibidos:\n");
+		System.out.println("\n\n\n- Malvados ordenados de menos a más disparos que han recibido:\n");
 		
 		ordenarPersonajesDeMayorAMenorSegunDisparos(malvados);
 		mostrarOrdenarPersonajesDeMayorAMenorSegunDisparos(malvados);
