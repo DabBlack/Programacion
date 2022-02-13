@@ -29,8 +29,7 @@ public class Articulo {
 
 	@Override
 	public String toString() {
-		return "Articulo [numeroDeEstante=" + numeroDeEstante + ", cantidadUnidadesStock=" + cantidadUnidadesStock
-				+ ", codigoDeBarras=" + codigoDeBarras + "]";
+		return "Articulo.-     Codigo de Barras: " + codigoDeBarras + "     Numero de Estante: " + numeroDeEstante + "     Cantidad de unidades en stock: " + cantidadUnidadesStock;
 	}
 
 
