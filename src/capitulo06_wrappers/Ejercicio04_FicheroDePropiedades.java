@@ -25,7 +25,7 @@ public class Ejercicio04_FicheroDePropiedades {
 		}
 		try {
 
-			File file = new File("./src/capitulo06/wrappers/propiedades.properties");
+			File file = new File("./src/capitulo06_wrappers/propiedades.properties");
 			System.out.println("Fichero encontrado: " + file.exists());
 			propiedades.load(new FileReader(file));
 
@@ -80,10 +80,10 @@ public class Ejercicio04_FicheroDePropiedades {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String usuario = Ejercicio04FicheroDePropiedades.getProperty("USUARIO");
-		int id = Ejercicio04FicheroDePropiedades.getIntPropiedad("ID_USUARIO");
-		float estatura = Ejercicio04FicheroDePropiedades.getFloatPropiedad("ESTATURA");
-		boolean pregunta = Ejercicio04FicheroDePropiedades.getBooleanPropiedad("ESMUJER");
+		String usuario = Ejercicio04_FicheroDePropiedades.getProperty("USUARIO");
+		int id = Ejercicio04_FicheroDePropiedades.getIntPropiedad("ID_USUARIO");
+		float estatura = Ejercicio04_FicheroDePropiedades.getFloatPropiedad("ESTATURA");
+		boolean pregunta = Ejercicio04_FicheroDePropiedades.getBooleanPropiedad("ESMUJER");
 
 		System.out.println("Usuario: " + usuario);
 		System.out.println("Id de usuario: " + id);
