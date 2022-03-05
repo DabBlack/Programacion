@@ -20,7 +20,7 @@ public class Ejercicio05 {
 		
 		diferenciahoraria.set(Calendar.HOUR_OF_DAY, (ahoraRoma.get(Calendar.HOUR_OF_DAY) - ahoraWashintong.get(Calendar.HOUR_OF_DAY)));
 		
-		System.out.println("\nLa diferencia horaria entre las dos zonas es: " + diferenciahoraria.get(Calendar.HOUR_OF_DAY)  + "h");
+		System.out.println("\nLa diferencia horaria entre Roma y Washintong es: " + diferenciahoraria.get(Calendar.HOUR_OF_DAY)  + "h");
 	
 	}
 }
