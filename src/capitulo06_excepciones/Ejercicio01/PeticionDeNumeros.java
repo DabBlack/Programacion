@@ -7,7 +7,7 @@ public class PeticionDeNumeros {
 	public static void main(String[] args) {
 		
 		try {
-			pideNumeroPar();
+			pedirNumeroPar();
 		} 
 		
 		catch (NumeroNoParException e) {
@@ -20,7 +20,7 @@ public class PeticionDeNumeros {
 	 * 
 	 * @throws NumeroNoParException
 	 */
-	public static void pideNumeroPar() throws NumeroNoParException {
+	public static void pedirNumeroPar() throws NumeroNoParException {
 		int num;
 		Scanner sc = new Scanner(System.in);
 
