@@ -1,4 +1,4 @@
-package examen03122021;
+package examen_03_12_2021;
 
 public class Ejercicio_C {
 

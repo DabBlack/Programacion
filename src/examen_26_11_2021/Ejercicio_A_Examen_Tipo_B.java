@@ -1,4 +1,4 @@
-package examen20211126;
+package examen_26_11_2021;
 
 public class Ejercicio_A_Examen_Tipo_B {
 
