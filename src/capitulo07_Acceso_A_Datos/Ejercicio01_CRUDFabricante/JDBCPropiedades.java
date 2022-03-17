@@ -1,6 +1,9 @@
-package capitulo07_Acceso_A_Datos.CRUD;
+package capitulo07_Acceso_A_Datos.Ejercicio01_CRUDFabricante;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -21,7 +24,8 @@ public class JDBCPropiedades {
 			propiedades = new Properties();
 		    
 			try {
-				propiedades.load(propiedades.getClass().getResourceAsStream("/capitulo07_Acceso_A_Datos/CRUD/jdbc.properties"));
+				File file = new File("/Programacion/src/capitulo07_Acceso_A_Datos/Ejercicio01_CRUDFabricante/jdbc.properties");
+				propiedades.load(new FileReader(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -61,18 +65,4 @@ public class JDBCPropiedades {
 		return Float.parseFloat(getPropiedades().getProperty(nombrePropiedad));
 	}
 	
-	
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main (String args[]) {
-		String usuario = JDBCPropiedades.getProperty("USUARIO");
-		String password = JDBCPropiedades.getProperty("PASSWORD");
-		int id = JDBCPropiedades.getIntProperty("ID_USUARIO");
-		
-		System.out.println("Usuario leido del fichero de propiedades: " + usuario);
-		System.out.println("Password leido del fichero de propiedades: " + password);
-		System.out.println("Id de usuario leido del fichero de propiedades: " + id);
-	}
 }

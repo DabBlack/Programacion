@@ -1,15 +1,17 @@
-package capitulo07_Acceso_A_Datos.CRUD;
+package capitulo07_Acceso_A_Datos.Ejercicio01_CRUDFabricante;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class GestorConexiones {
+
+
+public class ConnectionManagerV1 {
 
 	private static Connection conexion = null;
 	
 	
-	public static Connection getConexion () throws SQLException {
+	public static Connection getConexion () throws SQLException, ImposibleConectarException {
 		// Si es la primera vez que accedemos a la conexión, debemos instanciarla
 		if (conexion == null) {
 			conectar();
@@ -35,6 +37,7 @@ public class GestorConexiones {
 		
 		try {
 			Class.forName(driver);
+		   
 			conexion = (Connection) DriverManager.getConnection ("jdbc:mysql://" + host + "/" + schema + properties, user, password);			   
 		}
 		catch (ClassNotFoundException ex) {
@@ -42,4 +45,3 @@ public class GestorConexiones {
 		}
 	}
 }
-
