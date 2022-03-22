@@ -1,4 +1,4 @@
-package capitulo07_Acceso_A_Datos.Ejercicio01_CRUDFabricante;
+package capitulo07_Acceso_A_Datos.Ejercicio02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

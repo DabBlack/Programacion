@@ -1,13 +1,6 @@
 package capitulo07_Acceso_A_Datos.Ejercicio01_CRUDFabricante;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 public class Principal {
 
@@ -16,7 +9,7 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int opcion = 0;
+		int opcion = 0;  
 		
 		do {
 			opcion = menu();
