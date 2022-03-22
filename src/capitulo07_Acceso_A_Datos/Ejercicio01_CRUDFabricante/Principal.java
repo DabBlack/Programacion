@@ -32,10 +32,7 @@ public class Principal {
 		} while (opcion != 0);
 		
 
-	}
-	
-	
-	
+	}	
 	
 	/**
 	 * 
