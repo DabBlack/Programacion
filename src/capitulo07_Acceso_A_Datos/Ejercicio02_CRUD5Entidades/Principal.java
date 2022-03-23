@@ -1,4 +1,4 @@
-package capitulo07_Acceso_A_Datos.Ejercicio02;
+package capitulo07_Acceso_A_Datos.Ejercicio02_CRUD5Entidades;
 
 import java.util.Scanner;
 
@@ -14,6 +14,7 @@ public class Principal {
 				
 		do {
 			System.out.println("\nMenú Principal" + 
+					"\n\t0.- Salir del programa." + 
 					"\n\t1.- Menú Fabricantes" +
 					"\n\t2.- Menú Concesionarios" +
 					"\n\t3.- Menú Clientes" + 
@@ -24,6 +25,9 @@ public class Principal {
 			opcion = sc.nextInt();
 			
 			switch(opcion) {
+			case 0:
+				System.out.println("El programa ha terminado.");
+				break;
 			case 1: // Menú de fabricante
 				menuFabricante();
 				break;
@@ -54,11 +58,11 @@ public class Principal {
 				
 		do {
 			System.out.println("\n\nMenú Fabricante" + 
+					"\n\t0.- Volver al menú principal" +
 					"\n\t1.- Listar Fabricantes" +
 					"\n\t2.- Nuevo Fabricante" +
 					"\n\t3.- Modificar Fabricante" + 
 					"\n\t4.- Eliminar Fabricante" +
-					"\n\t5.- Volver al menú principal" +
 					"\nIntroduzca su opción: ");
 			
 			opcion = sc.nextInt();
@@ -76,9 +80,6 @@ public class Principal {
 			case 4: // Eliminar fabricante
 				GestionFabricante.eliminarFabricante();
 				break;
-			case 5: // Volver al menú principal
-				menuPrincipal();
-			break;
 			}
 
 		} while (opcion != 0);
@@ -92,32 +93,29 @@ public class Principal {
 		int opcion = 0;
 				
 		do {
-			System.out.println("\n\nMenú Concesionarios" + 
+			System.out.println("\n\nMenú Concesionarios" +
+					"\n\t0.- Volver al menú principal" + 
 					"\n\t1.- Listar Concesionarios" +
 					"\n\t2.- Nuevo Concesionario" +
 					"\n\t3.- Modificar Concesionario" + 
 					"\n\t4.- Eliminar Concesionario" +
-					"\n\t5.- Volver al menú principal" +
 					"\nIntroduzca su opción: ");
 			
 			opcion = sc.nextInt();
 			
 			switch(opcion) {
 			case 1: // Listado de concesionarios
-				GestionFabricante.listarFabricantes();
+				GestionConcesionario.listarConcesionarios();
 				break;
 			case 2: // Nuevo concesionario
-				GestionFabricante.nuevoFabricante();
+				GestionConcesionario.nuevoConcesionario();
 				break;
 			case 3: // Modificar concesionarios
-				GestionFabricante.modificarFabricante();
+				GestionConcesionario.modificarConcesionario();
 				break;
 			case 4: // Eliminar concesionarios
-				GestionFabricante.eliminarFabricante();
+				GestionConcesionario.eliminarConcesionario();
 				break;
-			case 5: // Volver al menú principal
-				menuPrincipal();
-			break;
 			}
 
 		} while (opcion != 0);
@@ -132,11 +130,11 @@ public class Principal {
 		
 		do {
 			System.out.println("\n\nMenú Clientes" + 
+					"\n\t0.- Volver al menú principal" +
 					"\n\t1.- Listar Clientes" +
 					"\n\t2.- Nuevo Cliente" +
 					"\n\t3.- Modificar Cliente" + 
 					"\n\t4.- Eliminar Cliente" +
-					"\n\t5.- Volver al menú principal" +
 					"\nIntroduzca su opción: ");
 			
 			opcion = sc.nextInt();
@@ -154,9 +152,6 @@ public class Principal {
 			case 4: // Eliminar cliente
 				GestionFabricante.eliminarFabricante();
 				break;
-			case 5: // Volver al menú principal
-				menuPrincipal();
-			break;
 			}
 
 		} while (opcion != 0);
@@ -171,11 +166,11 @@ public class Principal {
 				
 		do {
 			System.out.println("\n\nMenú Coches" + 
+					"\n\t0.- Volver al menú principal" +
 					"\n\t1.- Listar Coches" +
 					"\n\t2.- Nuevo Coche" +
 					"\n\t3.- Modificar Coche" + 
 					"\n\t4.- Eliminar Coche" +
-					"\n\t5.- Volver al menú principal" +
 					"\nIntroduzca su opción: ");
 			
 			opcion = sc.nextInt();
@@ -193,9 +188,6 @@ public class Principal {
 			case 4: // Eliminar coche
 				GestionFabricante.eliminarFabricante();
 				break;
-			case 5: // Volver al menú principal
-				menuPrincipal();
-			break;
 			}
 
 		} while (opcion != 0);
@@ -210,11 +202,11 @@ public class Principal {
 				
 		do {
 			System.out.println("\n\nMenú Ventas" + 
+					"\n\t0.- Volver al menú principal" +
 					"\n\t1.- Listar Ventas" +
 					"\n\t2.- Nueva Venta" +
 					"\n\t3.- Modificar Venta" + 
 					"\n\t4.- Eliminar Venta" +
-					"\n\t5.- Volver al menú principal" +
 					"\nIntroduzca su opción: ");
 			
 			opcion = sc.nextInt();
@@ -232,9 +224,6 @@ public class Principal {
 			case 4: // Eliminar venta
 				GestionFabricante.eliminarFabricante();
 				break;
-			case 5: // Volver al menú principal
-				menuPrincipal();
-			break;
 			}
 
 		} while (opcion != 0);

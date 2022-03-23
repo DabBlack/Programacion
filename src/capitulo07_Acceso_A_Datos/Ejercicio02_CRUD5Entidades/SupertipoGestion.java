@@ -1,4 +1,4 @@
-package capitulo07_Acceso_A_Datos.Ejercicio02;
+package capitulo07_Acceso_A_Datos.Ejercicio02_CRUD5Entidades;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
