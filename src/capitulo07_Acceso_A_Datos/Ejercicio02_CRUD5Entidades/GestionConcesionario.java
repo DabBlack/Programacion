@@ -68,7 +68,7 @@ public class GestionConcesionario extends SupertipoGestion {
 			}
 
 			int registrosAfectados = s.executeUpdate(
-					"update fabricante set cif='" + cif + "', nombre='" + nombre + "' " + localidad + "' " + "where id=" + id);
+					"update concesionario set cif='" + cif + "', nombre='" + nombre + "', localidad='" + localidad + "' where id=" + id);
 			System.out.println(registrosAfectados + " registros afectados");
 		} catch (SQLException e) {
 			e.printStackTrace();

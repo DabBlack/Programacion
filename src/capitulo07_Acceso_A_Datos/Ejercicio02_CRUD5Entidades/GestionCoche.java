@@ -12,16 +12,16 @@ public class GestionCoche extends SupertipoGestion {
 	/**
 	 * 
 	 */
-	public static void eliminarConcesionario() {
+	public static void eliminarCoche() {
 		Scanner sc = new Scanner(System.in);
 		int id = 0;
 
-		System.out.println("Introduce id del concesionario para su eliminación: ");
+		System.out.println("Introduce id del coche para su eliminación: ");
 		id = sc.nextInt();
 
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
-			int registrosAfectados = s.executeUpdate("delete from concesionario where id=" + id);
+			int registrosAfectados = s.executeUpdate("delete from coche where id=" + id);
 			System.out.println(registrosAfectados + " registros eliminados");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -32,43 +32,44 @@ public class GestionCoche extends SupertipoGestion {
 	/**
 	 * 
 	 */
-	public static void modificarConcesionario() {
+	public static void modificarCoche() {
 		Scanner sc = new Scanner(System.in);
 		int id = 0;
-		String cif = "", nombre = "", localidad = "";
-		String nuevoCif = "", nuevoNombre = "", nuevaLocalidad = "";
+		String bastidor = "", modelo = "", color = "";
+		String nuevoBastidor = "", nuevoModelo= "", nuevoColor = "";
 
-		System.out.println("Introduce id del concesionario: ");
+		System.out.println("Introduce id del coche: ");
 		id = sc.nextInt();
 
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
-			ResultSet rs = s.executeQuery("Select * from concesionario where id=" + id);
+			ResultSet rs = s.executeQuery("Select * from coche where id=" + id);
 			if (rs.next()) {
-				cif = rs.getString("cif");
-				nombre = rs.getString("nombre");
-				localidad = rs.getString("localidad");
+				bastidor = rs.getString("bastidor");
+				modelo = rs.getString("modelo");
+				color = rs.getString("color");
+
 			}
 
-			nuevoCif = JOptionPane.showInputDialog("Cif (" + cif + ") (Intro para mantener): ");
-			if (!nuevoCif.trim().equals("")) {
-				cif = nuevoCif;
-			}
-
-			nuevoNombre = JOptionPane.showInputDialog("Nombre (" + nombre + ") (Intro para mantener): ");
+			nuevoBastidor = JOptionPane.showInputDialog("bastidor (" + bastidor + ") (Intro para mantener): ");
 			;
-			if (!nuevoNombre.trim().equals("")) {
-				nombre = nuevoNombre;
+			if (!nuevoBastidor.trim().equals("")) {
+				bastidor = nuevoBastidor;
 			}
 			
-			nuevaLocalidad= JOptionPane.showInputDialog("Localidad (" + localidad + ") (Intro para mantener): ");
+			nuevoModelo= JOptionPane.showInputDialog("modelo (" + modelo + ") (Intro para mantener): ");
 			;
-			if (!nuevaLocalidad.trim().equals("")) {
-				localidad = nuevaLocalidad;
+			if (!nuevoModelo.trim().equals("")) {
+				modelo = nuevoModelo;
+			}
+			
+			nuevoColor = JOptionPane.showInputDialog("color (" + color + ") (Intro para mantener): ");
+			if (!nuevoColor.trim().equals("")) {
+				color = nuevoColor;
 			}
 
 			int registrosAfectados = s.executeUpdate(
-					"update fabricante set cif='" + cif + "', nombre='" + nombre + "' " + localidad + "' " + "where id=" + id);
+					"update coche set bastidor='" + bastidor + "', modelo='" + modelo + "', color='" + color + "' where id=" + id);
 			System.out.println(registrosAfectados + " registros afectados");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -79,25 +80,27 @@ public class GestionCoche extends SupertipoGestion {
 	/**
 	 * 
 	 */
-	public static void nuevoConcesionario() {
+	public static void nuevoCoche() {
 		Scanner sc = new Scanner(System.in);
-		String cif, nombre, localidad, vacio;
-		int nuevoIdDisponible;
+		String bastidor, modelo, color;
+		int nuevoIdDisponible, idfabricante;
 
-		System.out.println("Creación de un nuevo concesionario:");
-		System.out.println("Dame el cif:");
-		cif = sc.next();
-		System.out.println("Dame el nombre:");
-		nombre = sc.next();
-		System.out.println("Dame la localidad:");
-		localidad = sc.next();
+		System.out.println("Creación de un nuevo coche:");
+		System.out.println("Dame el id del fabricante:");
+		idfabricante = sc.nextInt();
+		System.out.println("Dame el bastidor:");
+		bastidor = sc.next();
+		System.out.println("Dame el modelo:");
+		modelo = sc.next();
+		System.out.println("Dame el color:");
+		color = sc.next();
 		
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
-			nuevoIdDisponible = maxIdEnTabla("concesionario");
+			nuevoIdDisponible = maxIdEnTabla("coche");
 			if (nuevoIdDisponible != -1) {
 				int registrosAfectados = s.executeUpdate(
-						"insert into concesionario values (" + nuevoIdDisponible + ",'" + cif + "', '" + nombre + "', '" + localidad + "')");
+						"insert into coche values (" + nuevoIdDisponible + ",'" + idfabricante + "', bastidor='" + bastidor + "', modelo='" + modelo + "', color='" + color + "')");
 				System.out.println(registrosAfectados + " registros insertados ");
 			}
 		} catch (SQLException e) {
@@ -108,14 +111,14 @@ public class GestionCoche extends SupertipoGestion {
 	/**
 	 * 
 	 */
-	public static void listarConcesionarios() {
+	public static void listarCoche() {
 		try {
 			// Para poder ejecutar una consulta necesitamos utilizar un objeto de tipo Statement
 			Statement s = (Statement) ConnectionManager.getConexion().createStatement(); 
 			
 			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
 			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("select * from concesionario");
+			ResultSet rs = s.executeQuery ("select * from coche");
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) { 

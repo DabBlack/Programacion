@@ -141,16 +141,16 @@ public class Principal {
 						
 			switch(opcion) {
 			case 1: // Listado de clientes
-				GestionFabricante.listarFabricantes();
+				GestionCliente.listarCliente();
 				break;
 			case 2: // Nuevo cliente
-				GestionFabricante.nuevoFabricante();
+				GestionCliente.nuevoCliente();
 				break;
 			case 3: // Modificar cliente
-				GestionFabricante.modificarFabricante();
+				GestionCliente.modificarCliente();
 				break;
 			case 4: // Eliminar cliente
-				GestionFabricante.eliminarFabricante();
+				GestionCliente.eliminarCliente();
 				break;
 			}
 
@@ -177,16 +177,16 @@ public class Principal {
 			
 			switch(opcion) {
 			case 1: // Listado de coches
-				GestionFabricante.listarFabricantes();
+				GestionCoche.listarCoche();
 				break;
 			case 2: // Nuevo coche
-				GestionFabricante.nuevoFabricante();
+				GestionCoche.nuevoCoche();
 				break;
 			case 3: // Modificar coche
-				GestionFabricante.modificarFabricante();
+				GestionCoche.modificarCoche();
 				break;
 			case 4: // Eliminar coche
-				GestionFabricante.eliminarFabricante();
+				GestionCoche.eliminarCoche();
 				break;
 			}
 
@@ -213,16 +213,16 @@ public class Principal {
 			
 			switch(opcion) {
 			case 1: // Listado de ventas
-				GestionFabricante.listarFabricantes();
+				GestionVenta.listarVenta();
 				break;
 			case 2: // Nuevo venta
-				GestionFabricante.nuevoFabricante();
+				GestionVenta.nuevaVenta();
 				break;
 			case 3: // Modificar venta
-				GestionFabricante.modificarFabricante();
+				GestionVenta.modificarVenta();
 				break;
 			case 4: // Eliminar venta
-				GestionFabricante.eliminarFabricante();
+				GestionVenta.eliminarVenta();
 				break;
 			}
 
