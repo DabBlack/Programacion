@@ -4,9 +4,6 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -16,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.Font;
-import javax.swing.JToggleButton;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -168,15 +164,10 @@ public class CRUD_Fabricante extends JPanel {
 		
 		btnNewButton_3 = new JButton(">>");
 		panel.add(btnNewButton_3);
-		
-		
-		
+				
 	}
 	
-	
-	
-	
-	
+
 	/**
 	 * 
 	 */
