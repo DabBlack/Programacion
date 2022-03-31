@@ -32,6 +32,7 @@ public class CRUD_Fabricante extends JPanel {
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -48,6 +49,7 @@ public class CRUD_Fabricante extends JPanel {
 		});
 	}
 
+	
 	/**
 	 * Create the application.
 	 */
@@ -55,6 +57,7 @@ public class CRUD_Fabricante extends JPanel {
 		initialize();
 	}
 
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
