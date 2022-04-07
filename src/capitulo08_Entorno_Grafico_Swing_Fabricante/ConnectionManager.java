@@ -11,6 +11,11 @@ public class ConnectionManager {
 	private static Connection conexion = null;
 	
 	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Connection getConexion () throws SQLException {
 		// Si es la primera vez que accedemos a la conexión, debemos instanciarla
 		if (conexion == null) {

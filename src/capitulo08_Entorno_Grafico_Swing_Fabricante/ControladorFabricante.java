@@ -5,11 +5,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import capitulo07_Acceso_A_Datos.Ejercicio02_CRUD5Entidades.ConnectionManager;
+
 public class ControladorFabricante extends SuperControlador {
 
 	
 	/**
 	 * 
+	 * @return
 	 */
 	public static Fabricante findPrimerFabricante () {
 		return findFabricante("select * from fabricante order by id limit 1");
@@ -17,6 +23,7 @@ public class ControladorFabricante extends SuperControlador {
 
 	/**
 	 * 
+	 * @return
 	 */
 	public static Fabricante findUltimoFabricante () {
 		return findFabricante("select * from fabricante order by id desc limit 1");
@@ -24,6 +31,8 @@ public class ControladorFabricante extends SuperControlador {
 
 	/**
 	 * 
+	 * @param idActual
+	 * @return
 	 */
 	public static Fabricante findAnteriorFabricante (int idActual) {
 		return findFabricante("select * from fabricante where id < " + idActual + " order by id desc limit 1");
@@ -31,6 +40,8 @@ public class ControladorFabricante extends SuperControlador {
 
 	/**
 	 * 
+	 * @param idActual
+	 * @return
 	 */
 	public static Fabricante findSiguienteFabricante (int idActual) {
 		return findFabricante("select * from fabricante where id > " + idActual + " order by id limit 1");
@@ -40,6 +51,8 @@ public class ControladorFabricante extends SuperControlador {
 
 	/**
 	 * 
+	 * @param sql
+	 * @return
 	 */
 	public static Fabricante findFabricante (String sql) {
 		Fabricante f = null;
@@ -84,6 +97,8 @@ public class ControladorFabricante extends SuperControlador {
 	
 	/**
 	 * 
+	 * @param f
+	 * @return
 	 */
 	public static int modificarFabricante (Fabricante f) {		
 		int registrosAfectados = 0;
@@ -103,6 +118,8 @@ public class ControladorFabricante extends SuperControlador {
 
 	/**
 	 * 
+	 * @param f
+	 * @return
 	 */
 	public static int nuevoFabricante (Fabricante f) {
 		int registrosAfectados = 0;
@@ -117,6 +134,23 @@ public class ControladorFabricante extends SuperControlador {
 		}
 		return registrosAfectados;
 	}
+	
+	/**
+	 * 
+	 * @param f
+	 */
+	public static void eliminarFabricante (Fabricante f) {
+		try {
+			Statement s = ConnectionManager.getConexion().createStatement();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		final JPanel panel = new JPanel();
+		JOptionPane.showMessageDialog(panel, "No se pudo eliminar el registro", "Error", JOptionPane.ERROR_MESSAGE);
 
+	}
 
 }

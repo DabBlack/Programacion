@@ -195,26 +195,23 @@ public class CRUD_Fabricante {
 		});
 		panel.add(btnUltimo);
 		
-		btnNuevo = new JButton("");
+		btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiarDatos();
 			}
 		});
-		btnNuevo.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/nuevo.png")));
 		panel.add(btnNuevo);
-	
-		btnGuardar = new JButton("");
+		
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardar();
 			}
 		});
-		btnGuardar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/guardar.png")));
 		panel.add(btnGuardar);
 		
-		btnEliminar = new JButton("");
-		btnEliminar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/eliminar.png")));
+		btnEliminar = new JButton("Eliminar");
 		panel.add(btnEliminar);
 		
 		
@@ -269,14 +266,11 @@ public class CRUD_Fabricante {
 				btnAnterior.setEnabled(true);
 			}
 			// Si no existe un siguiente deshabilito los botones de último y siguiente
-			boolean existeSiguiente = 
-					(ControladorFabricante.findSiguienteFabricante(f.getId()) == null)? false : true;
+			boolean existeSiguiente = (ControladorFabricante.findSiguienteFabricante(f.getId()) == null)? false : true;
 			btnUltimo.setEnabled(existeSiguiente);
 			btnSiguiente.setEnabled(existeSiguiente);
 		}
 		
 	}
-	
-	
-	
+		
 }
