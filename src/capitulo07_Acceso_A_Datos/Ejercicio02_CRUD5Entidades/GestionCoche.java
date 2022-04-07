@@ -100,7 +100,7 @@ public class GestionCoche extends SupertipoGestion {
 			nuevoIdDisponible = maxIdEnTabla("coche");
 			if (nuevoIdDisponible != -1) {
 				int registrosAfectados = s.executeUpdate(
-						"insert into coche values (" + nuevoIdDisponible + ",'" + idfabricante + "', bastidor='" + bastidor + "', modelo='" + modelo + "', color='" + color + "')");
+						"insert into coche values (" + nuevoIdDisponible + "," + idfabricante + ", '" + bastidor + "' ,'" + modelo + "','"  + color + "')");
 				System.out.println(registrosAfectados + " registros insertados ");
 			}
 		} catch (SQLException e) {

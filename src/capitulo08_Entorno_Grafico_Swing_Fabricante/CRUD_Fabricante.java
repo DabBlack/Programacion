@@ -4,6 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -13,13 +18,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.Font;
+import javax.swing.JToggleButton;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
-public class CRUD_Fabricante extends JPanel {
+public class CRUD_Fabricante {
 
 	private JFrame frame;
 	private JTextField jtfId;
@@ -27,12 +34,14 @@ public class CRUD_Fabricante extends JPanel {
 	private JTextField jtfNombre;
 	private JLabel lblNewLabel_4;
 	private JPanel panel;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
+	private JButton btnPrimero;
+	private JButton btnAnterior;
+	private JButton btnSiguiente;
+	private JButton btnUltimo;
+	private JButton btnNuevo;
+	private JButton btnGuardar;
+	private JButton btnEliminar;
 
-	
 	/**
 	 * Launch the application.
 	 */
@@ -49,15 +58,14 @@ public class CRUD_Fabricante extends JPanel {
 		});
 	}
 
-	
 	/**
 	 * Create the application.
 	 */
 	public CRUD_Fabricante() {
 		initialize();
+		mostrarFabricante(ControladorFabricante.findPrimerFabricante());
 	}
 
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -151,53 +159,124 @@ public class CRUD_Fabricante extends JPanel {
 		frame.getContentPane().add(panel, gbc_panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		btnNewButton = new JButton("<<");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnPrimero = new JButton("<<");
+		btnPrimero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarPrimerFabricante();
+				mostrarFabricante(ControladorFabricante.findPrimerFabricante());
 			}
 		});
-		panel.add(btnNewButton);
+		panel.add(btnPrimero);
 		
-		btnNewButton_1 = new JButton("<");
-		panel.add(btnNewButton_1);
+		btnAnterior = new JButton("<");
+		btnAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarFabricante(
+						ControladorFabricante.findAnteriorFabricante(
+								Integer.parseInt(jtfId.getText())));
+			}
+		});
+		panel.add(btnAnterior);
 		
-		btnNewButton_2 = new JButton(">");
-		panel.add(btnNewButton_2);
+		btnSiguiente = new JButton(">");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarFabricante(
+						ControladorFabricante.findSiguienteFabricante(
+								Integer.parseInt(jtfId.getText())));
+			}
+		});
+		panel.add(btnSiguiente);
 		
-		btnNewButton_3 = new JButton(">>");
-		panel.add(btnNewButton_3);
-				
+		btnUltimo = new JButton(">>");
+		btnUltimo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarFabricante(ControladorFabricante.findUltimoFabricante());
+			}
+		});
+		panel.add(btnUltimo);
+		
+		btnNuevo = new JButton("");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarDatos();
+			}
+		});
+		btnNuevo.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/nuevo.png")));
+		panel.add(btnNuevo);
+	
+		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				guardar();
+			}
+		});
+		btnGuardar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/guardar.png")));
+		panel.add(btnGuardar);
+		
+		btnEliminar = new JButton("");
+		btnEliminar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("capitulo08_Entorno_Grafico_Swing_Fabricante/resources/eliminar.png")));
+		panel.add(btnEliminar);
+		
+		
+		
 	}
 	
-
 	/**
 	 * 
 	 */
-	public void mostrarPrimerFabricante() {
-		try {
-			// Para poder ejecutar una consulta necesitamos utilizar un objeto de tipo Statement
-			Statement s = (Statement) ConnectionManager.getConexion().createStatement(); 
-			
-			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
-			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("select * from fabricante order by id limit 1");
-		   
-			// Navegación del objeto ResultSet
-			if (rs.next()) { 
-				this.jtfId.setText(rs.getString("id"));
-				this.jtfCif.setText(rs.getString("cif"));
-				this.jtfNombre.setText(rs.getString("nombre"));
-			}
-			// Cierre de los elementos
-			rs.close();
-			s.close();
+	private void guardar() {
+		Fabricante f = new Fabricante();
+		f.setId(Integer.parseInt(jtfId.getText()));
+		f.setCif(jtfCif.getText());
+		f.setNombre(jtfNombre.getText());
+		if (ControladorFabricante.guardarFabricante(f) == 1) {
+			jtfId.setText("" + f.getId());
+			JOptionPane.showMessageDialog(null, "Guardado correctamente");
 		}
-		catch (SQLException ex) {
-			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
-			ex.printStackTrace();
+		else {
+			JOptionPane.showMessageDialog(null, "Error, no se ha podido guardar");
 		}
 	}
+	
+	/**
+	 * 
+	 */
+	private void limpiarDatos() {
+		jtfId.setText("0");
+		jtfCif.setText("");
+		jtfNombre.setText("");
+	}
+	
+	
+	/**
+	 * 
+	 * @param f
+	 */
+	private void mostrarFabricante (Fabricante f) {
+		if (f != null) {
+			jtfId.setText("" + f.getId());
+			jtfCif.setText(f.getCif());
+			jtfNombre.setText(f.getNombre());
 
-
+			// Ahora habilitamos o deshabilitamos botones de navegación
+			// Si no existe un anterior deshabilito los botones de primero y anterior
+			if (ControladorFabricante.findAnteriorFabricante(f.getId()) == null) {
+				btnPrimero.setEnabled(false);
+				btnAnterior.setEnabled(false);
+			}
+			else {
+				btnPrimero.setEnabled(true);
+				btnAnterior.setEnabled(true);
+			}
+			// Si no existe un siguiente deshabilito los botones de último y siguiente
+			boolean existeSiguiente = 
+					(ControladorFabricante.findSiguienteFabricante(f.getId()) == null)? false : true;
+			btnUltimo.setEnabled(existeSiguiente);
+			btnSiguiente.setEnabled(existeSiguiente);
+		}
+		
+	}
+	
+	
+	
 }

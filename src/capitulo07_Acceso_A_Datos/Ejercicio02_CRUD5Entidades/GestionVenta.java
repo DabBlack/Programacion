@@ -138,8 +138,7 @@ public class GestionVenta extends SupertipoGestion {
 			nuevoIdDisponible = maxIdEnTabla("venta");
 			if (nuevoIdDisponible != -1) {
 				int registrosAfectados = s.executeUpdate(
-						"insert into venta values (" + nuevoIdDisponible + "," + idCliente + ", " + idConcesionario + ", " + idCoche + ", '" + sdfSalida.format(date) + "', " + precioVenta + ")");
-				System.out.println(registrosAfectados + " registros insertados ");
+						"insert into venta values (" + nuevoIdDisponible + "," + idCliente + ", " + idConcesionario + ", " + idCoche + ", '" + sdfSalida.format(date) + "', " + precioVenta + ")");				System.out.println(registrosAfectados + " registros insertados ");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
