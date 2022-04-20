@@ -1,4 +1,4 @@
-package capitulo08_Entorno_Grafico_Swing_Fabricante;
+package capitulo08_Entorno_Grafico_Swing_Completo.entidades;
 
 public class Fabricante {
 	private int id;
@@ -22,6 +22,13 @@ public class Fabricante {
 		this.id = id;
 		this.cif = cif;
 		this.nombre = nombre;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return cif + " - " + nombre;
 	}
 
 	public int getId() {

@@ -1,27 +1,33 @@
-package capitulo08_Entorno_Grafico_Swing_Fabricante;
+package capitulo08_Entorno_Grafico_Swing_Completo.entidades;
 
-public class Fabricante {
+public class Concesionario {
 	private int id;
 	private String cif;
 	private String nombre;
-	
-	
+	private String localidad;
 	
 	/**
 	 * 
 	 */
-	public Fabricante() {
+	public Concesionario() {
 	}
 
 	/**
 	 * @param id
 	 * @param cif
 	 * @param nombre
+	 * @param localidad
 	 */
-	public Fabricante(int id, String cif, String nombre) {
+	public Concesionario(int id, String cif, String nombre, String localidad) {
 		this.id = id;
 		this.cif = cif;
 		this.nombre = nombre;
+		this.localidad = localidad;
+	}
+
+	@Override
+	public String toString() {
+		return cif + " - " + nombre + " (" + localidad + ")";
 	}
 
 	public int getId() {
@@ -46,6 +52,14 @@ public class Fabricante {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
 	}
 	
 	

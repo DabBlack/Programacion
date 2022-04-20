@@ -1,4 +1,4 @@
-package capitulo08_Entorno_Grafico_Swing_Fabricante;
+package capitulo08_Entorno_Grafico_Swing_Completo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,11 +12,11 @@ public class ConnectionManager {
 	
 	
 	public static Connection getConexion () throws SQLException {
-		// Si es la primera vez que accedemos a la conexi�n, debemos instanciarla
+		// Si es la primera vez que accedemos a la conexión, debemos instanciarla
 		if (conexion == null) {
 			conectar();
 		}
-		// Compruebo si la conexi�n sigue estando activa
+		// Compruebo si la conexión sigue estando activa
 		while (!conexion.isValid(5)) {
 			conectar();
 		}
