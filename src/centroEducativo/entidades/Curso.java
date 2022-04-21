@@ -1,4 +1,4 @@
-package centroEducativo;
+package centroEducativo.entidades;
 
 public class Curso {
 	private int id;
