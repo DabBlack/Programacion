@@ -251,5 +251,4 @@ public class CRUD_Curso extends JPanel {
 		
 	}
 	
-	
 }
