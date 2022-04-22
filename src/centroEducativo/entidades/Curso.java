@@ -20,6 +20,11 @@ public class Curso {
 		this.id = id;
 		this.descripcion = descripcion;
 		}
+	
+	@Override
+	public String toString() {
+		return descripcion;
+	}
 
 	/**
 	 * 
@@ -52,6 +57,5 @@ public class Curso {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	
 }

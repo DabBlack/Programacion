@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import centroEducativo.vistas.CRUD_Curso;
+import centroEducativo.vistas.CRUD_Materia;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -42,8 +43,8 @@ public class VentanaPrincipal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnGestin = new JMenu("Gestión");
-		menuBar.add(mnGestin);
+		JMenu mnGestion = new JMenu("Gestión");
+		menuBar.add(mnGestion);
 		
 		JMenuItem mntmCursos = new JMenuItem("Cursos");
 		mntmCursos.addActionListener(new ActionListener() {
@@ -66,18 +67,37 @@ public class VentanaPrincipal extends JFrame {
 				dialogo.setVisible(true);
 			}
 		});
-		mnGestin.add(mntmCursos);
+		mnGestion.add(mntmCursos);
 		
-		JMenuItem menuItem = new JMenuItem("Materias");
-		mnGestin.add(menuItem);
+		JMenuItem mntmMaterias = new JMenuItem("Materias");
+		mntmMaterias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Materias");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Materia());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
+		mnGestion.add(mntmMaterias);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[]{79, 0};
+		gbl_contentPane.rowHeights = new int[]{31, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		

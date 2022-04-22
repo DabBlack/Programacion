@@ -7,33 +7,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import centroEducativo.ConnectionManager;
-import centroEducativo.entidades.Curso;
+import centroEducativo.entidades.Materia;
 
-public class ControladorCurso extends SuperControlador {
-
+/**
+ * @author diurno
+ *
+ */
+public class ControladorMateria extends SuperControlador {
 	/**
 	 * 
 	 * @return
 	 */
-	public static Curso findPrimerCurso() {
-		return findCurso("select * from curso order by id limit 1");
+	public static Materia findPrimeraMateria() {
+		return findMateria("select * from materia order by id limit 1");
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public static Curso findUltimoCurso() {
-		return findCurso("select * from curso order by id desc limit 1");
-	}
-
-	/**
-	 * 
-	 * @param idActual
-	 * @return
-	 */
-	public static Curso findAnteriorCurso(int idActual) {
-		return findCurso("select * from curso where id < " + idActual + " order by id desc limit 1");
+	public static Materia findUltimaMateria() {
+		return findMateria("select * from materia order by id desc limit 1");
 	}
 
 	/**
@@ -41,8 +35,17 @@ public class ControladorCurso extends SuperControlador {
 	 * @param idActual
 	 * @return
 	 */
-	public static Curso findSiguienteCurso(int idActual) {
-		return findCurso("select * from curso where id > " + idActual + " order by id limit 1");
+	public static Materia findAnteriorMateria(int idActual) {
+		return findMateria("select * from materia where id < " + idActual + " order by id desc limit 1");
+	}
+
+	/**
+	 * 
+	 * @param idActual
+	 * @return
+	 */
+	public static Materia findSiguienteMateria(int idActual) {
+		return findMateria("select * from materia where id > " + idActual + " order by id limit 1");
 	}
 
 	/**
@@ -50,8 +53,8 @@ public class ControladorCurso extends SuperControlador {
 	 * @param sql
 	 * @return
 	 */
-	public static Curso findCurso(String sql) {
-		Curso c = null;
+	public static Materia findMateria(String sql) {
+		Materia m = null;
 		try {
 			// Para poder ejecutar una consulta necesitamos utilizar un objeto de tipo
 			// Statement
@@ -64,7 +67,7 @@ public class ControladorCurso extends SuperControlador {
 
 			// Navegación del objeto ResultSet
 			if (rs.next()) {
-				c = new Curso(rs.getInt("id"), rs.getString("descripcion"));
+				m = new Materia(rs.getInt("id"), rs.getString("nombre"), rs.getString("acronimo"), rs.getInt("curso_id"));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -74,15 +77,15 @@ public class ControladorCurso extends SuperControlador {
 			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
 			ex.printStackTrace();
 		}
-		return c;
+		return m;
 	}
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public static List<Curso> findAll () {
-		List<Curso> lista = new ArrayList<Curso>();
+	public static List<Materia> findAll () {
+		List<Materia> lista = new ArrayList<Materia>();
 		try {
 			// Para poder ejecutar una consulta necesitamos utilizar un objeto de tipo Statement
 			Statement s = (Statement) ConnectionManager.getConexion().createStatement(); 
@@ -93,8 +96,8 @@ public class ControladorCurso extends SuperControlador {
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) {
-				Curso c = new Curso(rs.getInt("id"), rs.getString("descripcion"));
-				lista.add(c);
+				Materia m = new Materia(rs.getInt("id"), rs.getString("nombre"), rs.getString("acronimo"), rs.getInt("curso_id"));
+				lista.add(m);
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -110,28 +113,29 @@ public class ControladorCurso extends SuperControlador {
 	
 	/**
 	 * 
-	 * @param c
+	 * @param m
 	 * @return
 	 */
-	public static int guardarCurso(Curso c) {
-		if (c.getId() == 0) {
-			return nuevoCurso(c);
+	public static int guardarMateria(Materia m) {
+		if (m.getId() == 0) {
+			return nuevaMateria(m);
 		} else {
-			return modificarCurso(c);
+			return modificarMateria(m);
 		}
 	}
 
 	/**
 	 * 
-	 * @param c
+	 * @param m
 	 * @return
 	 */
-	public static int modificarCurso(Curso c) {
+	public static int modificarMateria(Materia m) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
 
-			registrosAfectados = s.executeUpdate("update curso set descripcion='" + c.getDescripcion() + "' where id=" + c.getId());
+			registrosAfectados = s.executeUpdate("update materia set nombre='" + m.getNombre() + "', acronimo='" + 
+					m.getAcronimo() + "', curso_id='" + m.getCurso_id() + "' where id=" + m.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -145,12 +149,12 @@ public class ControladorCurso extends SuperControlador {
 	 * @param idEliminacion
 	 * @return
 	 */
-	public static int eliminarCurso(int idEliminacion) {
+	public static int eliminarMateria(int idEliminacion) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
 
-			registrosAfectados = s.executeUpdate("delete from curso where id=" + idEliminacion);
+			registrosAfectados = s.executeUpdate("delete from materia where id=" + idEliminacion);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -161,16 +165,17 @@ public class ControladorCurso extends SuperControlador {
 	
 	/**
 	 * 
-	 * @param c
+	 * @param m
 	 * @return
 	 */
-	public static int nuevoCurso(Curso c) {
+	public static int nuevaMateria(Materia m) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
-			c.setId(siguienteIdEnTabla("curso"));
+			m.setId(siguienteIdEnTabla("materia"));
 			registrosAfectados = s.executeUpdate(
-					"insert into curso values (" + c.getId() + ",'" + c.getDescripcion() + "')");
+					"insert into curso values (" + m.getId() + ",'" + m.getNombre()  + "','" + m.getAcronimo() + "',"
+							+ m.getId() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -178,3 +183,5 @@ public class ControladorCurso extends SuperControlador {
 	}
 
 }
+
+

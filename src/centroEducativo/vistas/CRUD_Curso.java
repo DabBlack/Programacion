@@ -6,9 +6,6 @@ import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import javax.swing.JToolBar;
 
-import capitulo08_Entorno_Grafico_Swing_Completo.controladores.ControladorFabricante;
-import capitulo08_Entorno_Grafico_Swing_Completo.entidades.Fabricante;
-import capitulo08_Entorno_Grafico_Swing_Completo.vista.CRUD_Fabricante;
 import centroEducativo.controladores.ControladorCurso;
 import centroEducativo.entidades.Curso;
 
@@ -16,10 +13,8 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,20 +28,30 @@ public class CRUD_Curso extends JPanel {
 	private JButton btnAnterior;
 	private JButton btnSiguiente;
 	private JButton btnUltimo;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JButton btnNuevo;
+	private JButton btnGuardar;
+	private JButton btnEliminar;
+
 	
 	
 	/**
-	 * Create the panel.
+	 * Create the application.
 	 */
 	public CRUD_Curso() {
+		initialize();
+		mostrarCurso(ControladorCurso.findPrimerCurso());
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
 		setLayout(new BorderLayout(0, 0));
 		
 		JToolBar toolBar = new JToolBar();
 		add(toolBar, BorderLayout.NORTH);
 		
-		JButton btnPrimero = new JButton("<<");
+		btnPrimero = new JButton("<<");
 		btnPrimero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarCurso(ControladorCurso.findPrimerCurso());
@@ -54,7 +59,7 @@ public class CRUD_Curso extends JPanel {
 		});
 		toolBar.add(btnPrimero);
 		
-		JButton btnAnterior = new JButton("<");
+		btnAnterior = new JButton("<");
 		btnAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarCurso(
@@ -64,7 +69,7 @@ public class CRUD_Curso extends JPanel {
 		});
 		toolBar.add(btnAnterior);
 		
-		JButton btnSiguiente = new JButton(">");
+		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarCurso(
@@ -74,7 +79,7 @@ public class CRUD_Curso extends JPanel {
 		});
 		toolBar.add(btnSiguiente);
 		
-		JButton btnUltimo = new JButton(">>");
+		btnUltimo = new JButton(">>");
 		btnUltimo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarCurso(ControladorCurso.findUltimoCurso());
@@ -82,16 +87,31 @@ public class CRUD_Curso extends JPanel {
 		});
 		toolBar.add(btnUltimo);
 		
-		JButton btnNuevo = new JButton("");
-		btnNuevo.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("/centroEducativo/res/nuevo.png")));
+		btnNuevo = new JButton("");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarDatos();
+			}
+		});
+		btnNuevo.setIcon(new ImageIcon(CRUD_Curso.class.getResource("/centroEducativo/res/nuevo.png")));
 		toolBar.add(btnNuevo);
 		
-		JButton btnGuardar= new JButton("");
-		btnGuardar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("/centroEducativo/res/guardar.png")));
+		btnGuardar= new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				guardarCurso();
+			}
+		});
+		btnGuardar.setIcon(new ImageIcon(CRUD_Curso.class.getResource("/centroEducativo/res/guardar.png")));
 		toolBar.add(btnGuardar);
 		
-		JButton btnEliminar = new JButton("");
-		btnEliminar.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("/centroEducativo/res/eliminar.png")));
+		btnEliminar = new JButton("");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminarCurso();
+			}
+		});
+		btnEliminar.setIcon(new ImageIcon(CRUD_Curso.class.getResource("/centroEducativo/res/eliminar.png")));
 		toolBar.add(btnEliminar);
 		
 		JPanel panel_1 = new JPanel();
@@ -111,15 +131,16 @@ public class CRUD_Curso extends JPanel {
 		gbc_lblId.gridy = 3;
 		panel_1.add(lblId, gbc_lblId);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 9;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 6;
-		gbc_textField.gridy = 3;
-		panel_1.add(textField, gbc_textField);
-		textField.setColumns(10);
+		jtfId = new JTextField();
+		jtfId.setEnabled(false);
+		GridBagConstraints gbc_jtfId = new GridBagConstraints();
+		gbc_jtfId.gridwidth = 9;
+		gbc_jtfId.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfId.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jtfId.gridx = 6;
+		gbc_jtfId.gridy = 3;
+		panel_1.add(jtfId, gbc_jtfId);
+		jtfId.setColumns(10);
 		
 		JLabel lblDescripcin = new JLabel("Descripción:");
 		GridBagConstraints gbc_lblDescripcin = new GridBagConstraints();
@@ -129,18 +150,17 @@ public class CRUD_Curso extends JPanel {
 		gbc_lblDescripcin.gridy = 5;
 		panel_1.add(lblDescripcin, gbc_lblDescripcin);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 9;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 6;
-		gbc_textField_1.gridy = 5;
-		panel_1.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
-		
+		jtfDescripcion = new JTextField();
+		GridBagConstraints gbc_jtfDescripcion = new GridBagConstraints();
+		gbc_jtfDescripcion.gridwidth = 9;
+		gbc_jtfDescripcion.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfDescripcion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jtfDescripcion.gridx = 6;
+		gbc_jtfDescripcion.gridy = 5;
+		panel_1.add(jtfDescripcion, gbc_jtfDescripcion);
+		jtfDescripcion.setColumns(10);
 	}
-
+	
 
 	/**
 	 * Guardado, puede ser un alta nueva o una modificación
@@ -174,7 +194,7 @@ public class CRUD_Curso extends JPanel {
 			boolean existeAnterior = ControladorCurso.findAnteriorCurso(idActual) != null;
 			boolean existeSiguiente = ControladorCurso.findSiguienteCurso(idActual) != null;
 			
-			if (ControladorFabricante.eliminar(idActual) == 1) {
+			if (ControladorCurso.eliminarCurso(idActual) == 1) {
 				JOptionPane.showMessageDialog(null, "Eliminado correctamente");
 				// Ahora debo navegar, una vez he borrado el registro, al registro anterior
 				if (existeAnterior) {
@@ -214,7 +234,7 @@ public class CRUD_Curso extends JPanel {
 			jtfDescripcion.setText(c.getDescripcion());
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior
-			if (ControladorFabricante.findAnterior(c.getId()) == null) {
+			if (ControladorCurso.findAnteriorCurso(c.getId()) == null) {
 				btnPrimero.setEnabled(false);
 				btnAnterior.setEnabled(false);
 			}
@@ -224,7 +244,7 @@ public class CRUD_Curso extends JPanel {
 			}
 			// Si no existe un siguiente deshabilito los botones de último y siguiente
 			boolean existeSiguiente = 
-					(ControladorFabricante.findSiguiente(c.getId()) == null)? false : true;
+					(ControladorCurso.findSiguienteCurso(c.getId()) == null)? false : true;
 			btnUltimo.setEnabled(existeSiguiente);
 			btnSiguiente.setEnabled(existeSiguiente);
 		}
