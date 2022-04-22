@@ -1,21 +1,22 @@
 package centroEducativo;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import centroEducativo.vistas.CRUD_Curso;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JToolBar;
-import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
+import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -45,6 +46,26 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.add(mnGestin);
 		
 		JMenuItem mntmCursos = new JMenuItem("Cursos");
+		mntmCursos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Cursos");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Curso());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
 		mnGestin.add(mntmCursos);
 		
 		JMenuItem menuItem = new JMenuItem("Materias");
@@ -70,6 +91,22 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnCursos= new JButton("Cursos");
 		btnCursos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Cursos");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Curso());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
 			}
 		});
 		toolBar.add(btnCursos);

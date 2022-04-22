@@ -139,7 +139,7 @@ public class ControladorCurso extends SuperControlador {
 		int registrosAfectados = 0;
 		try {
 			Statement s = ConnectionManager.getConexion().createStatement();
-			c.setId(siguienteIdEnTabla("fabricante"));
+			c.setId(siguienteIdEnTabla("curso"));
 			registrosAfectados = s.executeUpdate(
 					"insert into curso values (" + c.getId() + ",'" + c.getDescripcion() + "')");
 		} catch (SQLException e) {

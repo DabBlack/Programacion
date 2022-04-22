@@ -27,18 +27,12 @@ import java.awt.BorderLayout;
 
 public class CRUD_Curso extends JPanel {
 
-	private JFrame frame;
 	private JTextField jtfId;
 	private JTextField jtfDescripcion;
-	private JLabel lblNewLabel_4;
-	private JPanel panel;
 	private JButton btnPrimero;
 	private JButton btnAnterior;
 	private JButton btnSiguiente;
 	private JButton btnUltimo;
-	private JButton btnNuevo;
-	private JButton btnGuardar;
-	private JButton btnEliminar;
 	private JTextField textField;
 	private JTextField textField_1;
 	
@@ -71,14 +65,22 @@ public class CRUD_Curso extends JPanel {
 		toolBar.add(btnAnterior);
 		
 		JButton btnSiguiente = new JButton(">");
-		toolBar.add(btnSiguiente);
-		
-		JButton btnNewUltimo = new JButton(">>");
-		btnNewUltimo.addActionListener(new ActionListener() {
+		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				mostrarCurso(
+						ControladorCurso.findSiguienteCurso(
+								Integer.parseInt(jtfId.getText())));
 			}
 		});
-		toolBar.add(btnNewUltimo);
+		toolBar.add(btnSiguiente);
+		
+		JButton btnUltimo = new JButton(">>");
+		btnUltimo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarCurso(ControladorCurso.findUltimoCurso());
+			}
+		});
+		toolBar.add(btnUltimo);
 		
 		JButton btnNuevo = new JButton("");
 		btnNuevo.setIcon(new ImageIcon(CRUD_Fabricante.class.getResource("/centroEducativo/res/nuevo.png")));
@@ -100,14 +102,6 @@ public class CRUD_Curso extends JPanel {
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
-		
-		JLabel lblGestinDeCursos = new JLabel("Gestión de Cursos");
-		GridBagConstraints gbc_lblGestinDeCursos = new GridBagConstraints();
-		gbc_lblGestinDeCursos.gridwidth = 7;
-		gbc_lblGestinDeCursos.insets = new Insets(0, 0, 5, 5);
-		gbc_lblGestinDeCursos.gridx = 6;
-		gbc_lblGestinDeCursos.gridy = 1;
-		panel_1.add(lblGestinDeCursos, gbc_lblGestinDeCursos);
 		
 		JLabel lblId = new JLabel("id:");
 		GridBagConstraints gbc_lblId = new GridBagConstraints();
