@@ -91,6 +91,13 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		mnGestion.add(mntmMaterias);
+		
+		JMenuItem mntmEstudiantes = new JMenuItem("Estudiantes");
+		mnGestion.add(mntmEstudiantes);
+		
+		JMenuItem mntmProfesores = new JMenuItem("Profesores");
+		mnGestion.add(mntmProfesores);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
