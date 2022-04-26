@@ -4,8 +4,9 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 
-import capitulo08_Entorno_Grafico_Swing_Completo.controladores.ControladorFabricante;
+import centroEducativo.controladores.ControladorCurso;
 import centroEducativo.controladores.ControladorMateria;
+import centroEducativo.entidades.Curso;
 import centroEducativo.entidades.Materia;
 
 import javax.swing.ImageIcon;
@@ -18,8 +19,10 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class CRUD_Materia extends JPanel {
 	private JButton btnPrimero;
@@ -32,7 +35,8 @@ public class CRUD_Materia extends JPanel {
 	private JTextField jtfId;
 	private JTextField jtfNombre;
 	private JTextField jtfAcronimo;
-	private JTextField jtfCurso_id;
+	private JComboBox<Curso> jcbCurso;
+
 
 	
 	/**
@@ -178,22 +182,36 @@ public class CRUD_Materia extends JPanel {
 		panel.add(jtfAcronimo, gbc_jtfAcronimo);
 		jtfAcronimo.setColumns(10);
 		
-		JLabel lblCursoid = new JLabel("Curso_id:");
-		GridBagConstraints gbc_lblCursoid = new GridBagConstraints();
-		gbc_lblCursoid.anchor = GridBagConstraints.EAST;
-		gbc_lblCursoid.insets = new Insets(0, 0, 0, 5);
-		gbc_lblCursoid.gridx = 3;
-		gbc_lblCursoid.gridy = 7;
-		panel.add(lblCursoid, gbc_lblCursoid);
+		JLabel lblCurso = new JLabel("Curso:");
+		GridBagConstraints gbc_lblCurso = new GridBagConstraints();
+		gbc_lblCurso.anchor = GridBagConstraints.EAST;
+		gbc_lblCurso.insets = new Insets(0, 0, 0, 5);
+		gbc_lblCurso.gridx = 3;
+		gbc_lblCurso.gridy = 7;
+		panel.add(lblCurso, gbc_lblCurso);
 		
-		jtfCurso_id = new JTextField();
-		GridBagConstraints gbc_jtfCurso_id = new GridBagConstraints();
-		gbc_jtfCurso_id.insets = new Insets(0, 0, 0, 5);
-		gbc_jtfCurso_id.fill = GridBagConstraints.HORIZONTAL;
-		gbc_jtfCurso_id.gridx = 4;
-		gbc_jtfCurso_id.gridy = 7;
-		panel.add(jtfCurso_id, gbc_jtfCurso_id);
-		jtfCurso_id.setColumns(10);
+		jcbCurso = new JComboBox();
+		GridBagConstraints gbc_jcbCurso = new GridBagConstraints();
+		gbc_jcbCurso.insets = new Insets(0, 0, 0, 5);
+		gbc_jcbCurso.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jcbCurso.gridx = 4;
+		gbc_jcbCurso.gridy = 7;
+		panel.add(jcbCurso, gbc_jcbCurso);
+		
+		
+		inicializarComboBoxCursos();
+		mostrarMateria(ControladorMateria.findPrimeraMateria());
+	}
+
+	
+	/**
+	 * 
+	 */
+	private void inicializarComboBoxCursos() {
+		List<Curso> cursos = ControladorCurso.findAll();
+		for (Curso c : cursos) {
+			jcbCurso.addItem(c);
+		}
 		
 	}
 
@@ -205,7 +223,7 @@ public class CRUD_Materia extends JPanel {
 		m.setId(Integer.parseInt(jtfId.getText()));
 		m.setNombre(jtfNombre.getText());
 		m.setAcronimo(jtfAcronimo.getText());
-		m.setCurso_id(Integer.parseInt(jtfCurso_id.getText()));
+		m.setCurso_id(( (Curso) jcbCurso.getSelectedItem()).getId() );
 		if (ControladorMateria.guardarMateria(m) == 1) {
 			jtfId.setText("" + m.getId());
 			JOptionPane.showMessageDialog(null, "Guardado correctamente");
@@ -237,10 +255,12 @@ public class CRUD_Materia extends JPanel {
 				// Ahora debo navegar, una vez he borrado el registro, al registro anterior
 				if (existeAnterior) {
 					mostrarMateria(ControladorMateria.findAnteriorMateria(idActual));
-				} else {
+				}
+				else {
 					if (existeSiguiente) {
 						mostrarMateria(ControladorMateria.findSiguienteMateria(idActual));
-					} else {
+					}
+					else {
 						limpiarDatos();
 					}
 				}
@@ -257,19 +277,22 @@ public class CRUD_Materia extends JPanel {
 		jtfId.setText("0");
 		jtfNombre.setText("");
 		jtfAcronimo.setText("");
-		jtfCurso_id.setText("");
 	}
 
 	/**
 	 * 
-	 * @param f
+	 * @param m
 	 */
 	private void mostrarMateria(Materia m) {
 		if (m != null) {
 			jtfId.setText("" + m.getId());
 			jtfNombre.setText(m.getNombre());
 			jtfAcronimo.setText(m.getAcronimo());
-			jtfCurso_id.setText("" + m.getCurso_id());
+			for (int i = 0; i < jcbCurso.getItemCount(); i++) {
+				if (jcbCurso.getItemAt(i).getId() == m.getId()) {
+					jcbCurso.setSelectedIndex(i);
+				}
+			}
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior
 			if (ControladorMateria.findAnteriorMateria(m.getId()) == null) {

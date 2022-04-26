@@ -68,9 +68,9 @@ public class ControladorEstudiante extends SuperControlador {
 
 			// Navegación del objeto ResultSet
 			if (rs.next()) {
-				a = new Estudiante(rs.getInt("id"), rs.getInt("telefono"), rs.getString("nombre"), 
-						rs.getString("apellido1") , rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"));
+				a = new Estudiante(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
+						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("email"), rs.getString("telefono"));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -95,13 +95,13 @@ public class ControladorEstudiante extends SuperControlador {
 			
 			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
 			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("Select * from fabricante");
+			ResultSet rs = s.executeQuery ("Select * from estudiante");
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) {
-				Estudiante a = new Estudiante (rs.getInt("id"), rs.getInt("telefono"), rs.getString("nombre"), 
-						rs.getString("apellido1") , rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"));
+				Estudiante a = new Estudiante (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
+						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("email"), rs.getString("telefono"));
 				lista.add(a);
 			}
 			// Cierre de los elementos
@@ -142,7 +142,7 @@ public class ControladorEstudiante extends SuperControlador {
 			registrosAfectados = s.executeUpdate("update estudiante set nombre='" + a.getNombre() + "', apellido1='" + 
 					a.getApellido1() + "', apellido2='" +  a.getApellido2() + "', dni='" + a.getDni() + 
 					"', direccion='" + a.getDireccion() + "', email='" + a.getEmail() +
-					"', telefono=" + a.getTelefono() + " where id=" + a.getId());
+					"', telefono='" + a.getTelefono() + "' where id=" + a.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +183,7 @@ public class ControladorEstudiante extends SuperControlador {
 			registrosAfectados = s.executeUpdate(
 					"insert into estudiante values (" + a.getId() + ",'" + a.getNombre() + "','" + a.getApellido1() + "','" +
 							a.getApellido2() + "','" + a.getDni() + "','" + a.getDireccion() + "','" + a.getEmail() + 
-							"'," + a.getTelefono() + ")");
+							"','" + a.getTelefono() + "')");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

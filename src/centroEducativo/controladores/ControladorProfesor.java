@@ -68,9 +68,9 @@ public class ControladorProfesor extends SuperControlador {
 
 			// Navegación del objeto ResultSet
 			if (rs.next()) {
-				p = new Profesor(rs.getInt("id"), rs.getInt("telefono"), rs.getString("nombre"), 
-						rs.getString("apellido1") , rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"));
+				p = new Profesor(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
+						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("email"), rs.getString("telefono"));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -95,13 +95,13 @@ public class ControladorProfesor extends SuperControlador {
 			
 			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
 			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("Select * from fabricante");
+			ResultSet rs = s.executeQuery ("Select * from profesor");
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) {
-				Profesor p = new Profesor (rs.getInt("id"), rs.getInt("telefono"), rs.getString("nombre"), 
-						rs.getString("apellido1") , rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"));
+				Profesor p = new Profesor (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1") ,
+						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("email"), rs.getString("telefono"));
 				lista.add(p);
 			}
 			// Cierre de los elementos

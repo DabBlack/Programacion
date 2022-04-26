@@ -89,7 +89,7 @@ public class ControladorCurso extends SuperControlador {
 			
 			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
 			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("Select * from fabricante");
+			ResultSet rs = s.executeQuery ("Select * from curso");
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) {

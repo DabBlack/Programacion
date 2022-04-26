@@ -216,7 +216,7 @@ public class CRUD_Curso extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Limpiar datos
 	 */
 	private void limpiarDatos() {
 		jtfId.setText("0");
@@ -226,7 +226,7 @@ public class CRUD_Curso extends JPanel {
 	
 	/**
 	 * 
-	 * @param f
+	 * @param c
 	 */
 	private void mostrarCurso(Curso c) {
 		if (c != null) {

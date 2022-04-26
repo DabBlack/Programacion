@@ -5,7 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import centroEducativo.vistas.CRUD_Curso;
+import centroEducativo.vistas.CRUD_Estudiante;
 import centroEducativo.vistas.CRUD_Materia;
+import centroEducativo.vistas.CRUD_Profesor;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -36,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public VentanaPrincipal() {
 		super("Centro Educativo");
-		this.setBounds(500, 250, 300, 300);
+		this.setBounds(500, 250, 400, 250);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
@@ -93,9 +95,49 @@ public class VentanaPrincipal extends JFrame {
 		mnGestion.add(mntmMaterias);
 		
 		JMenuItem mntmEstudiantes = new JMenuItem("Estudiantes");
+		mntmEstudiantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Estudiantes");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Estudiante());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
 		mnGestion.add(mntmEstudiantes);
 		
 		JMenuItem mntmProfesores = new JMenuItem("Profesores");
+		mntmProfesores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Profesores");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Profesor());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
 		mnGestion.add(mntmProfesores);
 		
 		contentPane = new JPanel();
@@ -137,6 +179,75 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		toolBar.add(btnCursos);
+		
+		JButton btnMaterias = new JButton("Materias");
+		btnMaterias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Materias");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Materia());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
+		toolBar.add(btnMaterias);
+		
+		JButton btnEstudiantes = new JButton("Estudiantes");
+		btnEstudiantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Estudiantes");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Estudiante());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
+		toolBar.add(btnEstudiantes);
+		
+		JButton btnProfesores = new JButton("Profesores");
+		btnProfesores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog dialogo = new JDialog();
+				// El usuario no puede redimensionar el diálogo
+				dialogo.setResizable(true);
+				// Título del díalogo
+				dialogo.setTitle("Gestión de Profesores");
+				// Introducimos el panel creado sobre el diálogo
+				dialogo.setContentPane(new CRUD_Profesor());
+				// Empaquetar el diálogo hace que todos los componentes ocupen el espacio que deben y el lugar adecuado
+				dialogo.pack();
+				// El usuario no puede hacer clic sobre la ventana padre, si el Diálogo es modal
+				dialogo.setModal(true);
+				// Centro el diálogo en pantalla
+				dialogo.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - dialogo.getWidth()/2, 
+						(Toolkit.getDefaultToolkit().getScreenSize().height)/2 - dialogo.getHeight()/2);
+				// Muestro el diálogo en pantalla
+				dialogo.setVisible(true);
+			}
+		});
+		toolBar.add(btnProfesores);
 		
 		
 	}

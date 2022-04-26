@@ -92,7 +92,7 @@ public class ControladorMateria extends SuperControlador {
 			
 			// La ejecución de la consulta se realiza a través del objeto Statement y se recibe en forma de objeto
 			// de tipo ResultSet, que puede ser navegado para descubrir todos los registros obtenidos por la consulta
-			ResultSet rs = s.executeQuery ("Select * from fabricante");
+			ResultSet rs = s.executeQuery ("Select * from materia");
 		   
 			// Navegación del objeto ResultSet
 			while (rs.next()) {
@@ -174,8 +174,8 @@ public class ControladorMateria extends SuperControlador {
 			Statement s = ConnectionManager.getConexion().createStatement();
 			m.setId(siguienteIdEnTabla("materia"));
 			registrosAfectados = s.executeUpdate(
-					"insert into curso values (" + m.getId() + ",'" + m.getNombre()  + "','" + m.getAcronimo() + "',"
-							+ m.getId() + ")");
+					"insert into materia values (" + m.getId() + ",'" + m.getNombre()  + "','" + m.getAcronimo() + "',"
+							+ m.getCurso_id() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

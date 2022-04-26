@@ -7,15 +7,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JToolBar;
 
-import centroEducativo.controladores.ControladorEstudiante;
-import centroEducativo.entidades.Estudiante;
+import centroEducativo.controladores.ControladorProfesor;
+import centroEducativo.entidades.Profesor;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 
-public class CRUD_Estudiante extends JPanel {
+public class CRUD_Profesor extends JPanel {
 
 	private JButton btnPrimero;
 	private JButton btnAnterior;
@@ -30,9 +30,9 @@ public class CRUD_Estudiante extends JPanel {
 	/**
 	 * Create the application.
 	 */
-	public CRUD_Estudiante() {
+	public CRUD_Profesor() {
 		initialize();
-		mostrarEstudiante(ControladorEstudiante.findPrimerEstudiante());
+		mostrarProfesor(ControladorProfesor.findPrimerProfesor());
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnPrimero = new JButton("<<");
 		btnPrimero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarEstudiante(ControladorEstudiante.findPrimerEstudiante());
+				mostrarProfesor(ControladorProfesor.findPrimerProfesor());
 			}
 		});
 		toolBar.add(btnPrimero);
@@ -55,7 +55,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnAnterior = new JButton("<");
 		btnAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarEstudiante(ControladorEstudiante.findAnteriorEstudiante(panelDatosPersonales.getId()));
+				mostrarProfesor(ControladorProfesor.findAnteriorProfesor(panelDatosPersonales.getId()));
 			}
 		});
 		toolBar.add(btnAnterior);
@@ -63,7 +63,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarEstudiante(ControladorEstudiante.findAnteriorEstudiante(panelDatosPersonales.getId()));
+				mostrarProfesor(ControladorProfesor.findAnteriorProfesor(panelDatosPersonales.getId()));
 			}
 		});
 		toolBar.add(btnSiguiente);
@@ -71,7 +71,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnUltimo = new JButton(">>");
 		btnUltimo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarEstudiante(ControladorEstudiante.findUltimoEstudiante());
+				mostrarProfesor(ControladorProfesor.findUltimoProfesor());
 			}
 		});
 		toolBar.add(btnUltimo);
@@ -82,26 +82,26 @@ public class CRUD_Estudiante extends JPanel {
 				limpiarDatos();
 			}
 		});
-		btnNuevo.setIcon(new ImageIcon(CRUD_Estudiante.class.getResource("/centroEducativo/res/nuevo.png")));
+		btnNuevo.setIcon(new ImageIcon(CRUD_Profesor.class.getResource("/centroEducativo/res/nuevo.png")));
 		toolBar.add(btnNuevo);
 		
 		btnGuardar = new JButton("");
 
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				guardarEstudiante();
+				guardarProfesor();
 			}
 		});
-		btnGuardar.setIcon(new ImageIcon(CRUD_Estudiante.class.getResource("/centroEducativo/res/guardar.png")));
+		btnGuardar.setIcon(new ImageIcon(CRUD_Profesor.class.getResource("/centroEducativo/res/guardar.png")));
 		toolBar.add(btnGuardar);
 		
 		btnEliminar = new JButton("");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				eliminarEstudiante();
+				eliminarProfesor();
 			}
 		});
-		btnEliminar.setIcon(new ImageIcon(CRUD_Estudiante.class.getResource("/centroEducativo/res/eliminar.png")));
+		btnEliminar.setIcon(new ImageIcon(CRUD_Profesor.class.getResource("/centroEducativo/res/eliminar.png")));
 		toolBar.add(btnEliminar);
 		
 		CRUD_PanelDatosPersonales panel = new CRUD_PanelDatosPersonales();
@@ -113,19 +113,19 @@ public class CRUD_Estudiante extends JPanel {
 	/**
 	 * Guardado, puede ser un alta nueva o una modificación
 	 */
-	private void guardarEstudiante() {
-		Estudiante a = new Estudiante();
+	private void guardarProfesor() {
+		Profesor p = new Profesor();
 
-		a.setNombre(panelDatosPersonales.getNombre());
-		a.setApellido1(panelDatosPersonales.getPrimerApellido());
-		a.setApellido2(panelDatosPersonales.getSegundoApellido());
-		a.setDni(panelDatosPersonales.getDni());
-		a.setDireccion(panelDatosPersonales.getDireccion());
-		a.setEmail(panelDatosPersonales.getEmail());
-		a.setTelefono(panelDatosPersonales.getTelefono());
+		p.setNombre(panelDatosPersonales.getNombre());
+		p.setApellido1(panelDatosPersonales.getPrimerApellido());
+		p.setApellido2(panelDatosPersonales.getSegundoApellido());
+		p.setDni(panelDatosPersonales.getDni());
+		p.setDireccion(panelDatosPersonales.getDireccion());
+		p.setEmail(panelDatosPersonales.getEmail());
+		p.setTelefono(panelDatosPersonales.getTelefono());
 		
-		if (ControladorEstudiante.guardarEstudiante(a) == 1) {
-			panelDatosPersonales.setId(a.getId());
+		if (ControladorProfesor.guardarProfesor(p) == 1) {
+			panelDatosPersonales.setId(p.getId());
 			JOptionPane.showMessageDialog(null, "Guardado correctamente");
 		}
 		else {
@@ -136,28 +136,28 @@ public class CRUD_Estudiante extends JPanel {
 	/**
 	 * Eliminación 
 	 */
-	private void eliminarEstudiante() {
+	private void eliminarProfesor() {
 		String posiblesRespuestas[] = {"Sí","No"};
 		// Utilizo un JOptionPane para preguntar si realmente se desea eliminar un registro
 		int opcionElegida = JOptionPane.showOptionDialog(null, "¿Realmente desea eliminar?", "Confirmar eliminación", 
-		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(CRUD_Estudiante.class.getResource("/centroEducativo/res/confirm.png")), 
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(CRUD_Profesor.class.getResource("/centroEducativo/res/confirm.png")), 
 		        posiblesRespuestas, posiblesRespuestas[1]);
 	    
 		// Si se confirma que se desea eliminar, se procede a ello
 		if(opcionElegida == 0) {
 			int idActual = (panelDatosPersonales.getId());
-			boolean existeAnterior = ControladorEstudiante.findAnteriorEstudiante(idActual) != null;
-			boolean existeSiguiente = ControladorEstudiante.findSiguienteEstudiante(idActual) != null;
+			boolean existeAnterior = ControladorProfesor.findAnteriorProfesor(idActual) != null;
+			boolean existeSiguiente = ControladorProfesor.findSiguienteProfesor(idActual) != null;
 			
-			if (ControladorEstudiante.eliminarEstudiante(idActual) == 1) {
+			if (ControladorProfesor.eliminarProfesor(idActual) == 1) {
 				JOptionPane.showMessageDialog(null, "Eliminado correctamente");
 				// Ahora debo navegar, una vez he borrado el registro, al registro anterior
 				if (existeAnterior) {
-					mostrarEstudiante(ControladorEstudiante.findAnteriorEstudiante(idActual));
+					mostrarProfesor(ControladorProfesor.findAnteriorProfesor(idActual));
 				}
 				else {
 					if (existeSiguiente) {
-						mostrarEstudiante(ControladorEstudiante.findSiguienteEstudiante(idActual));
+						mostrarProfesor(ControladorProfesor.findSiguienteProfesor(idActual));
 					}
 					else {
 						limpiarDatos();
@@ -189,20 +189,20 @@ public class CRUD_Estudiante extends JPanel {
 	 * 
 	 * @param a
 	 */
-	private void mostrarEstudiante(Estudiante a) {
-		if (a != null) {
-			panelDatosPersonales.setId(a.getId());
-			panelDatosPersonales.setNombre(a.getNombre());
-			panelDatosPersonales.setPrimerApellido(a.getApellido1());
-			panelDatosPersonales.setSegundoApellido(a.getApellido2());
-			panelDatosPersonales.setDni(a.getDni());
-			panelDatosPersonales.setDireccion(a.getDireccion());
-			panelDatosPersonales.setEmail(a.getEmail());
-			panelDatosPersonales.setTelefono(a.getTelefono());
+	private void mostrarProfesor(Profesor p) {
+		if (p != null) {
+			panelDatosPersonales.setId(p.getId());
+			panelDatosPersonales.setNombre(p.getNombre());
+			panelDatosPersonales.setPrimerApellido(p.getApellido1());
+			panelDatosPersonales.setSegundoApellido(p.getApellido2());
+			panelDatosPersonales.setDni(p.getDni());
+			panelDatosPersonales.setDireccion(p.getDireccion());
+			panelDatosPersonales.setEmail(p.getEmail());
+			panelDatosPersonales.setTelefono(p.getTelefono());
 			
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior
-			if (ControladorEstudiante.findAnteriorEstudiante(a.getId()) == null) {
+			if (ControladorProfesor.findAnteriorProfesor(p.getId()) == null) {
 				btnPrimero.setEnabled(false);
 				btnAnterior.setEnabled(false);
 			}
@@ -212,7 +212,7 @@ public class CRUD_Estudiante extends JPanel {
 			}
 			// Si no existe un siguiente deshabilito los botones de último y siguiente
 			boolean existeSiguiente = 
-					(ControladorEstudiante.findSiguienteEstudiante(a.getId()) == null)? false : true;
+					(ControladorProfesor.findSiguienteProfesor(p.getId()) == null)? false : true;
 			btnUltimo.setEnabled(existeSiguiente);
 			btnSiguiente.setEnabled(existeSiguiente);
 		}

@@ -1,8 +1,8 @@
 package centroEducativo.entidades;
 
 public class Estudiante {
-	private int id, telefono;
-	private String nombre, apellido1, apellido2, dni, direccion, email;
+	private int id;
+	private String nombre, apellido1, apellido2, dni, direccion, email, telefono;
 	
 	/**
 	 * 
@@ -21,22 +21,22 @@ public class Estudiante {
 	 * @param direccion
 	 * @param email
 	 */
-	public Estudiante(int id, int telefono, String nombre, String apellido1, String apellido2, String dni, String direccion,
-			String email) {
+	public Estudiante(int id, String nombre, String apellido1, String apellido2, String dni, String direccion,
+			String email, String telefono) {
 		super();
 		this.id = id;
-		this.telefono = telefono;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.dni = dni;
 		this.direccion = direccion;
 		this.email = email;
+		this.telefono = telefono;
 	}
 
 	@Override
 	public String toString() {
-		return 	nombre + apellido1 + apellido2 + ".- " + dni + direccion + email;
+		return 	nombre + apellido1 + apellido2 + ".- " + dni + direccion + email + telefono;
 	}
 
 	/**
@@ -51,20 +51,6 @@ public class Estudiante {
 	 */
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	/**
-	 * @return the telefono
-	 */
-	public int getTelefono() {
-		return telefono;
-	}
-
-	/**
-	 * @param telefono the telefono to set
-	 */
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
 	}
 
 	/**
@@ -151,6 +137,18 @@ public class Estudiante {
 		this.email = email;
 	}	
 
-	
+	/**
+	 * @return the telefono
+	 */
+	public String getTelefono() {
+		return telefono;
+	}
+
+	/**
+	 * @param telefono the telefono to set
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 	
 }
