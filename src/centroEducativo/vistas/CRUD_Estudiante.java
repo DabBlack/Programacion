@@ -104,8 +104,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnEliminar.setIcon(new ImageIcon(CRUD_Estudiante.class.getResource("/centroEducativo/res/eliminar.png")));
 		toolBar.add(btnEliminar);
 		
-		CRUD_PanelDatosPersonales panel = new CRUD_PanelDatosPersonales();
-		add(panel, BorderLayout.CENTER);
+		add(panelDatosPersonales, BorderLayout.CENTER);
 
 	}
 
