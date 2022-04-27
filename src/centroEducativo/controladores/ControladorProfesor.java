@@ -181,7 +181,7 @@ public class ControladorProfesor extends SuperControlador {
 			Statement s = ConnectionManager.getConexion().createStatement();
 			p.setId(siguienteIdEnTabla("profesor"));
 			registrosAfectados = s.executeUpdate(
-					"insert into Profesor values (" + p.getId() + ",'" + p.getNombre() + "','" + p.getApellido1() + "','" +
+					"insert into profesor values (" + p.getId() + ",'" + p.getNombre() + "','" + p.getApellido1() + "','" +
 							p.getApellido2() + "','" + p.getDni() + "','" + p.getDireccion() + "','" + p.getEmail() + 
 							"'," + p.getTelefono() + ")");
 		} catch (SQLException e) {
