@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JToolBar;
 
 import centroEducativo.controladores.ControladorProfesor;
+import centroEducativo.controladores.ControladorTipologiaSexo;
 import centroEducativo.entidades.Profesor;
 
 import javax.swing.JButton;
@@ -118,6 +119,7 @@ public class CRUD_Profesor extends JPanel {
 		p.setNombre(panelDatosPersonales.getNombre());
 		p.setApellido1(panelDatosPersonales.getPrimerApellido());
 		p.setApellido2(panelDatosPersonales.getSegundoApellido());
+		p.setTipologiaSexo_id(panelDatosPersonales.getSexo().getId());
 		p.setDni(panelDatosPersonales.getDni());
 		p.setDireccion(panelDatosPersonales.getDireccion());
 		p.setEmail(panelDatosPersonales.getEmail());
@@ -177,6 +179,7 @@ public class CRUD_Profesor extends JPanel {
 		panelDatosPersonales.setNombre("");
 		panelDatosPersonales.setPrimerApellido("");
 		panelDatosPersonales.setSegundoApellido("");
+		panelDatosPersonales.clearSexo();
 		panelDatosPersonales.setDni("");
 		panelDatosPersonales.setDireccion("");
 		panelDatosPersonales.setEmail("");
@@ -194,6 +197,7 @@ public class CRUD_Profesor extends JPanel {
 			panelDatosPersonales.setNombre(p.getNombre());
 			panelDatosPersonales.setPrimerApellido(p.getApellido1());
 			panelDatosPersonales.setSegundoApellido(p.getApellido2());
+			panelDatosPersonales.setSexo(ControladorTipologiaSexo.findAll());
 			panelDatosPersonales.setDni(p.getDni());
 			panelDatosPersonales.setDireccion(p.getDireccion());
 			panelDatosPersonales.setEmail(p.getEmail());

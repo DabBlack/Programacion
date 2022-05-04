@@ -200,7 +200,6 @@ public class CRUD_Materia extends JPanel {
 		
 		
 		inicializarComboBoxCursos();
-		mostrarMateria(ControladorMateria.findPrimeraMateria());
 	}
 
 	

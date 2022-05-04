@@ -69,7 +69,7 @@ public class ControladorProfesor extends SuperControlador {
 			// Navegación del objeto ResultSet
 			if (rs.next()) {
 				p = new Profesor(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
-						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
 						rs.getString("email"), rs.getString("telefono"));
 			}
 			// Cierre de los elementos
@@ -100,7 +100,7 @@ public class ControladorProfesor extends SuperControlador {
 			// Navegación del objeto ResultSet
 			while (rs.next()) {
 				Profesor p = new Profesor (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1") ,
-						rs.getString("apellido2") , rs.getString("dni"), rs.getString("direccion"), 
+						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
 						rs.getString("email"), rs.getString("telefono"));
 				lista.add(p);
 			}
@@ -140,7 +140,7 @@ public class ControladorProfesor extends SuperControlador {
 			Statement s = ConnectionManager.getConexion().createStatement();
 
 			registrosAfectados = s.executeUpdate("update profesor set nombre='" + p.getNombre() + "', apellido1='" + 
-					p.getApellido1() + "', apellido2='" +  p.getApellido2() + "', dni='" + p.getDni() + 
+					p.getApellido1() + "', apellido2='" +  p.getApellido2() + "', tipologiasexo='" + p.getTipologiaSexo_id() + "', dni='" + p.getDni() + 
 					"', direccion='" + p.getDireccion() + "', email='" + p.getEmail() +
 					"', telefono=" + p.getTelefono() + " where id=" + p.getId());
 		} catch (SQLException e) {
@@ -182,7 +182,7 @@ public class ControladorProfesor extends SuperControlador {
 			p.setId(siguienteIdEnTabla("profesor"));
 			registrosAfectados = s.executeUpdate(
 					"insert into profesor values (" + p.getId() + ",'" + p.getNombre() + "','" + p.getApellido1() + "','" +
-							p.getApellido2() + "','" + p.getDni() + "','" + p.getDireccion() + "','" + p.getEmail() + 
+							p.getApellido2() + "','" + p.getTipologiaSexo_id() + "','" + p.getDni() + "','" + p.getDireccion() + "','" + p.getEmail() + 
 							"'," + p.getTelefono() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,7 +1,7 @@
 package centroEducativo.entidades;
 
 public class Profesor {
-	private int id;
+	private int id, tipologiaSexo_id;
 	private String nombre, apellido1, apellido2, dni, direccion, email, telefono;
 	
 	/**
@@ -10,23 +10,28 @@ public class Profesor {
 	public Profesor() {
 		super();
 	}
+
+
 	/**
+	 * 
 	 * @param id
-	 * @param telefono
 	 * @param nombre
 	 * @param apellido1
 	 * @param apellido2
+	 * @param tipologiaSexo_id
 	 * @param dni
 	 * @param direccion
 	 * @param email
+	 * @param telefono
 	 */
-	public Profesor(int id, String nombre, String apellido1, String apellido2, String dni,
+	public Profesor(int id, String nombre, String apellido1, String apellido2, int tipologiaSexo_id, String dni,
 			String direccion, String email, String telefono) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
+		this.tipologiaSexo_id = tipologiaSexo_id;
 		this.dni = dni;
 		this.direccion = direccion;
 		this.email = email;
@@ -35,7 +40,7 @@ public class Profesor {
 	
 	@Override
 	public String toString() {
-		return 	nombre + apellido1 + apellido2 + ".- " + dni + direccion + email;
+		return 	nombre + apellido1 + apellido2 + ".- " + dni + tipologiaSexo_id + direccion + email;
 	}
 	
 	/**
@@ -149,4 +154,19 @@ public class Profesor {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	/**
+	 * @return the tipologiaSexo_id
+	 */
+	public int getTipologiaSexo_id() {
+		return tipologiaSexo_id;
+	}
+
+	/**
+	 * @param tipologiaSexo_id the tipologiaSexo_id to set
+	 */
+	public void setTipologiaSexo_id(int tipologiaSexo_id) {
+		this.tipologiaSexo_id = tipologiaSexo_id;
+	}
+
 }

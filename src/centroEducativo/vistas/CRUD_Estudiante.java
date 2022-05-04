@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JToolBar;
 
 import centroEducativo.controladores.ControladorEstudiante;
+import centroEducativo.controladores.ControladorTipologiaSexo;
 import centroEducativo.entidades.Estudiante;
 
 import javax.swing.JButton;
@@ -118,6 +119,7 @@ public class CRUD_Estudiante extends JPanel {
 		a.setNombre(panelDatosPersonales.getNombre());
 		a.setApellido1(panelDatosPersonales.getPrimerApellido());
 		a.setApellido2(panelDatosPersonales.getSegundoApellido());
+		a.setTipologiaSexo_id(panelDatosPersonales.getSexo().getId());
 		a.setDni(panelDatosPersonales.getDni());
 		a.setDireccion(panelDatosPersonales.getDireccion());
 		a.setEmail(panelDatosPersonales.getEmail());
@@ -177,6 +179,7 @@ public class CRUD_Estudiante extends JPanel {
 		panelDatosPersonales.setNombre("");
 		panelDatosPersonales.setPrimerApellido("");
 		panelDatosPersonales.setSegundoApellido("");
+		panelDatosPersonales.clearSexo();
 		panelDatosPersonales.setDni("");
 		panelDatosPersonales.setDireccion("");
 		panelDatosPersonales.setEmail("");
@@ -194,10 +197,13 @@ public class CRUD_Estudiante extends JPanel {
 			panelDatosPersonales.setNombre(a.getNombre());
 			panelDatosPersonales.setPrimerApellido(a.getApellido1());
 			panelDatosPersonales.setSegundoApellido(a.getApellido2());
+			panelDatosPersonales.setSexo(ControladorTipologiaSexo.findAll());
 			panelDatosPersonales.setDni(a.getDni());
 			panelDatosPersonales.setDireccion(a.getDireccion());
 			panelDatosPersonales.setEmail(a.getEmail());
 			panelDatosPersonales.setTelefono(a.getTelefono());
+			
+			
 			
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior

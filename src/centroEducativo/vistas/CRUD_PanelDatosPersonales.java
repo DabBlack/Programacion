@@ -6,7 +6,14 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.List;
+
 import javax.swing.JTextField;
+
+import centroEducativo.controladores.ControladorTipologiaSexo;
+import centroEducativo.entidades.TipologiaSexo;
+
+import javax.swing.JComboBox;
 
 public class CRUD_PanelDatosPersonales extends JPanel {
 	private JTextField jtfId;
@@ -17,6 +24,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	private JTextField jtfDireccion;
 	private JTextField jtfEmail;
 	private JTextField jtfTelefono;
+	private JComboBox jcbSexo;
 
 	/**
 	 * Create the panel.
@@ -24,9 +32,9 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	public CRUD_PanelDatosPersonales() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
 		JLabel lblId = new JLabel("id:");
@@ -98,12 +106,28 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		add(jtfSegundoApellido, gbc_jtfSegundoApellido);
 		jtfSegundoApellido.setColumns(10);
 		
+		JLabel lblSexo = new JLabel("Sexo:");
+		GridBagConstraints gbc_lblSexo = new GridBagConstraints();
+		gbc_lblSexo.anchor = GridBagConstraints.EAST;
+		gbc_lblSexo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSexo.gridx = 1;
+		gbc_lblSexo.gridy = 4;
+		add(lblSexo, gbc_lblSexo);
+		
+		jcbSexo = new JComboBox();
+		GridBagConstraints gbc_jcbSexo = new GridBagConstraints();
+		gbc_jcbSexo.insets = new Insets(0, 0, 5, 5);
+		gbc_jcbSexo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jcbSexo.gridx = 2;
+		gbc_jcbSexo.gridy = 4;
+		add(jcbSexo, gbc_jcbSexo);
+		
 		JLabel lblDni = new JLabel("DNI:");
 		GridBagConstraints gbc_lblDni = new GridBagConstraints();
 		gbc_lblDni.anchor = GridBagConstraints.EAST;
 		gbc_lblDni.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDni.gridx = 1;
-		gbc_lblDni.gridy = 4;
+		gbc_lblDni.gridy = 5;
 		add(lblDni, gbc_lblDni);
 		
 		jtfDni = new JTextField();
@@ -111,7 +135,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_jtfDni.insets = new Insets(0, 0, 5, 5);
 		gbc_jtfDni.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfDni.gridx = 2;
-		gbc_jtfDni.gridy = 4;
+		gbc_jtfDni.gridy = 5;
 		add(jtfDni, gbc_jtfDni);
 		jtfDni.setColumns(10);
 		
@@ -120,7 +144,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_lblDireccin_1.anchor = GridBagConstraints.EAST;
 		gbc_lblDireccin_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDireccin_1.gridx = 1;
-		gbc_lblDireccin_1.gridy = 5;
+		gbc_lblDireccin_1.gridy = 6;
 		add(lblDireccin_1, gbc_lblDireccin_1);
 		
 		jtfDireccion = new JTextField();
@@ -128,7 +152,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_jtfDireccion.insets = new Insets(0, 0, 5, 5);
 		gbc_jtfDireccion.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfDireccion.gridx = 2;
-		gbc_jtfDireccion.gridy = 5;
+		gbc_jtfDireccion.gridy = 6;
 		add(jtfDireccion, gbc_jtfDireccion);
 		jtfDireccion.setColumns(10);
 		
@@ -137,7 +161,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_lblEmail.anchor = GridBagConstraints.EAST;
 		gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEmail.gridx = 1;
-		gbc_lblEmail.gridy = 6;
+		gbc_lblEmail.gridy = 7;
 		add(lblEmail, gbc_lblEmail);
 		
 		jtfEmail = new JTextField();
@@ -145,27 +169,37 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_jtfEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_jtfEmail.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfEmail.gridx = 2;
-		gbc_jtfEmail.gridy = 6;
+		gbc_jtfEmail.gridy = 7;
 		add(jtfEmail, gbc_jtfEmail);
 		jtfEmail.setColumns(10);
 		
 		JLabel lblTelfono = new JLabel("Teléfono:");
 		GridBagConstraints gbc_lblTelfono = new GridBagConstraints();
 		gbc_lblTelfono.anchor = GridBagConstraints.EAST;
-		gbc_lblTelfono.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTelfono.insets = new Insets(0, 0, 0, 5);
 		gbc_lblTelfono.gridx = 1;
-		gbc_lblTelfono.gridy = 7;
+		gbc_lblTelfono.gridy = 8;
 		add(lblTelfono, gbc_lblTelfono);
 		
 		jtfTelefono = new JTextField();
 		GridBagConstraints gbc_jtfTelefono = new GridBagConstraints();
-		gbc_jtfTelefono.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfTelefono.insets = new Insets(0, 0, 0, 5);
 		gbc_jtfTelefono.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfTelefono.gridx = 2;
-		gbc_jtfTelefono.gridy = 7;
+		gbc_jtfTelefono.gridy = 8;
 		add(jtfTelefono, gbc_jtfTelefono);
 		jtfTelefono.setColumns(10);
 
+	}
+	
+	/**
+	 * 
+	 */
+	private void inicializarComboBoxCursos() {
+		List<TipologiaSexo> tipologiaSexo = ControladorTipologiaSexo.findAll();
+		for (TipologiaSexo t : tipologiaSexo) {
+			jcbSexo.addItem(t);
+		}
 	}
 	
 	/**
@@ -234,6 +268,24 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	
 	/**
 	 * 
+	 * @param newSexo
+	 */
+	public void setSexo(List<TipologiaSexo> newSexo) {
+		for(TipologiaSexo ts:newSexo) {
+			this.jcbSexo.addItem(ts);
+		}
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public TipologiaSexo getSexo() {
+		return (TipologiaSexo) this.jcbSexo.getSelectedItem();
+	}
+	
+	/**
+	 * 
 	 * @param newDni
 	 */
 	public void setDni(String newDni) {
@@ -294,6 +346,13 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	 */
 	public String getTelefono() {
 		return this.jtfTelefono.getText();
+	}
+
+	/**
+	 * 
+	 */
+	public void clearSexo() {
+		this.jcbSexo.setSelectedIndex(0);
 	}
 	
 	

@@ -1,7 +1,7 @@
 package centroEducativo.entidades;
 
 public class Estudiante {
-	private int id;
+	private int id, tipologiaSexo_id;
 	private String nombre, apellido1, apellido2, dni, direccion, email, telefono;
 	
 	/**
@@ -21,13 +21,14 @@ public class Estudiante {
 	 * @param direccion
 	 * @param email
 	 */
-	public Estudiante(int id, String nombre, String apellido1, String apellido2, String dni, String direccion,
+	public Estudiante(int id, String nombre, String apellido1, String apellido2, int tipologiaSexo_id, String dni, String direccion,
 			String email, String telefono) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
+		this.tipologiaSexo_id = tipologiaSexo_id;
 		this.dni = dni;
 		this.direccion = direccion;
 		this.email = email;
@@ -36,7 +37,7 @@ public class Estudiante {
 
 	@Override
 	public String toString() {
-		return 	nombre + apellido1 + apellido2 + ".- " + dni + direccion + email + telefono;
+		return 	nombre + apellido1 + apellido2 + ".- " + dni + tipologiaSexo_id + direccion + email + telefono;
 	}
 
 	/**
@@ -150,5 +151,20 @@ public class Estudiante {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	/**
+	 * @return the tipologiatipologiaSexo_id_id
+	 */
+	public int getTipologiaSexo_id() {
+		return tipologiaSexo_id;
+	}
+
+	/**
+	 * @param tipologiatipologiaSexo_id_id the tipologiatipologiaSexo_id_id to set
+	 */
+	public void setTipologiaSexo_id(int tipologiaSexo_id) {
+		this.tipologiaSexo_id = tipologiaSexo_id;
+	}
+
 	
 }
