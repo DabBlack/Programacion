@@ -9,11 +9,20 @@ import java.awt.Insets;
 import java.util.List;
 
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
 
 import centroEducativo.controladores.ControladorTipologiaSexo;
 import centroEducativo.entidades.TipologiaSexo;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JScrollPane;
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.nio.file.Files;
+import java.awt.event.ActionEvent;
 
 public class CRUD_PanelDatosPersonales extends JPanel {
 	private JTextField jtfId;
@@ -24,7 +33,9 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	private JTextField jtfDireccion;
 	private JTextField jtfEmail;
 	private JTextField jtfTelefono;
-	private JComboBox jcbSexo;
+	private JComboBox<TipologiaSexo> jcbSexo;
+	private JScrollPane scrollPane;
+	byte[] imagenEnArrayDeBytes;
 
 	/**
 	 * Create the panel.
@@ -33,8 +44,8 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
 		JLabel lblId = new JLabel("id:");
@@ -55,6 +66,14 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		add(jtfId, gbc_jtfId);
 		jtfId.setColumns(10);
 		
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(10, 10, 50, 10);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 3;
+		gbc_scrollPane.gridy = 0;
+		add(scrollPane, gbc_scrollPane);
+		
 		JLabel lblNombre = new JLabel("Nombre:");
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.anchor = GridBagConstraints.EAST;
@@ -71,6 +90,18 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_jtfNombre.gridy = 1;
 		add(jtfNombre, gbc_jtfNombre);
 		jtfNombre.setColumns(10);
+		
+		Button btnCambiarImagen = new Button("Cambiar Imagen");
+		btnCambiarImagen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				seleccionaImagen();	
+			}
+		});
+		GridBagConstraints gbc_btnCambiarImagen = new GridBagConstraints();
+		gbc_btnCambiarImagen.insets = new Insets(0, 0, 5, 0);
+		gbc_btnCambiarImagen.gridx = 3;
+		gbc_btnCambiarImagen.gridy = 1;
+		add(btnCambiarImagen, gbc_btnCambiarImagen);
 		
 		JLabel lblPrimerApellido = new JLabel("Primer Apellido:");
 		GridBagConstraints gbc_lblPrimerApellido = new GridBagConstraints();
@@ -188,9 +219,92 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 		gbc_jtfTelefono.gridx = 2;
 		gbc_jtfTelefono.gridy = 8;
 		add(jtfTelefono, gbc_jtfTelefono);
-		jtfTelefono.setColumns(10);
+		jtfTelefono.setColumns(10);		
+		
+	}
+	
+	/**
+	 * Con este método seleccionamos la imagen que queremos 
+	 */
+	public void seleccionaImagen () {
+		JFileChooser jfileChooser = new JFileChooser();
+				
+		// Tipo de selección que se hace en el diálogo
+		jfileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY); // Sólo selecciona ficheros
+
+		// Filtro del tipo de ficheros que puede abrir
+		jfileChooser.setFileFilter(new FileFilter() {
+			
+			@Override
+			public String getDescription() {
+				return "Archivos de imagen *.jpg *.png *.gif";
+			}
+			
+			@Override
+			public boolean accept(File f) {
+				if (f.isDirectory() || (f.isFile() &&
+						(f.getAbsolutePath().endsWith(".jpg") || 
+								f.getAbsolutePath().endsWith(".jpeg")|| 
+								f.getAbsolutePath().endsWith(".png")|| 
+								f.getAbsolutePath().endsWith(".gif")))) 
+					return true;
+				return false;
+			}
+		});
+		
+		// Abro el diálogo para la elección del usuario
+		int seleccionUsuario = jfileChooser.showOpenDialog(null);
+		
+		if (seleccionUsuario == JFileChooser.APPROVE_OPTION) {
+			File fichero = jfileChooser.getSelectedFile();
+			
+			if (fichero.isFile()) {
+				try {
+					this.imagenEnArrayDeBytes = Files.readAllBytes(fichero.toPath());
+					mostrarImagen(imagenEnArrayDeBytes);
+				}
+				catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+		
+	
+	/**
+	 * Este método recibe un array de byte
+	 */
+	public void mostrarImagen (byte[] imagenEnArrayDeBytes) {
+		if (imagenEnArrayDeBytes != null && imagenEnArrayDeBytes.length > 0) {
+			ImageIcon icono = new ImageIcon(imagenEnArrayDeBytes);
+			JLabel lblIcono = new JLabel(icono);
+			scrollPane.setViewportView(lblIcono);
+		}
+		else {
+			JLabel lblIcono = new JLabel("Sin imagen");
+			scrollPane.setViewportView(lblIcono);
+		}
 
 	}
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param imagenEnArrayDeBytes
+	 */
+	public void setImagen(byte[] imagenEnArrayDeBytes) {
+		mostrarImagen(imagenEnArrayDeBytes);
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public byte[] getImagen() {
+		return imagenEnArrayDeBytes;
+	}
+	
 	
 	/**
 	 * 

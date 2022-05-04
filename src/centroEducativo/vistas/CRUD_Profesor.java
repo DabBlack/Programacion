@@ -9,6 +9,7 @@ import javax.swing.JToolBar;
 
 import centroEducativo.controladores.ControladorProfesor;
 import centroEducativo.controladores.ControladorTipologiaSexo;
+import centroEducativo.entidades.Estudiante;
 import centroEducativo.entidades.Profesor;
 
 import javax.swing.JButton;
@@ -184,7 +185,7 @@ public class CRUD_Profesor extends JPanel {
 		panelDatosPersonales.setDireccion("");
 		panelDatosPersonales.setEmail("");
 		panelDatosPersonales.setTelefono("");
-	}
+		}
 	
 	
 	/**
@@ -202,6 +203,8 @@ public class CRUD_Profesor extends JPanel {
 			panelDatosPersonales.setDireccion(p.getDireccion());
 			panelDatosPersonales.setEmail(p.getEmail());
 			panelDatosPersonales.setTelefono(p.getTelefono());
+			panelDatosPersonales.setImagen(p.getImagen());
+
 			
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior

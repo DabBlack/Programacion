@@ -70,7 +70,7 @@ public class ControladorProfesor extends SuperControlador {
 			if (rs.next()) {
 				p = new Profesor(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -101,7 +101,7 @@ public class ControladorProfesor extends SuperControlador {
 			while (rs.next()) {
 				Profesor p = new Profesor (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1") ,
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
 				lista.add(p);
 			}
 			// Cierre de los elementos
@@ -142,7 +142,7 @@ public class ControladorProfesor extends SuperControlador {
 			registrosAfectados = s.executeUpdate("update profesor set nombre='" + p.getNombre() + "', apellido1='" + 
 					p.getApellido1() + "', apellido2='" +  p.getApellido2() + "', tipologiasexo='" + p.getTipologiaSexo_id() + "', dni='" + p.getDni() + 
 					"', direccion='" + p.getDireccion() + "', email='" + p.getEmail() +
-					"', telefono=" + p.getTelefono() + " where id=" + p.getId());
+					p.getTelefono() + "'," + p.getImagen() + " where id=" + p.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +183,7 @@ public class ControladorProfesor extends SuperControlador {
 			registrosAfectados = s.executeUpdate(
 					"insert into profesor values (" + p.getId() + ",'" + p.getNombre() + "','" + p.getApellido1() + "','" +
 							p.getApellido2() + "','" + p.getTipologiaSexo_id() + "','" + p.getDni() + "','" + p.getDireccion() + "','" + p.getEmail() + 
-							"'," + p.getTelefono() + ")");
+							"','" + p.getTelefono() + "'," + p.getImagen() + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

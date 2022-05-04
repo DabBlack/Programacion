@@ -3,7 +3,8 @@ package centroEducativo.entidades;
 public class Profesor {
 	private int id, tipologiaSexo_id;
 	private String nombre, apellido1, apellido2, dni, direccion, email, telefono;
-	
+	private byte[] imagen;
+
 	/**
 	 * 
 	 */
@@ -23,9 +24,10 @@ public class Profesor {
 	 * @param direccion
 	 * @param email
 	 * @param telefono
+	 * @param imagen
 	 */
 	public Profesor(int id, String nombre, String apellido1, String apellido2, int tipologiaSexo_id, String dni,
-			String direccion, String email, String telefono) {
+			String direccion, String email, String telefono, byte[] imagen) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -36,6 +38,7 @@ public class Profesor {
 		this.direccion = direccion;
 		this.email = email;
 		this.telefono = telefono;
+		this.imagen = imagen;
 	}
 	
 	@Override
@@ -169,4 +172,16 @@ public class Profesor {
 		this.tipologiaSexo_id = tipologiaSexo_id;
 	}
 
+	/**
+	 * @return the imagen
+	 */
+	public byte[] getImagen() {
+		return imagen;
+	}
+	/**
+	 * @param imagen the imagen to set
+	 */
+	public void setImagen(byte[] imagen) {
+		this.imagen = imagen;
+	}
 }

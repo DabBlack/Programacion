@@ -125,6 +125,7 @@ public class CRUD_Estudiante extends JPanel {
 		a.setEmail(panelDatosPersonales.getEmail());
 		a.setTelefono(panelDatosPersonales.getTelefono());
 		
+		
 		if (ControladorEstudiante.guardarEstudiante(a) == 1) {
 			panelDatosPersonales.setId(a.getId());
 			JOptionPane.showMessageDialog(null, "Guardado correctamente");
@@ -202,8 +203,7 @@ public class CRUD_Estudiante extends JPanel {
 			panelDatosPersonales.setDireccion(a.getDireccion());
 			panelDatosPersonales.setEmail(a.getEmail());
 			panelDatosPersonales.setTelefono(a.getTelefono());
-			
-			
+			panelDatosPersonales.setImagen(a.getImagen());			
 			
 			// Ahora habilitamos o deshabilitamos botones de navegación
 			// Si no existe un anterior deshabilito los botones de primero y anterior
