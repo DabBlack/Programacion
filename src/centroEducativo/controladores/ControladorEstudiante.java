@@ -70,7 +70,7 @@ public class ControladorEstudiante extends SuperControlador {
 			if (rs.next()) {
 				a = new Estudiante(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes("imagen"));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -101,7 +101,7 @@ public class ControladorEstudiante extends SuperControlador {
 			while (rs.next()) {
 				Estudiante a = new Estudiante (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes("imagen"));
 				lista.add(a);
 			}
 			// Cierre de los elementos
@@ -142,7 +142,7 @@ public class ControladorEstudiante extends SuperControlador {
 			registrosAfectados = s.executeUpdate("update estudiante set nombre='" + a.getNombre() + "', apellido1='" + 
 					a.getApellido1() + "', apellido2='" +  a.getApellido2() + "', tipologiaSexo_id='" + a.getTipologiaSexo_id() + "', dni='" + a.getDni() + 
 					"', direccion='" + a.getDireccion() + "', email='" + a.getEmail() +
-					"', telefono='" + a.getTelefono() + "'," + a.getImagen() + " where id=" + a.getId());
+					"', telefono='" + a.getTelefono() + "','" + a.getImagen() + "' where id=" + a.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,7 +183,7 @@ public class ControladorEstudiante extends SuperControlador {
 			registrosAfectados = s.executeUpdate(
 					"insert into estudiante values (" + a.getId() + ",'" + a.getNombre() + "','" + a.getApellido1() + "','" +
 							a.getApellido2() + "'," + a.getTipologiaSexo_id() + ",'" + a.getDni() + "','" + a.getDireccion() + "','" + a.getEmail() + 
-							"','" + a.getTelefono() + "'," + a.getImagen() + ")");
+							"','" + a.getTelefono() + "','" + a.getImagen() + "')");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

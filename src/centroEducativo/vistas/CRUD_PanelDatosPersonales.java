@@ -35,7 +35,7 @@ public class CRUD_PanelDatosPersonales extends JPanel {
 	private JTextField jtfTelefono;
 	private JComboBox<TipologiaSexo> jcbSexo;
 	private JScrollPane scrollPane;
-	byte[] imagenEnArrayDeBytes;
+	private byte[] imagenEnArrayDeBytes;
 
 	/**
 	 * Create the panel.

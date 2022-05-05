@@ -70,7 +70,7 @@ public class ControladorProfesor extends SuperControlador {
 			if (rs.next()) {
 				p = new Profesor(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"),
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes("imagen"));
 			}
 			// Cierre de los elementos
 			rs.close();
@@ -101,7 +101,7 @@ public class ControladorProfesor extends SuperControlador {
 			while (rs.next()) {
 				Profesor p = new Profesor (rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1") ,
 						rs.getString("apellido2"), rs.getInt("tipologiaSexo_id"), rs.getString("dni"), rs.getString("direccion"), 
-						rs.getString("email"), rs.getString("telefono"), rs.getBytes(10));
+						rs.getString("email"), rs.getString("telefono"), rs.getBytes("imagen"));
 				lista.add(p);
 			}
 			// Cierre de los elementos

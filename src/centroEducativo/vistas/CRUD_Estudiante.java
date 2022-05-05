@@ -64,7 +64,7 @@ public class CRUD_Estudiante extends JPanel {
 		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarEstudiante(ControladorEstudiante.findAnteriorEstudiante(panelDatosPersonales.getId()));
+				mostrarEstudiante(ControladorEstudiante.findSiguienteEstudiante(panelDatosPersonales.getId()));
 			}
 		});
 		toolBar.add(btnSiguiente);
@@ -124,7 +124,7 @@ public class CRUD_Estudiante extends JPanel {
 		a.setDireccion(panelDatosPersonales.getDireccion());
 		a.setEmail(panelDatosPersonales.getEmail());
 		a.setTelefono(panelDatosPersonales.getTelefono());
-		
+		a.setImagen(panelDatosPersonales.getImagen());
 		
 		if (ControladorEstudiante.guardarEstudiante(a) == 1) {
 			panelDatosPersonales.setId(a.getId());

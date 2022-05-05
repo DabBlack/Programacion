@@ -65,7 +65,7 @@ public class CRUD_Profesor extends JPanel {
 		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarProfesor(ControladorProfesor.findAnteriorProfesor(panelDatosPersonales.getId()));
+				mostrarProfesor(ControladorProfesor.findSiguienteProfesor(panelDatosPersonales.getId()));
 			}
 		});
 		toolBar.add(btnSiguiente);
