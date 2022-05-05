@@ -126,17 +126,23 @@ public class ControladorEstudiante extends SuperControlador {
 	 */
 	public static int guardarEstudiante(Estudiante a) {
 		if (a.getId() == 0) {
-			return nuevoEstudiante(a);
+			try {
+				return nuevoEstudiante(a);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			return modificarEstudiante(a);
 		}
+		return 0;
 	}
 
 	/**
 	 * 
 	 * @param a
 	 */
-	public static void modificarEstudiante(Estudiante a) {
+	public static int modificarEstudiante(Estudiante a) {
 		int registrosAfectados = 0;
 		
 		try {
@@ -166,6 +172,7 @@ public class ControladorEstudiante extends SuperControlador {
 			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
 			ex.printStackTrace();
 		}
+		return registrosAfectados;
 	}
 
 	
@@ -193,7 +200,7 @@ public class ControladorEstudiante extends SuperControlador {
 	 * @param a
 	 * @throws SQLException
 	 */
-	public static void nuevoEstudiante(Estudiante a) throws SQLException {
+	public static int nuevoEstudiante(Estudiante a) throws SQLException {
 		int registrosAfectados = 0;
 		
 		
@@ -224,7 +231,7 @@ public class ControladorEstudiante extends SuperControlador {
 			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
 			ex.printStackTrace();
 		}
-		
+		return registrosAfectados;
 	}
 
 }
