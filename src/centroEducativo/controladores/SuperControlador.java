@@ -8,6 +8,21 @@ import centroEducativo.ConnectionManager;
 
 public class SuperControlador {
 
+	protected static int maxIdEnTabla(String nombreTabla) {
+		try {
+			Statement s = ConnectionManager.getConexion().createStatement();
+			ResultSet rs = s.executeQuery("Select max(id) from " + nombreTabla);
+
+			if (rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return -1;
+	}
+	
 	/**
 	 * 
 	 * @param nombreTabla

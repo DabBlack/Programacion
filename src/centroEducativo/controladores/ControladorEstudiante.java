@@ -1,10 +1,13 @@
 package centroEducativo.controladores;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import centroEducativo.ConnectionManager;
 import centroEducativo.entidades.Estudiante;
@@ -132,22 +135,37 @@ public class ControladorEstudiante extends SuperControlador {
 	/**
 	 * 
 	 * @param a
-	 * @return
 	 */
-	public static int modificarEstudiante(Estudiante a) {
+	public static void modificarEstudiante(Estudiante a) {
 		int registrosAfectados = 0;
+		
 		try {
-			Statement s = ConnectionManager.getConexion().createStatement();
-
-			registrosAfectados = s.executeUpdate("update estudiante set nombre='" + a.getNombre() + "', apellido1='" + 
-					a.getApellido1() + "', apellido2='" +  a.getApellido2() + "', tipologiaSexo_id='" + a.getTipologiaSexo_id() + "', dni='" + a.getDni() + 
-					"', direccion='" + a.getDireccion() + "', email='" + a.getEmail() +
-					"', telefono='" + a.getTelefono() + "','" + a.getImagen() + "' where id=" + a.getId());
-		} catch (SQLException e) {
-			e.printStackTrace();
+			PreparedStatement ps = (PreparedStatement) ConnectionManager.getConexion().
+					prepareStatement("update estudiante set nombre = ?, apellido1 = ?, apellido 2 = ?,"
+							+ " dni= ?, tipolgiasexo_id = ?, dni = ?, direccion = ?, email = ?, "
+							+ "telefono = ?, imagen = ?)");
+			
+			ps.setString(1, a.getNombre());
+			ps.setString(2, a.getApellido1());
+			ps.setString(3, a.getApellido2());
+			ps.setString(4, a.getDni());
+			ps.setInt(5, a.getTipologiaSexo_id());
+			ps.setString(6, a.getDireccion());
+			ps.setString(7, a.getEmail());
+			ps.setString(8, a.getTelefono());
+			ps.setInt(9, a.getTipologiaSexo_id());
+			ps.setBytes(10, a.getImagen());
+			registrosAfectados = ps.executeUpdate();
+			
+			if (registrosAfectados > 0) {
+				JOptionPane.showMessageDialog(null, "Inserción correcta en la tabla");
+			}	
 		}
 
-		return registrosAfectados;
+		catch (SQLException ex) {
+			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
+			ex.printStackTrace();
+		}
 	}
 
 	
@@ -173,21 +191,40 @@ public class ControladorEstudiante extends SuperControlador {
 	/**
 	 * 
 	 * @param a
-	 * @return
+	 * @throws SQLException
 	 */
-	public static int nuevoEstudiante(Estudiante a) {
+	public static void nuevoEstudiante(Estudiante a) throws SQLException {
 		int registrosAfectados = 0;
-		try {
-			Statement s = ConnectionManager.getConexion().createStatement();
-			a.setId(siguienteIdEnTabla("estudiante"));
-			registrosAfectados = s.executeUpdate(
-					"insert into estudiante values (" + a.getId() + ",'" + a.getNombre() + "','" + a.getApellido1() + "','" +
-							a.getApellido2() + "'," + a.getTipologiaSexo_id() + ",'" + a.getDni() + "','" + a.getDireccion() + "','" + a.getEmail() + 
-							"','" + a.getTelefono() + "','" + a.getImagen() + "')");
-		} catch (SQLException e) {
-			e.printStackTrace();
+		
+		
+			try {
+				PreparedStatement ps = (PreparedStatement) ConnectionManager.getConexion().
+						prepareStatement("insert into estudiante nombre = ?, apellido1 = ?, apellido 2 = ?,"
+								+ " dni= ?, tipolgiasexo_id = ?, dni = ?, direccion = ?, email = ?, "
+								+ "telefono = ?, imagen = ?)");
+				
+				ps.setString(1, a.getNombre());
+				ps.setString(2, a.getApellido1());
+				ps.setString(3, a.getApellido2());
+				ps.setString(4, a.getDni());
+				ps.setInt(5, a.getTipologiaSexo_id());
+				ps.setString(6, a.getDireccion());
+				ps.setString(7, a.getEmail());
+				ps.setString(8, a.getTelefono());
+				ps.setInt(9, a.getTipologiaSexo_id());
+				ps.setBytes(10, a.getImagen());
+				registrosAfectados = ps.executeUpdate();
+				
+				if (registrosAfectados > 0) {
+					JOptionPane.showMessageDialog(null, "Inserción correcta en la tabla");
+				}	
 		}
-		return registrosAfectados;
+	
+		catch (SQLException ex) {
+			System.out.println("Error en la ejecución SQL: " + ex.getMessage());
+			ex.printStackTrace();
+		}
+		
 	}
 
 }
