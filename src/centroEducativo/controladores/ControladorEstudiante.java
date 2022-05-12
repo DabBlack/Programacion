@@ -159,8 +159,7 @@ public class ControladorEstudiante extends SuperControlador {
 			ps.setString(6, a.getDireccion());
 			ps.setString(7, a.getEmail());
 			ps.setString(8, a.getTelefono());
-			ps.setInt(9, a.getTipologiaSexo_id());
-			ps.setBytes(10, a.getImagen());
+			ps.setBytes(9, a.getImagen());
 			registrosAfectados = ps.executeUpdate();
 			
 			if (registrosAfectados > 0) {
@@ -206,19 +205,17 @@ public class ControladorEstudiante extends SuperControlador {
 		
 			try {
 				PreparedStatement ps = (PreparedStatement) ConnectionManager.getConexion().
-						prepareStatement("insert into estudiante nombre = ?, apellido1 = ?, apellido 2 = ?,"
-								+ " dni= ?, tipolgiasexo_id = ?, dni = ?, direccion = ?, email = ?, "
-								+ "telefono = ?, imagen = ?)");
+						prepareStatement("insert into estudiante ?,?,?,?,?,?,?,?,?,?");
 				
-				ps.setString(1, a.getNombre());
-				ps.setString(2, a.getApellido1());
-				ps.setString(3, a.getApellido2());
-				ps.setString(4, a.getDni());
-				ps.setInt(5, a.getTipologiaSexo_id());
-				ps.setString(6, a.getDireccion());
-				ps.setString(7, a.getEmail());
-				ps.setString(8, a.getTelefono());
-				ps.setInt(9, a.getTipologiaSexo_id());
+				ps.setInt(1, maxIdEnTabla("estudiante"));
+				ps.setString(2, a.getNombre());
+				ps.setString(3, a.getApellido1());
+				ps.setString(4, a.getApellido2());
+				ps.setString(5, a.getDni());
+				ps.setInt(6, a.getTipologiaSexo_id());
+				ps.setString(7, a.getDireccion());
+				ps.setString(8, a.getEmail());
+				ps.setString(9, a.getTelefono());
 				ps.setBytes(10, a.getImagen());
 				registrosAfectados = ps.executeUpdate();
 				
