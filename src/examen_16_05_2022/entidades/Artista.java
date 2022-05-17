@@ -6,6 +6,7 @@ public class Artista {
 	private int idDisciplina;
 	private int idMunicipio;
 	private String nombre;
+	private byte[] imagen;
 	
 	/**
 	 * 
@@ -88,5 +89,13 @@ public class Artista {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}	
+	
+	public byte[] getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(byte[] imagen) {
+		this.imagen = imagen;
+	}
 	
 }
